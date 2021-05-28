@@ -28,6 +28,7 @@ import { ProductsService } from "./services/products.service";
 import { LogsServiceService } from "./services/logs-service.service";
 import { SubscribersComponent } from './pages/subscribers/subscribers.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ContactsComponent } from './pages/contacts/contacts.component';
       easing: 'ease-in',
       positionClass: 'toast-bottom-left',
       enableHtml: true
-    })
+    }),
+    FontAwesomeModule
   ],
   providers: [
     AuthService,

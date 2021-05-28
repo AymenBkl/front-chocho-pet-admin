@@ -13,8 +13,8 @@
     <ul class="nav">
         <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}" data-aos="zoom-out-right">
             <a [routerLink]="[menuItem.path]">
-              <i class="fab fa-facebook-f"></i>
-              <p>{{menuItem.title}}</p>
+                <i class="{{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
             </a>
         </li>
     </ul>
