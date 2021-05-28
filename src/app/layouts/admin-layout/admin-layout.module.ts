@@ -8,11 +8,6 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent }       from '../../pages/dashboard/dashboard.component';
 import { UserComponent }            from '../../pages/user/user.component';
 import { TableComponent }           from '../../pages/table/table.component';
-import { TypographyComponent }      from '../../pages/typography/typography.component';
-import { IconsComponent }           from '../../pages/icons/icons.component';
-import { MapsComponent }            from '../../pages/maps/maps.component';
-import { NotificationsComponent }   from '../../pages/notifications/notifications.component';
-import { UpgradeComponent }         from '../../pages/upgrade/upgrade.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTableModule} from '@angular/material/table'
@@ -51,6 +46,8 @@ import { ApiLogsComponent } from 'app/pages/api-logs/api-logs.component';
 import { LogsDetailComponent } from 'app/components/logs-detail/logs-detail.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
+import { SubscribersComponent } from 'app/pages/subscribers/subscribers.component';
+import { ContactsComponent } from 'app/pages/contacts/contacts.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -89,7 +86,9 @@ import { NgxMatDatetimePickerModule, NgxMatNativeDateModule } from '@angular-mat
     ProductsComponent,
     UpdateLinkComponent,
     ApiLogsComponent,
-    LogsDetailComponent
+    LogsDetailComponent,
+    SubscribersComponent,
+    ContactsComponent
   ]
 })
 

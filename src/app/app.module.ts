@@ -37,8 +37,6 @@ import { EmailsService } from "./services/emails.service";
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    SubscribersComponent,
-    ContactsComponent,
   ],
   imports: [
     BrowserAnimationsModule,

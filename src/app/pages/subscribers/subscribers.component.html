@@ -1,1 +1,71 @@
-<p>subscribers works!</p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" data-aos="zoom-in-down">
+      <div class="card-header">
+        <h4 class="card-title"> Emails</h4>
+      </div>
+      <ngx-skeleton-loader count="20" *ngIf="!loaded"></ngx-skeleton-loader>
+        <div class="card" [hidden]="!loaded || !emails">
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <mat-form-field *ngIf="loaded && emails"  id="filter">
+                <mat-label><i class="nc-icon nc-zoom-split"></i></mat-label>
+                <input matInput  (keyup)="applyFilter($event)" placeholder="Ex. Hello Admin" #input>
+              </mat-form-field>
+              <table class="table" mat-table [dataSource]="dataSource" matSort multiTemplateDataRows
+                class="mat-elevation-z8"
+                [hidden]="!(emails)">
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Email </th>
+                  <td mat-cell *matCellDef="let element" matTooltip="{{element.email}}"> {{element.email}} </td>
+                </ng-container>
+                <ng-container matColumnDef="sentCoupon">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Coupon Sent </th>
+                  <td mat-cell *matCellDef="let element" matTooltip="{{element.sentCoupon}}">
+                    <i [ngClass]="element.sentCoupon == false ? 'fas fa-comment-slash fa-2x text-danger': 'far fa-paper-plane fa-2x text-success'"></i>
+                </ng-container>
+                <ng-container matColumnDef="createdAt">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Joined On</th>
+                  <td mat-cell *matCellDef="let element"> {{element.createdAt | date:'short'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Status </th>
+                  <td mat-cell *matCellDef="let element">
+                    <i [ngClass]="element.status == 'active' ? 'fas fa-lock-open fa-2x text-success': 'fa fa-lock fa-2x text-danger'"></i>
+                </ng-container>
+                <ng-container matColumnDef="expandedDetail" *ngIf="emails && emails.length > 0">
+                  <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+                    <div class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                      <div class="response">
+
+                      </div>
+                    </div>
+                  </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="element-row"
+                [class.expanded-row]="expandedElement === element"
+                (click)="expandedElement = expandedElement === element ? null : element"></tr>
+              <div *ngIf="emails && emails.length > 0">
+                <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+
+              </div>
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+              </table>
+              <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons
+                *ngIf="loaded && emails">
+              </mat-paginator>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="n-complaint" *ngIf="!emails || (emails && emails.length == 0)">
+          <mat-label>No emails</mat-label>
+        </div>
+    </div>
+  </div>
+</div>

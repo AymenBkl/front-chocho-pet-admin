@@ -1,1 +1,77 @@
-<p>contacts works!</p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" data-aos="zoom-in-down">
+      <div class="card-header">
+        <h4 class="card-title"> Contacts</h4>
+      </div>
+      <ngx-skeleton-loader count="20" *ngIf="!loaded"></ngx-skeleton-loader>
+        <div class="card" [hidden]="!loaded || !contacts">
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <mat-form-field *ngIf="loaded && contacts"  id="filter">
+                <mat-label><i class="nc-icon nc-zoom-split"></i></mat-label>
+                <input matInput  (keyup)="applyFilter($event)" placeholder="Ex. Hello Admin" #input>
+              </mat-form-field>
+              <table class="table" mat-table [dataSource]="dataSource" matSort multiTemplateDataRows
+                class="mat-elevation-z8"
+                [hidden]="!(contacts)">
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Email </th>
+                  <td mat-cell *matCellDef="let element" matTooltip="{{element.email}}"> {{element.email}} </td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Name </th>
+                  <td mat-cell *matCellDef="let element" matTooltip="{{element.name}}">
+                    {{element.name}}
+                </ng-container>
+                <ng-container matColumnDef="subject">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Subject </th>
+                  <td mat-cell *matCellDef="let element" matTooltip="{{element.subject}}">
+                    {{element.subject}}
+                </ng-container>
+                <ng-container matColumnDef="replied">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Replied </th>
+                  <td mat-cell *matCellDef="let element">
+                    <i [ngClass]="element.replied == false ? 'fas fa-comment-slash fa-2x text-danger': 'far fa-paper-plane fa-2x text-success'"></i>
+                </ng-container>
+                <ng-container matColumnDef="createdAt">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-primary"> Sent On</th>
+                  <td mat-cell *matCellDef="let element"> {{element.createdAt | date:'short'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="expandedDetail" *ngIf="contacts && contacts.length > 0">
+                  <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+                    <div class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                      <div class="response">
+
+                      </div>
+                    </div>
+                  </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="element-row"
+                [class.expanded-row]="expandedElement === element"
+                (click)="expandedElement = expandedElement === element ? null : element"></tr>
+              <div *ngIf="contacts && contacts.length > 0">
+                <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+
+              </div>
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+              </table>
+              <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons
+                *ngIf="loaded && contacts">
+              </mat-paginator>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="n-complaint" *ngIf="!contacts || (contacts && contacts.length == 0)">
+          <mat-label>No Contacts</mat-label>
+        </div>
+    </div>
+  </div>
+</div>
