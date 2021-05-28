@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -19,7 +19,7 @@ import { InteractionService } from 'app/services/interaction.service';
     ]),
   ],
 })
-export class SubscribersComponent implements OnInit {
+export class SubscribersComponent implements OnInit,OnDestroy {
   displayedColumns: string[] = ['email', 'sentCoupon', 'status', 'createdAt'];
   dataSource;
   emails: Email[];
@@ -32,6 +32,12 @@ export class SubscribersComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmails();
+  }
+
+  ngOnDestroy(): void {
+    this.emailService.onDestroyEmails();
+    this.interactionService.closeToast();
+    this.interactionService.clearAllToastr();
   }
 
   getEmails() {

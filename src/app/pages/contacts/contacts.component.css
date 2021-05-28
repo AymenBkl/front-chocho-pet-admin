@@ -112,3 +112,12 @@ tr.element-row:not(.expanded-row):active {
     top: 25%;
     right: 0px;
 }
+.n-complaint mat-label {
+  text-align: center;
+    color: white !important;
+    font-size: 20px !important;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

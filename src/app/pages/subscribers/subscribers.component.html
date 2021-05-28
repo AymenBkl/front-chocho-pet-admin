@@ -9,7 +9,7 @@
 
           <div class="card-body">
             <div class="table-responsive">
-              <mat-form-field *ngIf="loaded && emails"  id="filter">
+              <mat-form-field *ngIf="loaded && emails && emails.length > 0"  id="filter">
                 <mat-label><i class="nc-icon nc-zoom-split"></i></mat-label>
                 <input matInput  (keyup)="applyFilter($event)" placeholder="Ex. Hello Admin" #input>
               </mat-form-field>
@@ -56,7 +56,7 @@
                 </tr>
               </table>
               <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons
-                *ngIf="loaded && emails">
+                *ngIf="loaded && emails && emails.length > 0">
               </mat-paginator>
 
             </div>

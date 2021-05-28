@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -19,7 +19,7 @@ import { InteractionService } from 'app/services/interaction.service';
     ]),
   ],
 })
-export class ContactsComponent implements OnInit {
+export class ContactsComponent implements OnInit,OnDestroy {
   displayedColumns: string[] = ['email', 'name', 'subject', 'createdAt','replied'];
   dataSource;
   contacts: Contact[];
@@ -30,8 +30,15 @@ export class ContactsComponent implements OnInit {
   constructor(private emailService: EmailsService,
               private interactionService: InteractionService) { }
 
+
   ngOnInit(): void {
     this.getContacts();
+  }
+
+  ngOnDestroy(): void {
+    this.emailService.onDestroyContacts();
+    this.interactionService.closeToast();
+    this.interactionService.clearAllToastr();
   }
 
 
