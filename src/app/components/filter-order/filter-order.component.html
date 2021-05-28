@@ -1,0 +1,66 @@
+<div class="row content">
+  <div class="card box">
+    <div class="content-inputs">
+      <mat-label>Filters</mat-label>
+    </div>
+    <div class="content-inputs">
+      <mat-form-field appearance="fill" class="half-width" color="accent">
+        <mat-label>Min Price</mat-label>
+        <input matInput  placeholder="1" type="number" [(ngModel)]='data.priceMin' #input class="search-input" (keypress)="numberOnlyValidation($event)">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="half-width" color="accent">
+        <mat-label>Max Price</mat-label>
+        <input matInput  placeholder="1" type="number" [(ngModel)]='data.priceHigh' #input class="search-input" (keypress)="numberOnlyValidation($event)">
+      </mat-form-field>
+    </div>
+
+
+    <div class="content-inputs" >
+      <mat-form-field [formGroup]='range'>
+        <input matInput [ngxMatDatetimePicker]="pickerMin" placeholder="Choose a min Date"
+            [max]="now" formControlName='start'>
+        <mat-datepicker-toggle matSuffix [for]="pickerMin"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #pickerMin [showSpinners]="true" [showSeconds]="true"
+           [stepHour]="1" [stepMinute]="1" [stepSecond]="1"
+           [touchUi]="false"  [enableMeridian]="false"
+           [disableMinute]="false" [hideTime]="false">
+        </ngx-mat-datetime-picker>
+     </mat-form-field>
+
+    </div>
+    <div class="content-inputs" >
+      <mat-form-field [formGroup]='range'>
+        <input matInput [ngxMatDatetimePicker]="pickerMax" placeholder="Choose a max Date"
+            [max]="now" formControlName='end'>
+        <mat-datepicker-toggle matSuffix [for]="pickerMax"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #pickerMax [showSpinners]="true" [showSeconds]="true"
+           [stepHour]="1" [stepMinute]="1" [stepSecond]="1"
+           [touchUi]="false"  [enableMeridian]="false"
+           [disableMinute]="false" [hideTime]="false">
+        </ngx-mat-datetime-picker>
+     </mat-form-field>
+
+    </div>
+
+
+
+
+
+    <div class="content-inputs" *ngIf="data.quantityMax && data.quantityMin">
+      <mat-form-field appearance="fill" class="half-width" color="accent">
+        <mat-label>Min Quantity</mat-label>
+        <input matInput  placeholder="1" type="number" [(ngModel)]='data.quantityMin' #input class="search-input" (keypress)="numberOnlyValidation($event)">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="half-width" color="accent">
+        <mat-label>Max Quantity</mat-label>
+        <input matInput  placeholder="1" type="number" [(ngModel)]='data.quantityMax' #input class="search-input" (keypress)="numberOnlyValidation($event)">
+      </mat-form-field>
+    </div>
+    <button mat-stroked-button color="accent" class="btn-block" (click)="applyFilter()">
+      <mat-label > Apply Filter </mat-label>
+    </button>
+    </div>
+
+</div>
+
+

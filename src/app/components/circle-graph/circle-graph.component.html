@@ -1,0 +1,141 @@
+<div class="card " *ngIf="type == 'hash'" data-aos="fade-up-left">
+  <div class="card-header ">
+    <h5 class="card-title">Hashes Statistics</h5>
+    <p class="card-category">Last Six Months</p>
+  </div>
+  <div class="card-body align-items-center justify-content-cente">
+    <canvas id="chartHashesHashes" class="chart-circle" [hidden]='hashesToShow != "chartHashesHashes"'></canvas>
+    <canvas id="chartHashesAddress" class="chart-circle" [hidden]='hashesToShow != "chartHashesAddress"'></canvas>
+    <canvas id="chartHashesBlocked" class="chart-circle" [hidden]='hashesToShow != "chartHashesBlocked"'></canvas>
+    <canvas id="chartHashesActive" class="chart-circle" [hidden]='hashesToShow != "chartHashesActive"'></canvas>
+
+    <div class="center ">
+      <ngx-skeleton-loader *ngIf="!hashes" appearance='circle' count="1"
+      [theme]="{'height':'150px','width':'150px'}"></ngx-skeleton-loader>
+    </div>
+
+  </div>
+  <div class="card-footer " >
+    <div class="legend">
+      <i class="fa fa-circle text-primary"></i> {{lastSixMonth[1]}}
+      <i class="fa fa-circle text-warning"></i> {{lastSixMonth[2]}}
+      <i class="fa fa-circle text-danger"></i> {{lastSixMonth[3]}}
+      <i class="fa fa-circle text-gray"></i> {{lastSixMonth[0]}}
+      <i class="fa fa-circle text-success"></i> {{lastSixMonth[4]}}
+      <i class="fa fa-circle text-dark"></i> {{lastSixMonth[5]}}
+    </div>
+    <hr>
+    <div *ngIf="hashes">
+      <div class="chart-legend" (click)="changeHash('chartHashesHashes')">
+        <i class="fa fa-circle text-warning"></i> Hashes
+      </div>
+      <div class="chart-legend" (click)="changeHash('chartHashesAddress')">
+        <i class="fa fa-circle text-info"></i> Address
+      </div>
+      <div class="chart-legend" (click)="changeHash('chartHashesBlocked')">
+        <i class="fa fa-circle text-danger"></i> Blocked
+      </div>
+      <div class="chart-legend" (click)="changeHash('chartHashesActive')">
+        <i class="fa fa-circle text-success"></i> Active
+      </div>
+    </div>
+    <hr>
+    <div class="stats">
+      <i class="fa fa-calendar"></i> Number Of Active Hashes
+    </div>
+  </div>
+</div>
+
+<div class="card " *ngIf="type == 'game'" data-aos="fade-up-right">
+  <div class="card-header ">
+    <h5 class="card-title">Games Statistics</h5>
+    <p class="card-category">Last Six Months</p>
+  </div>
+  <div class="card-body align-items-center justify-content-cente">
+    <canvas id="chartGamesActive" class="chart-circle" [hidden]='gameToShow != "chartGamesActive"'></canvas>
+    <canvas id="chartGamesWin" class="chart-circle" [hidden]='gameToShow != "chartGamesWin"'></canvas>
+    <canvas id="chartGamesLose" class="chart-circle" [hidden]='gameToShow != "chartGamesLose"'></canvas>
+    <canvas id="chartGamesWithdraw" class="chart-circle" [hidden]='gameToShow != "chartGamesWithdraw"'></canvas>
+    <canvas id="chartGamesCount" class="chart-circle" [hidden]='gameToShow != "chartGamesCount"'></canvas>
+
+    <div class="center ">
+      <ngx-skeleton-loader *ngIf="!games" appearance='circle' count="1"
+      [theme]="{'height':'150px','width':'150px'}"></ngx-skeleton-loader>
+    </div>
+
+  </div>
+  <div class="card-footer " >
+    <div class="legend">
+      <i class="fa fa-circle text-primary"></i> {{lastSixMonth[1]}}
+      <i class="fa fa-circle text-warning"></i> {{lastSixMonth[2]}}
+      <i class="fa fa-circle text-danger"></i> {{lastSixMonth[3]}}
+      <i class="fa fa-circle text-gray"></i> {{lastSixMonth[0]}}
+      <i class="fa fa-circle text-success"></i> {{lastSixMonth[4]}}
+      <i class="fa fa-circle text-dark"></i> {{lastSixMonth[5]}}
+    </div>
+    <hr>
+    <div *ngIf="games">
+      <div class="chart-legend" (click)="changeGame('chartGamesCount')">
+        <i class="fa fa-circle text-primary"></i> All
+      </div>
+      <div class="chart-legend" (click)="changeGame('chartGamesActive')">
+        <i class="fa fa-circle text-info"></i> Active
+      </div>
+      <div class="chart-legend" (click)="changeGame('chartGamesWin')">
+        <i class="fa fa-circle text-success"></i> Win
+      </div>
+      <div class="chart-legend" (click)="changeGame('chartGamesLose')">
+        <i class="fa fa-circle text-warning"></i> Lose
+      </div>
+      <div class="chart-legend" (click)="changeGame('chartGamesWithdraw')">
+        <i class="fa fa-circle text-inverse"></i> Withdraw
+      </div>
+    </div>
+
+    <hr>
+    <div class="stats">
+      <i class="fa fa-calendar"></i> Games Statistics
+    </div>
+  </div>
+</div>
+
+
+<div class="card " *ngIf="type == 'deposit'" data-aos="fade-up-left">
+  <div class="card-header ">
+    <h5 class="card-title">Deposits Statistics</h5>
+    <p class="card-category">Last Six Months</p>
+  </div>
+  <div class="card-body align-items-center justify-content-cente">
+    <canvas id="chartDepositAmount" [hidden]='depositToShow != "chartDepositAmount"' class="chart-circle"></canvas>
+    <canvas id="chartDepositCurrentBalance" [hidden]='depositToShow != "chartDepositCurrentBalance"' class="chart-circle"></canvas>
+    <div class="center ">
+      <ngx-skeleton-loader *ngIf="!deposits" appearance='circle' count="1"
+      [theme]="{'height':'150px','width':'150px'}"></ngx-skeleton-loader>
+    </div>
+
+  </div>
+  <div class="card-footer " >
+    <div class="legend">
+      <i class="fa fa-circle text-primary"></i> {{lastSixMonth[1]}}
+      <i class="fa fa-circle text-warning"></i> {{lastSixMonth[2]}}
+      <i class="fa fa-circle text-danger"></i> {{lastSixMonth[3]}}
+      <i class="fa fa-circle text-gray"></i> {{lastSixMonth[0]}}
+      <i class="fa fa-circle text-success"></i> {{lastSixMonth[4]}}
+      <i class="fa fa-circle text-dark"></i> {{lastSixMonth[5]}}
+    </div>
+    <hr>
+    <div *ngIf='deposits'>
+      <div class="chart-legend" (click)="changeDeposit('chartDepositAmount')">
+        <i class="fa fa-circle text-success"></i> Deposits Amount
+      </div>
+      <div class="chart-legend" (click)="changeDeposit('chartDepositCurrentBalance')">
+        <i class="fa fa-circle text-primary"></i> Deposits CurrentBalance
+      </div>
+    </div>
+
+    <hr>
+    <div class="stats">
+      <i class="fa fa-calendar"></i> Deposit Statistics
+    </div>
+  </div>
+</div>

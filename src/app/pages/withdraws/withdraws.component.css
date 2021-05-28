@@ -1,0 +1,73 @@
+.row {
+  background-color: #283136;
+}
+
+.content-withdraw {
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.info-withdraw {
+  vertical-align: middle;
+}
+
+.date-icon{
+  vertical-align: middle;
+}
+
+.withdraw-content {
+
+}
+
+.card:first-child{
+  margin-top: 15px;
+}
+
+.expandable-content {
+  overflow: hidden;
+  text-align: center;
+}
+
+.expand-button {
+  position: absolute;
+  /* top: 25%; */
+  right: 0px;
+  bottom: -15px;
+  left: 50%;
+}
+
+table {
+  width: 100% !important;
+  table-layout: fixed !important;
+  background-color: #283136;
+}
+
+th, td {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  color: white;
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: #efefef;
+}
+
+mat-form-field {
+  width: 80%;
+}
+
+
+
+.deposit-title {
+  font-size: 15px;
+  font-weight: bold;
+}

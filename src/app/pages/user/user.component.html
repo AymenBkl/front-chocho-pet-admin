@@ -1,0 +1,222 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="card card-user" data-aos="zoom-in-right">
+      <div class="image">
+      </div>
+      <div class="card-body">
+        <div class="author">
+          <a data-aos="zoom-in-left">
+            <img class="avatar border-gray" [src]="image.imageSrc || 'assets/svg/icons/user.svg'" alt="Admin Image"
+              *ngIf="currentUser && currentUser.imageURL == ''" (click)='openImageInput()'>
+            <img class="avatar border-gray" [src]="image.imageSrc || currentUser.imageURL" alt="Admin Image"
+              *ngIf="currentUser && currentUser.imageURL != ''" (click)='openImageInput()'>
+            <input id="files" type="file" style="visibility:hidden;" (change)="selectedImage($event)"
+              accept=".png, .jpeg" #files>
+
+            <ngx-skeleton-loader *ngIf="!currentUser" appearance='circle' count="1"
+              [theme]="{'height':'100px','width':'100px'}"></ngx-skeleton-loader>
+            <h5 class="title" *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.lastName}}</h5>
+            <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
+          </a>
+          <p class="description" *ngIf="currentUser" data-aos="zoom-in-left">
+            @{{currentUser.username}}
+          </p>
+          <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
+        </div>
+        <p class="description text-center" *ngIf="currentUser" data-aos="zoom-in-left">
+          {{currentUser.description}}
+        </p>
+        <ngx-skeleton-loader *ngIf="!currentUser" count="3"></ngx-skeleton-loader>
+      </div>
+      <div class="card-footer">
+        <hr>
+      </div>
+    </div>
+    <!--
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Team Members</h4>
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled team-members">
+          <li>
+            <div class="row">
+              <div class="col-md-2 col-2">
+                <div class="avatar">
+                  <img src="assets/img/faces/ayo-ogunseinde-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                </div>
+              </div>
+              <div class="col-md-7 col-7">
+                DJ Khaled
+                <br />
+                <span class="text-muted">
+                  <small>Offline</small>
+                </span>
+              </div>
+              <div class="col-md-3 col-3 text-right">
+                <button class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="row">
+              <div class="col-md-2 col-2">
+                <div class="avatar">
+                  <img src="assets/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                </div>
+              </div>
+              <div class="col-md-7 col-7">
+                Chocho Pet
+                <br />
+                <span class="text-success">
+                  <small>Available</small>
+                </span>
+              </div>
+              <div class="col-md-3 col-3 text-right">
+                <button class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="row">
+              <div class="col-md-2 col-2">
+                <div class="avatar">
+                  <img src="assets/img/faces/clem-onojeghuo-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                </div>
+              </div>
+              <div class="col-ms-7 col-7">
+                Flume
+                <br />
+                <span class="text-danger">
+                  <small>Busy</small>
+                </span>
+              </div>
+              <div class="col-md-3 col-3 text-right">
+                <button class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  -->
+  </div>
+  <div class="col-md-8">
+    <div class="card card-user" data-aos="zoom-in-left">
+      <div class="card-header">
+        <h5 class="card-title">Edit Profile</h5>
+      </div>
+      <div class="card-body">
+        <form novalidate [formGroup]="userForm">
+          <div class="row">
+            <div class="col-md-5 pr-1">
+              <div class="form-group" data-aos="zoom-in-right">
+                <label>Company (disabled)</label>
+                <input type="text" class="form-control" disabled="" placeholder="Company" value="Chocho Pet"
+                  *ngIf="currentUser">
+                <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
+              </div>
+            </div>
+            <div class="col-md-7 px-1">
+              <div class="form-group" data-aos="zoom-in-right">
+                <label>Username</label>
+                <input type="text" class="form-control" placeholder="Username" formControlName="username"
+                  *ngIf="currentUser">
+                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.username}}</mat-error>
+                <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-1">
+              <div class="form-group" data-aos="zoom-in-right">
+                <label>First Name</label>
+                <input type="text" class="form-control" placeholder="Company" formControlName="firstName"
+                  *ngIf="currentUser">
+                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.firstName}}</mat-error>
+                <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
+              </div>
+            </div>
+            <div class="col-md-6 pl-1">
+              <div class="form-group" data-aos="zoom-in-right">
+                <label>Last Name</label>
+                <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName"
+                  *ngIf="currentUser">
+                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.lastName}}</mat-error>
+                <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group" data-aos="zoom-in-right">
+                <label>Address</label>
+                <input type="text" class="form-control" placeholder="Home Address" formControlName="address"
+                  *ngIf="currentUser">
+                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.address}}</mat-error>
+                <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 pr-1">
+              <div class="form-group" data-aos="zoom-in-right">
+                <label>City</label>
+                <input type="text" class="form-control" placeholder="City" formControlName="city" *ngIf="currentUser">
+                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.city}}</mat-error>
+                <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
+              </div>
+            </div>
+            <div class="col-md-4 px-1">
+              <div class="form-group" data-aos="zoom-in-right">
+                <label>Country</label>
+                <input type="text" class="form-control" placeholder="Country" formControlName="country"
+                  *ngIf="currentUser">
+                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.country}}</mat-error>
+                <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
+              </div>
+            </div>
+            <div class="col-md-4 pl-1">
+              <div class="form-group" data-aos="zoom-in-right">
+                <label>Postal Code</label>
+                <input type="number" class="form-control" placeholder="ZIP Code" formControlName="postalCode"
+                  *ngIf="currentUser">
+                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.postalCode}}</mat-error>
+                <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group" data-aos="zoom-in-right">
+                <label>About Me</label>
+                <textarea class="form-control textarea" formControlName="description" *ngIf="currentUser"></textarea>
+                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.description}}</mat-error>
+                <ngx-skeleton-loader *ngIf="!currentUser" count="3"></ngx-skeleton-loader>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="update ml-auto mr-auto" data-aos="fade-up">
+              <button type="submit" class="btn btn-primary btn-round" (click)='updateProfile()'
+                [disabled]='submitted || userForm.invalid'>
+                <mat-spinner *ngIf="submitted" [diameter]="35" mode="indeterminate"></mat-spinner>
+                <mat-label *ngIf="!submitted"> Update Profile</mat-label>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 fab-button">
+    <button type="submit" class="btn btn-secondary btn-round"
+                *ngIf="image.imageSrc && image.file" (click)="uploadImage()">
+                <mat-spinner *ngIf="submitted " [diameter]="35" mode="indeterminate"></mat-spinner>
+                <mat-label *ngIf="!submitted "> Update Image</mat-label>
+              </button>
+  </div>
+
+
+</div>
+

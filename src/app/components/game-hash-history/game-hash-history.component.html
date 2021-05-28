@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-body" data-aos="zoom-in-down">
+    <div class="button-container">
+      <div class="image text-center text-primary">
+        Hash Games State
+      </div>
+      <div class="row" *ngIf="historyGames">
+
+        <div class="col-12">
+          <app-card-state [gameStateCard]='gameStateCard' [type]='"game"'></app-card-state>
+        </div>
+        <div class="col-4">
+          <app-circle-graph [games]='gameState' [type]="'game'" ></app-circle-graph>
+        </div>
+        <div class="col-8" >
+          <app-line-graph [games]='gameState' [type]="'game'" (gameStateCard)='getGameStateCard($event)' ></app-line-graph>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="card-footer" data-aos="zoom-in-up">
+  <hr>
+
+  <div class="container-game-history">
+    <div class="header">Game History</div>
+    <div class="flow">
+    <div *ngFor="let gameHistory of historyGames" class="main-div col-lg-3 col-md-4 col-6">
+      <div *ngFor="let row of gameHistory.matrix;let indexRow = index" class="row-div">
+          <div class="div-card" *ngFor="let col of row;let indexCol = index" [ngClass]='col.clicked ? " div-card " + col.color : "div-card"' >
+              <mat-label *ngIf="col.clicked && col.value != 0" class="mine-value">{{col.value}}</mat-label>
+              <mat-icon *ngIf="col.clicked && col.value == 0" svgIcon='bombe'></mat-icon>
+          </div>
+      </div>
+      <div class="game-info">
+        <div class="game">
+          <mat-label>{{gameHistory.createdAt | date:'short'}}</mat-label>
+        </div>
+        <div class="game-state">
+          <mat-label>{{gameHistory.stake}}</mat-label>
+        </div>
+        <div class="game-state">
+          <mat-label>{{gameHistory.status}}</mat-label>
+        </div>
+      </div>
+
+      </div>
+      <div class="n-game" *ngIf="historyGames && historyGames.length == 0">
+        No Games
+      </div>
+    </div>
+</div>
+</div>
+</div>
+

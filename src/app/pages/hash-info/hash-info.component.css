@@ -1,0 +1,33 @@
+.author {
+  margin-top: 15px;
+}
+
+.description {
+  color:white !important;
+}
+
+.image {
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+
+.card-game-state {
+  min-height: 50px !important;
+}
+
+.card-stats{
+  width: 90% !important;
+}
+
+
+.hash {
+  background-color:  #283136;
+
+}
+
+
+

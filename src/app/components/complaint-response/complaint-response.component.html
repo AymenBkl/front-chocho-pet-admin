@@ -1,0 +1,54 @@
+<div class="reset-password-wrapper" >
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Response to complaint</mat-card-title>
+    </mat-card-header>
+
+    <form class="reset-password-form" novalidate [formGroup]="responseCompliantForm">
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <mat-label>Operation</mat-label>
+          <mat-select formControlName='status' name="operations">
+            <mat-option value='access'>
+              UNBLOCK
+            </mat-option>
+            <mat-option value='withdraw'>
+              WITHDRAW
+            </mat-option>
+            <mat-option value='deposit'>
+              DEPOSIT
+            </mat-option>
+            <mat-option value='game'>
+              GAME
+            </mat-option>
+            <mat-option value='balance'>
+              BALANCE
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Note</mat-label>
+          <textarea matInput placeholder="Comment" formControlName="note" cdkTextareaAutosize cdkAutosizeMinRows="7"
+            cdkAutosizeMaxRows="20">
+  </textarea>
+        </mat-form-field>
+        <div class='checkbox'>
+          <mat-label>Solve ? </mat-label>
+          <mat-checkbox class="example-margin" formControlName="solve">Yes</mat-checkbox>
+        </div>
+
+
+
+      </mat-card-content>
+
+      <button mat-stroked-button color="accent" class="btn-block"
+        [disabled]="responseCompliantForm.invalid || submitted " (click)='submitResponse()'>
+        <mat-spinner *ngIf="submitted" [diameter]="35" mode="indeterminate"></mat-spinner>
+        <mat-label *ngIf="!submitted"> Send Response </mat-label>
+      </button>
+    </form>
+  </mat-card>
+
+</div>

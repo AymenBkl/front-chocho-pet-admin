@@ -1,0 +1,98 @@
+<div class="card card-chart" *ngIf="type == 'hash'" data-aos="fade-up-right">
+  <div class="card-header">
+    <h5 class="card-title">Hashes</h5>
+    <p class="card-category">Hashes During Last Six months</p>
+  </div>
+  <div class="card-body">
+    <canvas id="chartHashesLineHash" [hidden]='hashToShow != "chartHashesLineHash"'></canvas>
+    <canvas id="chartHashesLineAddresses" [hidden]='hashToShow != "chartHashesLineAddresses"'></canvas>
+    <canvas id="chartHashesLineBlocked" [hidden]='hashToShow != "chartHashesLineBlocked"'></canvas>
+    <canvas id="chartHashesLineActive" [hidden]='hashToShow != "chartHashesLineActive"'></canvas>
+
+    <div class="center">
+      <ngx-skeleton-loader count="4" *ngIf="hashes == null"></ngx-skeleton-loader>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="chart-legend" (click)="changeHash('chartHashesLineHash')">
+      <i class="fa fa-circle text-warning"></i> Hashes
+    </div>
+    <div class="chart-legend" (click)="changeHash('chartHashesLineAddresses')">
+      <i class="fa fa-circle text-info"></i> Addresses
+    </div>
+    <div class="chart-legend" (click)="changeHash('chartHashesLineBlocked')">
+      <i class="fa fa-circle text-danger"></i> Blocked
+    </div>
+    <div class="chart-legend" (click)="changeHash('chartHashesLineActive')">
+      <i class="fa fa-circle text-success"></i> Active
+    </div>
+  </div>
+</div>
+
+<div class="card card-chart" *ngIf="type == 'game'" data-aos="fade-up-left">
+  <div class="card-header">
+    <h5 class="card-title">Games</h5>
+    <p class="card-category">Games During Last Six months</p>
+  </div>
+  <div class="card-body">
+    <canvas id="chartGamesLineCount" [hidden]='gamesToShow != "chartGamesLineCount"'></canvas>
+    <canvas id="chartGamesLineActive" [hidden]='gamesToShow != "chartGamesLineActive"'></canvas>
+    <canvas id="chartGamesLineWin" [hidden]='gamesToShow != "chartGamesLineWin"'></canvas>
+    <canvas id="chartGamesLineLose" [hidden]='gamesToShow != "chartGamesLineLose"'></canvas>
+    <canvas id="chartGamesLineWithdraw" [hidden]='gamesToShow != "chartGamesLineWithdraw"'></canvas>
+
+    <div class="center ">
+      <ngx-skeleton-loader count="4"  *ngIf="games == null"></ngx-skeleton-loader>
+
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="chart-legend" (click)="changeGame('chartGamesLineCount')">
+      <i class="fa fa-circle text-primary"></i> All
+    </div>
+    <div class="chart-legend" (click)="changeGame('chartGamesLineActive')">
+      <i class="fa fa-circle text-info"></i> Active
+    </div>
+    <div class="chart-legend" (click)="changeGame('chartGamesLineWin')">
+      <i class="fa fa-circle text-success"></i> Win
+    </div>
+    <div class="chart-legend" (click)="changeGame('chartGamesLineLose')">
+      <i class="fa fa-circle text-warning"></i> Lose
+    </div>
+    <div class="chart-legend" (click)="changeGame('chartGamesLineWithdraw')">
+      <i class="fa fa-circle text-inverse"></i> Withdraw
+    </div>
+    <hr/>
+    <div class="card-stats">
+      <i class="fa fa-check"></i> Games
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-chart" *ngIf="type == 'deposit'">
+  <div class="card-header">
+    <h5 class="card-title">Deposits</h5>
+    <p class="card-category">Deposits During Last Six months</p>
+  </div>
+  <div class="card-body">
+    <canvas id="chartDepositsLineAmount" [hidden]='depositToShow != "chartDepositsLineAmount"'></canvas>
+    <canvas id="chartDepositsLineCurrentBalance" [hidden]='depositToShow != "chartDepositsLineCurrentBalance"'></canvas>
+    <div class="center ">
+      <ngx-skeleton-loader count="4"  *ngIf="deposits == null"></ngx-skeleton-loader>
+
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="chart-legend" (click)="changeDeposit('chartDepositsLineAmount')">
+      <i class="fa fa-circle text-success"></i> Deposits Amount
+    </div>
+    <div class="chart-legend" (click)="changeDeposit('chartDepositsLineCurrentBalance')">
+      <i class="fa fa-circle text-primary"></i> Deposits CurrentBalance
+    </div>
+    <hr/>
+    <div class="card-stats">
+      <i class="fa fa-check"></i> Deposits
+    </div>
+  </div>
+</div>

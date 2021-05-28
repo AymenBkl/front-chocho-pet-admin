@@ -1,0 +1,463 @@
+<div class="row justify-content-center" *ngIf='type == "deposit"' data-aos="fade-down-right">
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!depositStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon svgIcon='bitcoin-balance' class="icon-mat" *ngIf="depositStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Balance</p>
+              <p class="card-title deposit" *ngIf="depositStateCard && depositStateCard.balance != null && type =='dashboard'">{{depositStateCard.balance}} BTC
+                <p>
+                  <p class="card-title" *ngIf="!depositStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i> Update Now
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!depositStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon svgIcon='bitcoin' class="icon-mat" *ngIf="depositStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Deposits</p>
+              <p class="card-title deposit" *ngIf="depositStateCard && depositStateCard.totalBalance != null">{{depositStateCard.totalBalance / 100000000 | number : '1.8-8'}} BTC
+                <p>
+                  <p class="card-title" *ngIf="!depositStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-calendar-o"></i> Last day
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!depositStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon svgIcon='bitcoin-currentbalance'  class="icon-mat" *ngIf="depositStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Current Balance</p>
+              <p class="card-title deposit" *ngIf="depositStateCard && depositStateCard.totalCurrentBalance != null ">{{depositStateCard.totalCurrentBalance / 100000000 | number : '1.8-8'}} BTC
+                <p>
+                  <p class="card-title" *ngIf="!depositStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-clock-o"></i> In the last hour
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!depositStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon svgIcon='calendar'  class="icon-mat" *ngIf="depositStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Balance Last Month</p>
+              <p class="card-title deposit" *ngIf="depositStateCard && depositStateCard.totalCurrentBalanceLastMonth != null"> {{depositStateCard.totalCurrentBalanceLastMonth / 100000000 | number : '1.8-8'}} BTC
+                <p>
+                  <p class="card-title" *ngIf="!depositStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i> Update now
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="row justify-content-center" *ngIf='type == "hash"' data-aos="fade-down-left">
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!hashStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon svgIcon='cryptography' class="icon-mat" *ngIf="hashStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Hashes</p>
+              <p class="card-title deposit" *ngIf="hashStateCard && hashStateCard.totalHashes != null">{{hashStateCard.totalHashes}}
+                <p>
+                  <p class="card-title" *ngIf="!hashStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i> Update Now
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!hashStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon svgIcon='bitcoin-addresses' class="icon-mat" *ngIf="hashStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Addresses</p>
+              <p class="card-title deposit" *ngIf="hashStateCard && hashStateCard.totalAddresses != null">{{hashStateCard.totalAddresses}}
+                <p>
+                  <p class="card-title" *ngIf="!hashStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-calendar-o"></i> Last day
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!hashStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon svgIcon='block-hash'  class="icon-mat" *ngIf="hashStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Blocked Hashes</p>
+              <p class="card-title deposit" *ngIf="hashStateCard && hashStateCard.totalBlockedHashes != null">{{hashStateCard.totalBlockedHashes}}
+                <p>
+                  <p class="card-title" *ngIf="!hashStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-clock-o"></i> In the last hour
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!hashStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon class="icon-mat" svgIcon='checked-done' *ngIf="hashStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Active Hashes</p>
+              <p class="card-title deposit" *ngIf="hashStateCard && hashStateCard.totalActiveHashes != null ">{{hashStateCard.totalActiveHashes}}
+                <p>
+                  <p class="card-title" *ngIf="!hashStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-clock-o"></i> In the last hour
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!hashStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon svgIcon='calendar'  class="icon-mat" *ngIf="hashStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Hashes Last Month</p>
+              <p class="card-title deposit" *ngIf="hashStateCard && hashStateCard.totalHashesThisMonth != null"> {{hashStateCard.totalHashesThisMonth}}
+                <p>
+                  <p class="card-title" *ngIf="!hashStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i> Update now
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="row justify-content-center" *ngIf='type == "game"' data-aos="fade-up-left">
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!gameStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon svgIcon='bomb-games' class="icon-mat" *ngIf="gameStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Games</p>
+              <p class="card-title deposit" *ngIf="gameStateCard && gameStateCard.totalGames != null">{{gameStateCard.totalGames}}
+                <p>
+                  <p class="card-title" *ngIf="!gameStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i> Update Now
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!gameStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon svgIcon='bomb-active' class="icon-mat" *ngIf="gameStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Active</p>
+              <p class="card-title deposit" *ngIf="gameStateCard && gameStateCard.totalActive != null">{{gameStateCard.totalActive}}
+                <p>
+                  <p class="card-title" *ngIf="!gameStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-calendar-o"></i> Last day
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!gameStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon svgIcon='trophy-win' class="icon-mat" *ngIf="gameStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Win</p>
+              <p class="card-title deposit" *ngIf="gameStateCard && gameStateCard.totalWin != null">{{gameStateCard.totalWin}}
+                <p>
+                  <p class="card-title" *ngIf="!gameStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-calendar-o"></i> Last day
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!gameStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon svgIcon='lose-game'  class="icon-mat" *ngIf="gameStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total  Lose</p>
+              <p class="card-title deposit" *ngIf="gameStateCard && gameStateCard.totalLose != null">{{gameStateCard.totalLose}}
+                <p>
+                  <p class="card-title" *ngIf="!gameStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-clock-o"></i> In the last hour
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!gameStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon class="icon-mat" svgIcon='bitcoin-withdraw-symbol' *ngIf="gameStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Withdraw</p>
+              <p class="card-title deposit" *ngIf="gameStateCard && gameStateCard.totalWithdraw != null">{{gameStateCard.totalWithdraw}}
+                <p>
+                  <p class="card-title" *ngIf="!gameStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-clock-o"></i> In the last hour
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <ngx-skeleton-loader count="1" appearance="circle" *ngIf="!gameStateCard" [theme]="{'height':'80px','width':'80px'}"></ngx-skeleton-loader>
+              <mat-icon svgIcon='calendar'  class="icon-mat" *ngIf="gameStateCard"></mat-icon>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Total Games Last Month</p>
+              <p class="card-title deposit" *ngIf="gameStateCard && gameStateCard.totalGamesThisMonth != null"> {{gameStateCard.totalGamesThisMonth}}
+                <p>
+                  <p class="card-title" *ngIf="!gameStateCard" >
+                    <ngx-skeleton-loader count="1" ></ngx-skeleton-loader>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i> Update now
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

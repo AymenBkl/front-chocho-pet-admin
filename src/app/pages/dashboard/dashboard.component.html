@@ -1,0 +1,59 @@
+
+
+<div class="row">
+  <div class="col-12">
+    <div class="image text-left" data-aos="fade-up-right">
+      Hash Dashboard
+    </div>
+  </div>
+  <div class="col-12" >
+    <app-card-state [hashStateCard]='hashStateCard' [type]='"hash"'></app-card-state>
+  </div>
+  <div class="col-8">
+    <app-line-graph [hashes]='hashes' [type]="'hash'" (hashStateCard)='getHashStateCard($event)'></app-line-graph>
+  </div>
+  <div class="col-4">
+    <app-circle-graph [hashes]='hashes' [type]="'hash'"></app-circle-graph>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-12" >
+    <div class="image text-left" data-aos="fade-up-right">
+      Game Dashboard
+    </div>
+  </div>
+  <div class="col-12">
+    <app-card-state [gameStateCard]='gameStateCard' [type]='"game"'></app-card-state>
+  </div>
+  <div class="col-4">
+    <app-circle-graph [games]='games' [type]="'game'" ></app-circle-graph>
+  </div>
+  <div class="col-8" >
+    <app-line-graph [games]='games' [type]="'game'" (gameStateCard)='getGameStateCard($event)' ></app-line-graph>
+  </div>
+
+
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="image text-left" data-aos="fade-up-right">
+      Deposit Dashboard
+    </div>
+  </div>
+  <div class="col-12">
+    <app-card-state [depositStateCard]='depositStateCard' [type]='"deposit"' [from]='"dashboard"'></app-card-state>
+  </div>
+
+  <div class="col-8">
+    <app-line-graph [deposits]='deposits' [type]="'deposit'" (depositStateCard)='getDepositStateCard($event)'></app-line-graph>
+  </div>
+  <div class="col-4" >
+    <app-circle-graph [deposits]='deposits' [type]="'deposit'"></app-circle-graph>
+  </div>
+
+
+</div>
+

@@ -1,0 +1,305 @@
+
+.container-game-history {
+  float: right;
+  width: 100% !important;
+  padding: 3px;
+  background-color: #283136;
+  text-align: center;
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.flow {
+  overflow-y:auto;
+  overflow-x: hidden;
+  height: 90%;
+  width: 100%;
+  max-height: 90%;
+  min-height: 90%;
+  z-index: 0;
+  padding-top:50px;
+  padding-bottom: 50px;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background:#283136;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+
+
+  .div-card {
+    background-color: white;
+    text-align: center;
+    display: inline-block !important;
+    margin-left: 5px;
+    width: 25px !important;
+    height: 25px !important;
+    margin-bottom: 5px !important;
+    margin-top: 5px!important;
+  }
+
+  .div-card {
+    background-color: white !important;
+    text-align: center !important;
+    display: inline-block !important;
+    margin-left: 5px;
+    width: 15% !important;
+    margin-bottom: 5px !important;
+    margin-top: 5px!important;
+  }
+
+  .div-card::after {
+    content: "";
+  display: block;
+  padding-top: 100%;
+  }
+
+
+  .row-div {
+    display: inline-flex;
+    margin-right: 0px;
+    margin-left: 0px;
+    width: 100%;
+    margin-left: 16px;
+  }
+
+
+
+
+
+  .row{
+    overflow: hidden;
+    background-color:  #283136;
+    border-radius: 15px;
+    padding-bottom: 150px;
+    margin-bottom: 15px;
+    padding-top: 15px;
+  }
+
+
+
+  .main-div{
+    display: inline-block;
+    padding: 0px;
+    position: relative;
+    margin-bottom: 15px;
+    z-index: 9999;
+  }
+  .main-div .row-div .div-card .mine-value {
+    visibility: hidden;
+  }
+
+  .main-div:hover {
+    -ms-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    transition: 700ms;
+    z-index: 99999 !important;
+    border: 1px solid black ;
+    position: relative;
+    display: inline-block;
+    background-color: #555;
+  }
+
+  .main-div:hover .row-div  {
+    margin-left: 0px;
+  }
+
+  .main-div:hover .row-div .div-card  {
+    width: 20% !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .main-div:hover .row-div .div-card .mine-value {
+    visibility: visible;
+    font-size: 5px;
+  }
+
+  .main-div:hover .game-info .game-state {
+    visibility: visible;
+  }
+
+
+
+.red {
+    background: red !important;
+    color: white;
+    font-size: 5px;
+    width: 15% !important;
+
+  }
+
+  .red::after {
+    content: "";
+  display: block;
+  padding-top: 100%;
+  }
+
+
+.green {
+    background: linear-gradient(270deg,#0EFB3E, #1CC050) !important;
+    color: white;
+    font-size: 5px;
+    width: 15% !important;
+  }
+
+  .green::after {
+    content: "";
+  display: block;
+  padding-top: 100%;
+  }
+
+
+.mine-value {
+  font-size: 10px;
+}
+
+.header {
+    width: 100%;
+    color: white;
+    text-align: left;
+    background-color:#283136;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.author {
+  margin-top: 15px;
+}
+
+.description {
+  color:black !important;
+}
+
+.image {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+
+.card-game-state {
+  background-color: #283136;
+  color:white;
+  min-height: 50px !important;
+}
+
+.card-stats{
+  background-color: #283136;
+  color:white;
+  width: 90% !important;
+}
+
+
+.game-info {
+  display: inline-block;
+}
+.game {
+  width: 100%;
+  color:white;
+  display: inline-block;
+}
+
+.game-state{
+  width: 100%;
+  color:white;
+  display: inline-block;
+  visibility: hidden;
+}
+
+.n-game{
+  color:white;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translateY(-50%) translateX(-50%);
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .container-game-history {
+    height: 525px;
+    min-height: 25%;
+    max-height: 25%;
+  }
+
+
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .container-game-history {
+    height: 625px;
+    min-height: 25%;
+    max-height: 25%;
+  }
+
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .container-game-history {
+    height: 400px;
+    min-height: 54%;
+    max-height: 54%;
+  }
+
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .container-game-history {
+
+    height: 642px;
+    min-height: 20%;
+    max-height: 20%;
+  }
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .container-game-history {
+    height: 625px;
+    min-height: 29%;
+    max-height: 29%;
+  }
+
+
+  @media only screen and (min-width: 1278px) {
+    .container-game-history  {
+      height: 500px;
+      min-height: 44%;
+      max-height: 44%;
+    }
+
+  }
+}
+
+
+

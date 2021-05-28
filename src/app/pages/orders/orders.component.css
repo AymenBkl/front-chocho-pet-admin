@@ -1,0 +1,165 @@
+.header-bol {
+    vertical-align: middle;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.bol-product-title {
+  width: 55%;
+    font-size: 1.2vw;
+    float: left;
+    display: inline;
+    vertical-align: middle;
+}
+
+.buttons-bol {
+  width: 45%;
+  font-size: 1.1vw;
+  float: right;
+  display: flex;
+  vertical-align: middle;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 5px;
+}
+
+.flag {
+  display: inline;
+  vertical-align: middle;
+  font-size: 30px;
+  width: 12% !important;
+  text-align: center;
+}
+
+.title-bol {
+  display: block;
+  width: 100%;
+
+}
+.open_in_new {
+  color:#315EB1;
+  font-size: 0.9vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bol-order-info {
+  display: inline;
+  width: 20%;
+}
+
+.header-order-bol-info {
+  width: 100%;
+  font-size: 13px;
+  font-weight: bold;
+  display: block;
+
+}
+
+.content-order-bol-info {
+  width: 100%;
+  font-size: 13px;
+  display: block;
+}
+
+.header-bol-options {
+  padding: 3px;
+  width: 100%;
+  margin-top:5px;
+}
+
+.header-bol-option {
+  width: 100% !important;
+  display: block;
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.card-body {
+  margin-top: 15px;
+}
+
+.info-product-bol {
+  display: flex;
+  width: 100%;
+  color: #BBB8B1;
+  font-size: 0.9vw;
+  align-items: center;
+}
+
+.button-bol {
+  border-radius: 37px;
+  background-color: white !important;
+  color: #315EB1;
+  margin-left: 5px;
+  vertical-align: middle;
+  border: 1px solid #315EB1;
+}
+
+.button-bol-fab {
+  background-color: white !important;
+  color:#315EB1;
+  margin-left: 5px;
+  vertical-align: middle;
+  border: 1px solid #315EB1;
+}
+
+.card {
+  background-color: #F9F6EF;
+}
+
+.card:first-child {
+  margin-top: 30px;
+}
+
+.card-header {
+  padding-right: 0px;
+}
+
+.main-card {
+  background-color: gray;
+}
+
+.expandable-content {
+  overflow: hidden;
+  text-align: left;
+}
+
+.expand-button {
+  position: absolute;
+  /* top: 25%; */
+  right: 0px;
+  bottom: -15px;
+  left: 50%;
+}
+
+.search-input {
+  background-color: #F9F6EF;
+  border-radius: 30px;
+}
+
+
+mat-form-field {
+  width: 100%;
+  font-size: 19px;
+
+}
+
+::ng-deep .mat-form-field-flex {
+  background-color: white !important;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+.pagination {
+  margin-top: 30px;
+}
+
+

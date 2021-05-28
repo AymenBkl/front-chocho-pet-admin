@@ -1,0 +1,32 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Log in</mat-card-title>
+    </mat-card-header>
+
+    <form class="login-form" novalidate [formGroup]="loginForm">
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Username" formControlName="username" >
+          <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.username}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Password" formControlName="password"  [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          <mat-error *ngIf="formErrors && formErrors.password">{{formErrors.password}}</mat-error>
+        </mat-form-field>
+        <mat-error *ngIf="validationErrors && validationErrors.errcode == 2">{{validationErrors.errmsg}}</mat-error>
+      </mat-card-content>
+
+      <button mat-stroked-button color="accent" class="btn-block" (click)="login()"
+        [disabled]="loginForm.invalid || submitted ">
+        <mat-spinner *ngIf="submitted" [diameter]="35" mode="indeterminate"></mat-spinner>
+        <mat-label *ngIf="!submitted" > Log in</mat-label>
+      </button>
+    </form>
+  </mat-card>
+
+</div>

@@ -1,0 +1,111 @@
+.image {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+::ng-deep .mat-paginator {
+  background-color: #283136 !important;
+  color:white !important;
+}
+
+::ng-deep .mat-icon-button {
+  color:white !important;
+}
+
+::ng-deep .mat-select-value-text {
+  color:white !important;
+}
+::ng-deep .mat-select-arrow {
+  color:white !important;
+
+}
+
+
+
+.row{
+  overflow: hidden;
+  background-color:  #283136;
+  border-radius: 15px;
+  padding-bottom: 150px;
+  margin-bottom: 15px;
+  padding-top: 15px;
+
+}
+
+
+
+.card-game-state {
+  min-height: 50px !important;
+  background-color: #283136;
+  color:white;
+}
+
+.card-stats{
+  width: 90% !important;
+  background-color: #283136;
+  color:white;
+}
+
+table {
+  background-color: #283136;
+  width: 100% !important;
+  table-layout: fixed !important;
+
+
+}
+
+th, td {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  background-color: #283136;
+  color: white;
+}
+
+tr.detail-row {
+  background-color: #283136;
+  height: 0;
+}
+
+.deposit {
+  font-size: 15px;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background:white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.n-deposit{
+  width: 100%;
+  text-align: center;
+  color:black;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
+
+

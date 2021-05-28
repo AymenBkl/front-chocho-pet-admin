@@ -1,0 +1,34 @@
+<div class="col-md-12" >
+  <div class="card card-user hash">
+    <div class="image text-center text-primary" data-aos="zoom-in-up">
+      Hash Information
+    </div>
+    <ngx-skeleton-loader count="5" *ngIf="!currentHash"></ngx-skeleton-loader>
+    <div class="card-body" *ngIf="currentHash" >
+      <div class="author">
+        <p class="description text-left" data-aos="fade-down-left">
+          <mat-label class="text-primary">HashId :</mat-label> @{{currentHash.hashId}}
+        </p>
+        <p class="description text-left" data-aos="fade-down-left">
+          <mat-label class="text-primary">Bitcoin-Address : </mat-label>
+          {{currentHash.address && currentHash.address.address ? currentHash.address.address : 'NoAddress' }}
+        </p>
+        <p class="description text-left" data-aos="fade-down-left">
+          <mat-label class="text-primary">Hash Secure : </mat-label> <mat-icon>{{currentHash.passwordChange ? 'lock' : 'lock_open'}}</mat-icon>
+        </p>
+        <p class="description text-left" data-aos="fade-down-left">
+          <mat-label class="text-primary">Status </mat-label> {{(currentHash.status && currentHash.status == 'active') || (!currentHash.status) ? 'Active' :
+          'Blocked'}}
+        </p>
+        <p class="description text-left" data-aos="fade-down-left"  >
+          <mat-label class="text-primary">Join On : </mat-label>{{currentHash.createdAt | date:'full'}}
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+  <app-deposit-stat [currentHash]='currentHash' [depositState]='depositState'></app-deposit-stat>
+  <app-game-hash-history [currentHash]='currentHash' [gameState]='gameState'></app-game-hash-history>
+
+</div>
