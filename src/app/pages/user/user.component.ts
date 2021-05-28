@@ -26,7 +26,7 @@ export class UserComponent implements OnInit,OnDestroy {
     private interactionService: InteractionService) {
 
   }
-  
+
   ngOnInit() {
     this.buildUserForm();
     this.getAdmin();
@@ -40,10 +40,8 @@ export class UserComponent implements OnInit,OnDestroy {
 
 
   getAdmin() {
-    setTimeout(() => {
       this.currentUser = this.authService.user;
       this.buildUserForm();
-    }, 3000)
   }
 
   buildUserForm() {
