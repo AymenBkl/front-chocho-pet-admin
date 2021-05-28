@@ -29,6 +29,7 @@ import { LogsServiceService } from "./services/logs-service.service";
 import { SubscribersComponent } from './pages/subscribers/subscribers.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EmailsService } from "./services/emails.service";
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     OrdersService,
     ProductsService,
     LogsServiceService,
+    EmailsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
