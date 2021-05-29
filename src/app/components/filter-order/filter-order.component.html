@@ -3,7 +3,7 @@
     <div class="content-inputs">
       <mat-label>Filters</mat-label>
     </div>
-    <div class="content-inputs">
+    <div class="content-inputs" *ngIf="data.priceMin && data.priceHigh">
       <mat-form-field appearance="fill" class="half-width" color="accent">
         <mat-label>Min Price</mat-label>
         <input matInput  placeholder="1" type="number" [(ngModel)]='data.priceMin' #input class="search-input" (keypress)="numberOnlyValidation($event)">

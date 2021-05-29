@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit,OnDestroy {
   @ViewChild('files') files: ElementRef;
   sortOption : string = 'datedesc';
   selectedIndex:number;
-  filterOptions:{priceHigh:number,priceMin:number,dateCreateMAx:string,dateCreateMin:string} = {dateCreateMAx:new Date().toISOString(),dateCreateMin:new Date().toISOString(),priceHigh:100000,priceMin:0};
+  filterOptions:{dateCreateMAx:string,dateCreateMin:string} = {dateCreateMAx:new Date().toISOString(),dateCreateMin:new Date().toISOString()};
   constructor(private productService: ProductsService,
               private interactionService: InteractionService,
               private matDialog: MatDialog) { }
