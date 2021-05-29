@@ -34,7 +34,6 @@ import { ComplaintResponseComponent } from 'app/components/complaint-response/co
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { WithdrawsComponent } from 'app/pages/withdraws/withdraws.component';
-import { OrdersComponent } from 'app/pages/orders/orders.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { FilterOrderComponent } from 'app/components/filter-order/filter-order.component';
 import { MatSliderModule } from '@angular/material/slider';
@@ -81,7 +80,6 @@ import { ContactsComponent } from 'app/pages/contacts/contacts.component';
     DashboardComponent,
     UserComponent,
     ResetpasswordComponent,
-    OrdersComponent,
     FilterOrderComponent,
     ProductsComponent,
     UpdateLinkComponent,

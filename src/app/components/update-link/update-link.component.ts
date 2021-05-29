@@ -19,48 +19,35 @@ export class UpdateLinkComponent implements OnInit {
     this.createInputSwal();
   }
 
-  createInputSwal() {
-    Swal.fire({
-      title: 'Update Link',
-      input: 'text',
-      inputAttributes: {
-        autocapitalize: 'off',
-        placeHolder:this.data.productLinkPhilips
+  async createInputSwal() {
+    const { value: badge } = await Swal.fire({
+      title: 'Select field validation',
+      input: 'select',
+      inputOptions: {
+          New: 'New',
+          Hot: 'Hot',
+          Sale: 'Sale',
+          Best: 'Best',
       },
+      inputPlaceholder: 'Select Badge',
       showCancelButton: true,
-      confirmButtonText: 'Update',
       showLoaderOnConfirm: true,
-      timer: 1500000,
-      preConfirm: (update) => {
-        return this.updateProduct(update)
-          .then(() => {
-
-          })
-          .catch(() => {
-
-          })
-      },
-      allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-      console.log(result);
-      if (result.isConfirmed) {
-        Swal.fire({
-          title:"LINK UPDATED",
-          icon:'success',
+      preConfirm: (value) => {
+        return new Promise(async (resolve) => {
+          return this.updateProduct(value);
         })
       }
-      else if (result.isDismissed){
-        this.dialogRef.close({status:false});
-      }
     })
+
   }
 
   updateProduct(newLink:string) {
     return new Promise((resolve,reject) => {
-      this.productService.updateProductLink(this.data.productEan,newLink)
+      this.productService.updateProductLink(this.data.productId,newLink)
       .then((result) => {
         console.log(result);
         if (result && result != false){
+          Swal.close();
           this.dialogRef.close({status:true,productNewLink:newLink});
           resolve(true);
         }

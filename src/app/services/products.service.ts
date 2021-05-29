@@ -37,10 +37,10 @@ export class ProductsService {
     })
   }
 
-  updateProductLink(productEan:string,newLink:string) {
+  updateProductLink(productId:string,newBadge:string) {
     return new Promise((resolve,reject) => {
       this.onDestroyUpdate()
-      this.updateProductSub = this.httpClient.put<ProductResponse>(environment.url + 'products/updatelink',{newLink: newLink,ean:productEan})
+      this.updateProductSub = this.httpClient.put<ProductResponse>(environment.url + 'products/updateproduct',{newBadge: newBadge,id:productId})
       .subscribe(productResponse => {
         console.log(productResponse);
         if (productResponse .status == 200 && productResponse .success){
