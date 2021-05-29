@@ -108,7 +108,6 @@ export class ProductsComponent implements OnInit,OnDestroy {
   sortMethod() {
     if (this.searchProduct && this.searchProduct.length > 0 ){
       if (this.sortOption == 'dateasc'){
-        console.log("here");
         this.sortByDateAsc();
       }
       else if (this.sortOption == 'datedesc'){
@@ -135,6 +134,27 @@ export class ProductsComponent implements OnInit,OnDestroy {
       }
 
     })
+  }
+
+  refreshProducts() {
+    this.interactionService.displayToast("Refreshing Products",true,'info');
+    this.productService.refreshProducts()
+      .then((result:any) => {
+        console.log(result);
+        this.interactionService.closeToast();
+        if (result && result != false){
+          this.interactionService.displayToast("Products refreshed Succesfully",false,'success');
+          this.getProducts();
+        }
+        else {
+          this.interactionService.displayToast("Something Went Wrong !",false,'error');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+
+        this.interactionService.displayToast("Something Went Wrong !",false,'error');
+      })
   }
 
   applyFilter(){

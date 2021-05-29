@@ -38,8 +38,8 @@
               accept=".png, .jpeg" #files>
           </div>
           <div class="card-content">
-              <h3 class="title-product" *ngIf="product.productBadge && product.productBadge != ''" data-aos="zoom-in-left">{{product.title}}</h3>
-              <h3 class="title-product" *ngIf="!product.productBadge || (product.productBadge && product.productBadge == '')" data-aos="zoom-in-left">{{product.title}}</h3>
+              <h3 class="title-product badge-{{product.productBadge}}" *ngIf="product.productBadge && product.productBadge != ''" data-aos="zoom-in-left">{{product.title}}</h3>
+              <h3 class="title-product badge-{{product.productBadge}}" *ngIf="!product.productBadge || (product.productBadge && product.productBadge == '')" data-aos="zoom-in-left">{{product.title}}</h3>
               <h4 class="ean-product" data-aos="zoom-in-left">{{product.productId}}</h4>
               <h5 class="ean-product text-muted" data-aos="zoom-in-left">{{product.createdAt |  date:'short'}}</h5>
           </div>
@@ -58,3 +58,7 @@
           </div>
     </div>
 </div>
+
+<button mat-fab color="primary" aria-label="Refresh Products" class="btn-sent-all" matTooltip="Refresh Products" (click)="refreshProducts()">
+  <mat-icon>refresh</mat-icon>
+</button>

@@ -211,6 +211,7 @@ mat-form-field {
 }
 
 .badge-Hot {
+  color: #f44336 !important;
   top: -17px !important;
 }
 
@@ -221,5 +222,23 @@ mat-form-field {
 .badge-Best {
   top: 0px !important;
   filter: invert(70%) sepia(74%) saturate(1099%) hue-rotate(89deg) brightness(105%) contrast(105%);
+}
+
+.btn-sent-all {
+  position: fixed;
+    bottom: 49px;
+    right: 30px;
+    width: 100px;
+    height: 100px;
+}
+
+.btn-sent-all:focus {
+  outline:none;
+}
+
+.btn-sent-all .mat-icon {
+  height: 50px !important;
+    width: 50px !important;
+    font-size: 50px !important;
 }
 

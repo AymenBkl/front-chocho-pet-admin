@@ -16,7 +16,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/admin',          title: 'Admin Profile',      icon:'fa fa-user',  class: '' },
     { path: '/subscribers',    title: 'Subscribers',      icon:'fa fa-envelope',  class: '' },
     { path: '/contacts',       title: 'Contacts',      icon:'fa fa-address-book',  class: '' },
-    { path: '/products',       title: 'Products',      icon:'fa fa-address-book',  class: '' },
+    { path: '/products',       title: 'Products',      icon:'fas fa-dolly-flatbed',  class: '' },
     //{ path: '/hashes',         title: 'Hashes List',        icon:'nc-tile-56',    class: '' },
     //{ path: '/complaints',    title: 'User Complaints',        icon:'nc-single-copy-04', class: '' },
     //{ path: '/withdraws',    title: 'Withdraws',        icon:'nc-money-coins', class: '' },
