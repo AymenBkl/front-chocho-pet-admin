@@ -13,6 +13,7 @@ export class EmailsService {
 
   emailsSubscription: Subscription;
   contactsSubscription: Subscription;
+  responseContact: Subscription;
   constructor(private httpClient: HttpClient,
     private httpErrors: HttpErrorHandlerService) { }
 
@@ -57,6 +58,26 @@ export class EmailsService {
     })
   }
 
+  submitResponse(contactId:string,message:string,subject:string,email:string) {
+    return new Promise((resolve,reject) => {
+      this.onDestroyContactsResponse();
+      this.responseContact = this.httpClient.post<ContactResponse>(environment.url + 'emails/replycontact',{email:email,contactId:contactId,subject:subject,message:message})
+      .subscribe(contactResponse => {
+        if (contactResponse.status == 200 && contactResponse.success){
+          resolve(true);
+        }
+        else if (contactResponse.status == 404 && !contactResponse.success){
+          resolve({status:'NOT FOUND'});
+        }
+        else {
+          resolve(false);
+        }
+      },err => {
+        reject(this.httpErrors.handleError(err));
+      })
+    })
+  }
+
   onDestroyEmails() {
     if (this.emailsSubscription){
       this.emailsSubscription.unsubscribe();
@@ -66,6 +87,12 @@ export class EmailsService {
   onDestroyContacts() {
     if (this.contactsSubscription){
       this.contactsSubscription.unsubscribe();
+    }
+  }
+
+  onDestroyContactsResponse() {
+    if (this.responseContact){
+      this.responseContact.unsubscribe();
     }
   }
 }

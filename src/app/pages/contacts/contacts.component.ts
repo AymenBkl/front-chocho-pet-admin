@@ -1,8 +1,10 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { callResponseComplaint } from 'app/functions/modalsCall';
 import { Contact } from 'app/interface/contact';
 import { Email } from 'app/interface/email';
 import { EmailsService } from 'app/services/emails.service';
@@ -20,7 +22,7 @@ import { InteractionService } from 'app/services/interaction.service';
   ],
 })
 export class ContactsComponent implements OnInit,OnDestroy {
-  displayedColumns: string[] = ['email', 'name', 'subject', 'createdAt','replied'];
+  displayedColumns: string[] = ['email', 'name', 'subject','replied', 'createdAt','reply'];
   dataSource;
   contacts: Contact[];
   @ViewChild(MatSort) sort: MatSort;
@@ -28,7 +30,8 @@ export class ContactsComponent implements OnInit,OnDestroy {
   expandedElement: any;
   loaded:boolean = false;
   constructor(private emailService: EmailsService,
-              private interactionService: InteractionService) { }
+              private interactionService: InteractionService,
+              private dialog: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -65,6 +68,17 @@ export class ContactsComponent implements OnInit,OnDestroy {
         this.interactionService.displayToast('Something Went Wrong !', false, 'error');
         this.interactionService.closeToast();
 
+      })
+  }
+
+  reply(contact:Contact) {
+    let dialogRef = callResponseComplaint(this.dialog,{contact:contact});
+    dialogRef.afterClosed()
+      .subscribe(result => {
+        console.log(result);
+        if (result && result != false){
+          contact.replied = true;
+        }
       })
   }
 

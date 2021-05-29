@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EmailsService } from 'app/services/emails.service';
 import { HashService } from 'app/services/hash.service';
 import { InteractionService } from 'app/services/interaction.service';
 
@@ -19,18 +20,17 @@ export class ComplaintResponseComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ComplaintResponseComponent>,
     private interactionService: InteractionService,
-    private hashService: HashService) { }
+    private emailService: EmailsService) { }
 
   ngOnInit(): void {
     this.buildresponseCompliantForm();
   }
 
   buildresponseCompliantForm() {
-    let note = this.data.complaint.response ? this.data.complaint.response.note : '';
+    console.log(this.data.contact);
     this.responseCompliantForm = this.formBuilder.group({
-      status : [{value:this.data.complaint.type,disabled:this.submitted}, [Validators.required]],
-      note : [{value:note,disabled:this.submitted}, [Validators.required]],
-      solve : [{value:true,disabled:this.submitted}, [Validators.required]],
+      subject : [{value:this.data.contact.subject,disabled:this.submitted}, [Validators.required]],
+      message : [{value:'',disabled:this.submitted}, [Validators.required]],
     });
   }
 
@@ -38,14 +38,14 @@ export class ComplaintResponseComponent implements OnInit {
   submitResponse() {
     this.submitted = true;
     this.interactionService.displayToast('Submiting Response',true,'info');
-    this.hashService.updateComplaint(this.data,this.responseCompliantForm.value)
+    this.emailService.submitResponse(this.data.contact._id,this.responseCompliantForm.value.message,this.responseCompliantForm.value.subject,this.data.contact.email)
       .then((result:any) => {
         console.log(result);
         this.submitted = false;
         this.interactionService.closeToast();
         if (result && result != false) {
           this.interactionService.displayToast('Response submitted Succesfully',false,'success');
-          this.dialogRef.close(result);
+          this.dialogRef.close(true);
         }
         else {
           this.interactionService.displayToast('Error While Submiting Response',false,'warning');

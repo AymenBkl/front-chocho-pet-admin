@@ -88,7 +88,8 @@ import { ContactsComponent } from 'app/pages/contacts/contacts.component';
     ApiLogsComponent,
     LogsDetailComponent,
     SubscribersComponent,
-    ContactsComponent
+    ContactsComponent,
+    ComplaintResponseComponent
   ]
 })
 
