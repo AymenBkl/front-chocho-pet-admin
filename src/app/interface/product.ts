@@ -1,8 +1,7 @@
 export interface Product {
-  productTitle:string;
-  productEan: string;
-  productUnitPrice:number;
-  productLinkPhilips:string;
-  imageURL:string;
+  titlee:string;
+  productId: string;
+  productBadge:string;
+  images:[{src:string}];
   createdAt:string;
 }

@@ -22,7 +22,7 @@ export class ProductsService {
     console.log("here");
     return new Promise((resolve,reject) => {
       this.onDestroy()
-      this.productSub = this.httpClient.get<ProductResponse>(environment.url + 'product/products')
+      this.productSub = this.httpClient.get<ProductResponse>(environment.url + 'products/getproducts')
       .subscribe(productResponse => {
         if (productResponse .status == 200 && productResponse .success){
           this.products = productResponse.products;
@@ -40,7 +40,7 @@ export class ProductsService {
   updateProductLink(productEan:string,newLink:string) {
     return new Promise((resolve,reject) => {
       this.onDestroyUpdate()
-      this.updateProductSub = this.httpClient.put<ProductResponse>(environment.url + 'product/updatelink',{newLink: newLink,ean:productEan})
+      this.updateProductSub = this.httpClient.put<ProductResponse>(environment.url + 'products/updatelink',{newLink: newLink,ean:productEan})
       .subscribe(productResponse => {
         console.log(productResponse);
         if (productResponse .status == 200 && productResponse .success){
@@ -58,7 +58,7 @@ export class ProductsService {
   postImage(formData: FormData) {
     return new Promise((resolve, reject) => {
       this.destroyPostImageSub();
-      this.postImageSub = this.httpClient.post<ProductResponse>(environment.url + 'product/postimage', formData)
+      this.postImageSub = this.httpClient.post<ProductResponse>(environment.url + 'products/postimage', formData)
         .subscribe(response => {
           console.log(response);
           if (response.status === 200) {
@@ -74,15 +74,15 @@ export class ProductsService {
     });
   }
 
-  getProduct(productEan: string) {
+  getProduct(productId: string) {
     return new Promise(async (resolve,reject) => {
       if (!this.products || (this.products && this.products.length == 0)){
         const product = await this.getProducts();
         console.log(this.products);
-        resolve(this.products.filter(product => product.productEan == productEan ));
+        resolve(this.products.filter(product => product.productId == productId ));
       }
       else {
-        resolve(this.products.filter(product => product.productEan == productEan ));
+        resolve(this.products.filter(product => product.productId == productId ));
       }
     })
   }

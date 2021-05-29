@@ -30,18 +30,15 @@
               <div class="background"></div>
           </div>
           <div class="profile-thumb-block">
-              <img [src]="image[i].imageSrc || '../../../assets/img/logo.png'" alt="profile-image" class="profile" *ngIf="product && product.imageURL == ''" (click)='openImageInput(i)' data-aos="zoom-in-left"/>
-              <img class="avatar border-gray" [src]="image[i].imageSrc || product.imageURL" alt="Product Image"
-              *ngIf="product && product.imageURL != ''" (click)='openImageInput(i)' data-aos="zoom-in-left" class="profile">
+              <img class="avatar border-gray" [src]="product.images[0].src" alt="Product Image"*ngIf="product && product.imageURL != ''" (click)='openImageInput(i)' data-aos="zoom-in-left" class="profile">
               <input id="files" type="file" style="visibility:hidden;" (change)="selectedImage($event)"
               accept=".png, .jpeg" #files>
           </div>
           <div class="card-content">
-              <h3 class="title-product" *ngIf="product.productLinkPhilips && product.productLinkPhilips != ''" data-aos="zoom-in-left"><a href="{{product.productLinkPhilips}}" target="_blank">{{product.productTitle}}</a></h3>
-              <h3 class="title-product" *ngIf="!product.productLinkPhilips || (product.productLinkPhilips && product.productLinkPhilips == '')" data-aos="zoom-in-left">{{product.productTitle}}</h3>
-              <h4 class="ean-product" data-aos="zoom-in-left">{{product.productEan}}</h4>
+              <h3 class="title-product" *ngIf="product.productBadge && product.productBadge != ''" data-aos="zoom-in-left">{{product.title}}</h3>
+              <h3 class="title-product" *ngIf="!product.productBadge || (product.productBadge && product.productBadge == '')" data-aos="zoom-in-left">{{product.title}}</h3>
+              <h4 class="ean-product" data-aos="zoom-in-left">{{product.productId}}</h4>
               <h5 class="ean-product text-muted" data-aos="zoom-in-left">{{product.createdAt |  date:'short'}}</h5>
-              <h2 class="price-product" data-aos="zoom-in-left">€{{product.productUnitPrice}}</h2>
           </div>
           <div class="card-footer" data-aos="fade-left" >
             <div class="update-button">
@@ -51,9 +48,9 @@
             </div>
 
             <div class="upload-button">
-              <button mat-mini-fab color="accent" aria-label="Expand Button" (click)='uploadImage(i,product)' *ngIf="image[i].imageSrc && image[i].file">
+              <!--<button mat-mini-fab color="accent" aria-label="Expand Button" (click)='uploadImage(i,product)' *ngIf="image[i].imageSrc && image[i].file">
                 <mat-icon>cloud_upload</mat-icon>
-              </button>
+              </button>-->
             </div>
           </div>
     </div>

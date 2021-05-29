@@ -17,6 +17,8 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'admin', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'subscribers', component: SubscribersComponent , canActivate: [AuthGuard] },
   { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard] },
+  { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
+
   //{ path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
   //{ path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
   //{ path: 'logs', component: ApiLogsComponent, canActivate: [AuthGuard] },

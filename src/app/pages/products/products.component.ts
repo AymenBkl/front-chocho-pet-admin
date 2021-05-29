@@ -64,7 +64,7 @@ export class ProductsComponent implements OnInit,OnDestroy {
     }
   }
 
-  uploadImage(index:number,product:Product){
+  /**uploadImage(index:number,product:Product){
     if (this.image[index].imageSrc && this.image[index].file) {
       this.interactionService.confirmBox('ALERT', 'Do you want to update product image', 'warning', 'UPDATE', 'CANCEL', '')
         .then((result:any) => {
@@ -95,7 +95,7 @@ export class ProductsComponent implements OnInit,OnDestroy {
         })
 
     }
-  }
+  }**/
 
   search(event: Event) {
     if (this.products && this.searchProduct) {
@@ -114,13 +114,6 @@ export class ProductsComponent implements OnInit,OnDestroy {
       else if (this.sortOption == 'datedesc'){
         this.sortByDateDesc();
       }
-      else if (this.sortOption == 'pricehigh'){
-        this.sortByPriceLowToHigh();
-
-      }
-      else if (this.sortOption == 'pricelow'){
-        this.sortByPriceHighestToLow();
-      }
     }
   }
 
@@ -131,12 +124,6 @@ export class ProductsComponent implements OnInit,OnDestroy {
 
   sortByDateDesc() {
     this.searchProduct.sort((a,b) => a.createdAt.localeCompare(b.createdAt))
-  }
-  sortByPriceHighestToLow() {
-    this.searchProduct.sort((a,b) => (a.productUnitPrice) - (b.productUnitPrice))
-  }
-  sortByPriceLowToHigh() {
-    this.searchProduct.sort((a,b) => (b.productUnitPrice) - (a.productUnitPrice))
   }
 
   callFilterOrderComponent(){
@@ -153,8 +140,8 @@ export class ProductsComponent implements OnInit,OnDestroy {
   applyFilter(){
     this.searchProduct = this.products.filter(
       product =>
-      (product.productUnitPrice <= this.filterOptions.priceHigh && this.filterOptions.dateCreateMAx.localeCompare(product.createdAt) >= 1)
-       && (product.productUnitPrice >= this.filterOptions.priceMin && product.createdAt.localeCompare(this.filterOptions.dateCreateMin) >= 1 ) )
+      (this.filterOptions.dateCreateMAx.localeCompare(product.createdAt) >= 1)
+       && (product.createdAt.localeCompare(this.filterOptions.dateCreateMin) >= 1 ) )
   }
 
   updateCall(product:Product){
