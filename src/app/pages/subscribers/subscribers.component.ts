@@ -66,4 +66,9 @@ export class SubscribersComponent implements OnInit,OnDestroy {
       })
   }
 
+  sendCouponToEmails() {
+    let unsentCouponEmails = this.emails.filter(email => email.sentCoupon == false);
+    console.log(unsentCouponEmails);
+  }
+
 }
