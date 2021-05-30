@@ -33,12 +33,14 @@
               <mat-option value="file">File</mat-option>
               <mat-option value="url">Url</mat-option>
             </mat-select>
+            <mat-error id="selectOptionError-{{productForm.idFields.selectOptionError}}">Please Select An Option</mat-error>
           </mat-form-field>
         </div>
         <div class="col-12">
           <div class="form-description-product-input options-select" id="option-file-{{productForm.idFields['option-file-input']}}">
             <mat-label>Pick file</mat-label>
             <input placeholder="file" value="" type="file" id="option-file-input-{{productForm.idFields['option-file-input']}}">
+            <mat-error id="fileImageError-{{productForm.idFields.fileImageError}}">Please Put A File</mat-error>
           </div>
 
         </div>
@@ -46,6 +48,7 @@
           <mat-form-field class="form-description-product-input options-select" id="option-url-{{productForm.idFields['option-url']}}">
             <mat-label>Enter Url</mat-label>
             <input matInput placeholder="url" value="" type="url" id="option-url-input-{{productForm.idFields['option-url-input']}}">
+            <mat-error id="fileImageUrlError-{{productForm.idFields.fileImageUrlError}}">Please Enter  A Url</mat-error>
           </mat-form-field>
         </div>
 
@@ -56,6 +59,7 @@
               <mat-option value="file">File</mat-option>
               <mat-option value="url">Url</mat-option>
             </mat-select>
+            <mat-error id="selectOptionErrorBadge-{{productForm.idFields.selectOptionErrorBadge}}">Please Select An Option</mat-error>
           </mat-form-field>
         </div>
 
@@ -63,6 +67,7 @@
           <div class="form-description-product-input options-select" id="option-file-badge-{{productForm.idFields['option-file-badge']}}">
             <mat-label>Pick file Badge</mat-label>
             <input placeholder="file" value="" type="file" id="option-file-input-badge-{{productForm.idFields['option-file-input-badge']}}">
+            <mat-error id="fileImageErrorBadge-{{productForm.idFields.fileImageErrorBadge}}">Please Put A File</mat-error>
           </div>
 
         </div>
@@ -70,6 +75,7 @@
           <mat-form-field class="form-description-product-input options-select" id="option-url-badge-{{productForm.idFields['option-url-badge']}}">
             <mat-label>Enter Url Badge</mat-label>
             <input matInput placeholder="url" value="" type="url" id="option-url-input-badge-{{productForm.idFields['option-url-input-badge']}}">
+            <mat-error id="fileImageUrlErrorBadge-{{productForm.idFields.fileImageUrlErrorBadge}}">Please Enter  A Url</mat-error>
           </mat-form-field>
         </div>
 
@@ -77,6 +83,7 @@
           <mat-form-field class="form-description-product-input" id="header-{{productForm.idFields.header}}">
             <mat-label>Product Header Description</mat-label>
             <input matInput placeholder="url" value="" type="url" id="header-input-{{productForm.idFields['header-input']}}">
+            <mat-error id="headerProductError-{{productForm.idFields.headerProductError}}">Please Enter  A Url</mat-error>
           </mat-form-field>
         </div>
 
@@ -84,6 +91,7 @@
           <mat-form-field class="form-description-product-input" id="header-description-{{productForm.idFields['header-description']}}">
             <mat-label>Product Description</mat-label>
             <textarea matInput placeholder="This is a cool Product" rows="5" cols="40" id="header-description-input-{{productForm.idFields['header-description-input']}}"></textarea>
+            <mat-error id="descriptionProductError-{{productForm.idFields.description}}">Please Enter  A Url</mat-error>
           </mat-form-field>
         </div>
 

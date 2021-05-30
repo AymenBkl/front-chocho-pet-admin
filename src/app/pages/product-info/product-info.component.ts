@@ -53,7 +53,16 @@ export class ProductInfoComponent implements OnInit {
           'header':formNumber,
           'header-input':formNumber,
           'header-description':formNumber,
-          'header-description-input':formNumber
+          'header-description-input':formNumber,
+          fileImageError:formNumber,
+          fileImageUrlError:formNumber,
+          fileImageErrorBadge:formNumber,
+          selectOptionErrorBadge:formNumber,
+          fileImageUrlErrorBadge:formNumber,
+          headerProductError:formNumber,
+          descriptionProductError:formNumber,
+          selectOptionError:formNumber,
+
         },
         status:"active"
       }
@@ -78,7 +87,15 @@ export class ProductInfoComponent implements OnInit {
         'header':lenghtFormDescriptionProduct,
         'header-input':lenghtFormDescriptionProduct,
         'header-description':lenghtFormDescriptionProduct,
-        'header-description-input':lenghtFormDescriptionProduct
+        'header-description-input':lenghtFormDescriptionProduct,
+        fileImageError:lenghtFormDescriptionProduct,
+          fileImageUrlError:lenghtFormDescriptionProduct,
+          fileImageErrorBadge:lenghtFormDescriptionProduct,
+          selectOptionErrorBadge:lenghtFormDescriptionProduct,
+          fileImageUrlErrorBadge:lenghtFormDescriptionProduct,
+          headerProductError:lenghtFormDescriptionProduct,
+          descriptionProductError:lenghtFormDescriptionProduct,
+          selectOptionError:lenghtFormDescriptionProduct,
       },
       status:"active"
 
