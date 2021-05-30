@@ -103,6 +103,13 @@
   outline:none;
 }
 
+.error {
+  font-size: 10px;
+  color: red;
+  margin-left: 30px;
+  display: none;
+}
+
 .btn-sent-all .mat-icon {
   height: 50px !important;
     width: 50px !important;
