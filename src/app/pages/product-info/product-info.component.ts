@@ -11,6 +11,26 @@ import { StorageService } from 'app/services/storage.service';
 export class ProductInfoComponent implements OnInit {
 
   product: Product;
+  formDescriptionProduct = [
+    {
+      cardId:'1',
+      selectOptionImageId:'1',
+      'option-file':'1',
+      'option-file-input':'1',
+      'option-url':'1',
+      'option-url-input':'1',
+      'selectOptionBadgeId':'badge-1',
+      'option-file-badge':'1',
+      'option-file-input-badge':'1',
+      'option-url-badge':'1',
+      'option-url-input-badge':'1',
+      'header':'1',
+      'header-input':'1',
+      'header-description':'1',
+      'header-description-input':'1'
+
+    }
+  ]
   selectOption = [];
   constructor(private route: ActivatedRoute,
               private storageService: StorageService) { }
@@ -29,9 +49,32 @@ export class ProductInfoComponent implements OnInit {
     });
   }
 
+  addAnotherForm() {
+
+  }
+
   onChangeSelect(event,id){
     console.log(event,id);
-    $(`option-${event}-input-${id}`).fadeIn(2000);
+    if (event == 'file'){
+      $(`#option-url-${id}`).hide();
+    }
+    else if (event == 'url'){
+      $(`#option-file-${id}`).hide();
+
+    }
+    $(`#option-${event}-${id}`).fadeIn(2000);
+  }
+
+  onChangeSelectBadge(event,id){
+    console.log(event,id);
+    if (event == 'file'){
+      $(`#option-url-${id}`).hide();
+    }
+    else if (event == 'url'){
+      $(`#option-file-${id}`).hide();
+
+    }
+    $(`#option-${event}-${id}`).fadeIn(2000);
   }
 
 
