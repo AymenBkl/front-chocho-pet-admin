@@ -95,10 +95,15 @@
       </div>
     </div>
   </div>
-  <div class="col-12 text-center">
-    <button mat-mini-fab color="primary" aria-label="Add Another Form" (click)="addAnotherForm()" class="add-more-button">
+  <div class="col-12 text-center add-more-button">
+    <button mat-mini-fab color="primary" aria-label="Add Another Form" (click)="addAnotherForm()" >
       <mat-icon>add</mat-icon>
     </button>
   </div>
 
 </div>
+
+
+<button mat-fab color="primary" aria-label="Submit All Unsent Coupon" class="btn-sent-all" matTooltip="Submit Forms" (click)="submitForms()">
+  <mat-icon>cloud_upload</mat-icon>
+</button>

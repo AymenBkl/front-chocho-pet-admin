@@ -93,6 +93,10 @@ export class ProductInfoComponent implements OnInit {
     this.formDescriptionProduct[index - 1].status = 'active';
   }
 
+  submitForms(){
+
+  }
+
   onChangeSelect(event,id){
     console.log(event,id);
     if (event == 'file'){

@@ -81,8 +81,32 @@
   outline: none;
 }
 
-.add-more-button:focus {
+.add-more-button button:focus {
   outline:none;
+}
+
+.add-more-button {
+  padding-bottom: 10px;
+}
+
+
+
+.btn-sent-all {
+  position: fixed;
+    bottom: 49px;
+    right: 30px;
+    width: 100px;
+    height: 100px;
+}
+
+.btn-sent-all:focus {
+  outline:none;
+}
+
+.btn-sent-all .mat-icon {
+  height: 50px !important;
+    width: 50px !important;
+    font-size: 50px !important;
 }
 
 
