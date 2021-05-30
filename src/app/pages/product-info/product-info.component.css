@@ -53,7 +53,31 @@
   color:red
 }
 
+.header-product-description-title {
+  font-size: 20px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-top: 50px;
+    color:white;
+}
+
 .header-delete-button button:focus{
+  outline: none;
+}
+
+.row-card {
+  background-color:  #283136;
+
+}
+
+.header-return-button {
+  width: 100%;
+  text-align: center;
+}
+
+
+.header-return-button button:focus{
   outline: none;
 }
 

@@ -38,21 +38,24 @@ export class ProductInfoComponent implements OnInit {
   initFirstForm(formNumber:number) {
     this.formDescriptionProduct = [
       {
-        cardId:formNumber,
-        selectOptionImageId:formNumber,
-        'option-file':formNumber,
-        'option-file-input':formNumber,
-        'option-url':formNumber,
-        'option-url-input':formNumber,
-        'selectOptionBadgeId':'badge-' + formNumber,
-        'option-file-badge':formNumber,
-        'option-file-input-badge':formNumber,
-        'option-url-badge':formNumber,
-        'option-url-input-badge':formNumber,
-        'header':formNumber,
-        'header-input':formNumber,
-        'header-description':formNumber,
-        'header-description-input':formNumber
+        idFields : {
+          cardId:formNumber,
+          selectOptionImageId:formNumber,
+          'option-file':formNumber,
+          'option-file-input':formNumber,
+          'option-url':formNumber,
+          'option-url-input':formNumber,
+          'selectOptionBadgeId':'badge-' + formNumber,
+          'option-file-badge':formNumber,
+          'option-file-input-badge':formNumber,
+          'option-url-badge':formNumber,
+          'option-url-input-badge':formNumber,
+          'header':formNumber,
+          'header-input':formNumber,
+          'header-description':formNumber,
+          'header-description-input':formNumber
+        },
+        status:"active"
       }
     ]
   }
@@ -60,22 +63,34 @@ export class ProductInfoComponent implements OnInit {
   addAnotherForm() {
     let lenghtFormDescriptionProduct = this.formDescriptionProduct.length + 1;
     this.formDescriptionProduct.push({
-      cardId:lenghtFormDescriptionProduct,
-      selectOptionImageId:lenghtFormDescriptionProduct,
-      'option-file':lenghtFormDescriptionProduct,
-      'option-file-input':lenghtFormDescriptionProduct,
-      'option-url':lenghtFormDescriptionProduct,
-      'option-url-input':lenghtFormDescriptionProduct,
-      'selectOptionBadgeId':'badge-' + lenghtFormDescriptionProduct,
-      'option-file-badge':lenghtFormDescriptionProduct,
-      'option-file-input-badge':lenghtFormDescriptionProduct,
-      'option-url-badge':lenghtFormDescriptionProduct,
-      'option-url-input-badge':lenghtFormDescriptionProduct,
-      'header':lenghtFormDescriptionProduct,
-      'header-input':lenghtFormDescriptionProduct,
-      'header-description':lenghtFormDescriptionProduct,
-      'header-description-input':lenghtFormDescriptionProduct
+      idFields : {
+        cardId:lenghtFormDescriptionProduct,
+        selectOptionImageId:lenghtFormDescriptionProduct,
+        'option-file':lenghtFormDescriptionProduct,
+        'option-file-input':lenghtFormDescriptionProduct,
+        'option-url':lenghtFormDescriptionProduct,
+        'option-url-input':lenghtFormDescriptionProduct,
+        'selectOptionBadgeId':'badge-' + lenghtFormDescriptionProduct,
+        'option-file-badge':lenghtFormDescriptionProduct,
+        'option-file-input-badge':lenghtFormDescriptionProduct,
+        'option-url-badge':lenghtFormDescriptionProduct,
+        'option-url-input-badge':lenghtFormDescriptionProduct,
+        'header':lenghtFormDescriptionProduct,
+        'header-input':lenghtFormDescriptionProduct,
+        'header-description':lenghtFormDescriptionProduct,
+        'header-description-input':lenghtFormDescriptionProduct
+      },
+      status:"active"
+
     })
+  }
+
+  deleteFormProduct(index:number) {
+    this.formDescriptionProduct[index - 1].status = 'deleted';
+  }
+
+  activeFormProduct(index:number){
+    this.formDescriptionProduct[index - 1].status = 'active';
   }
 
   onChangeSelect(event,id){
