@@ -30,6 +30,9 @@
 .product-description-header {
   width: 100%;
   display: block;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
 }
 
 .form-description-product-input {
@@ -40,3 +43,22 @@
 .options-select {
   display:none;
 }
+
+.header-delete-button {
+  width: 100%;
+  text-align: right;
+}
+
+.header-delete-button button{
+  color:red
+}
+
+.header-delete-button button:focus{
+  outline: none;
+}
+
+.add-more-button:focus {
+  outline:none;
+}
+
+

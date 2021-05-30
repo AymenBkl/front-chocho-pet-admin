@@ -11,26 +11,7 @@ import { StorageService } from 'app/services/storage.service';
 export class ProductInfoComponent implements OnInit {
 
   product: Product;
-  formDescriptionProduct = [
-    {
-      cardId:'1',
-      selectOptionImageId:'1',
-      'option-file':'1',
-      'option-file-input':'1',
-      'option-url':'1',
-      'option-url-input':'1',
-      'selectOptionBadgeId':'badge-1',
-      'option-file-badge':'1',
-      'option-file-input-badge':'1',
-      'option-url-badge':'1',
-      'option-url-input-badge':'1',
-      'header':'1',
-      'header-input':'1',
-      'header-description':'1',
-      'header-description-input':'1'
-
-    }
-  ]
+  formDescriptionProduct = [];
   selectOption = [];
   constructor(private route: ActivatedRoute,
               private storageService: StorageService) { }
@@ -44,13 +25,57 @@ export class ProductInfoComponent implements OnInit {
   getCurrentProduct() {
     this.route.params.subscribe(params => {
       this.product = this.storageService.getProduct(params['id']);
-      console.log(this.product);
+      if (this.product && this.product.description && this.product.description.length > 0){
+
+      }
+      else if (this.product && (!this.product.description || (this.product.description && this.product.description.length == 0))){
+        this.initFirstForm(1);
+      }
 
     });
   }
 
-  addAnotherForm() {
+  initFirstForm(formNumber:number) {
+    this.formDescriptionProduct = [
+      {
+        cardId:formNumber,
+        selectOptionImageId:formNumber,
+        'option-file':formNumber,
+        'option-file-input':formNumber,
+        'option-url':formNumber,
+        'option-url-input':formNumber,
+        'selectOptionBadgeId':'badge-' + formNumber,
+        'option-file-badge':formNumber,
+        'option-file-input-badge':formNumber,
+        'option-url-badge':formNumber,
+        'option-url-input-badge':formNumber,
+        'header':formNumber,
+        'header-input':formNumber,
+        'header-description':formNumber,
+        'header-description-input':formNumber
+      }
+    ]
+  }
 
+  addAnotherForm() {
+    let lenghtFormDescriptionProduct = this.formDescriptionProduct.length + 1;
+    this.formDescriptionProduct.push({
+      cardId:lenghtFormDescriptionProduct,
+      selectOptionImageId:lenghtFormDescriptionProduct,
+      'option-file':lenghtFormDescriptionProduct,
+      'option-file-input':lenghtFormDescriptionProduct,
+      'option-url':lenghtFormDescriptionProduct,
+      'option-url-input':lenghtFormDescriptionProduct,
+      'selectOptionBadgeId':'badge-' + lenghtFormDescriptionProduct,
+      'option-file-badge':lenghtFormDescriptionProduct,
+      'option-file-input-badge':lenghtFormDescriptionProduct,
+      'option-url-badge':lenghtFormDescriptionProduct,
+      'option-url-input-badge':lenghtFormDescriptionProduct,
+      'header':lenghtFormDescriptionProduct,
+      'header-input':lenghtFormDescriptionProduct,
+      'header-description':lenghtFormDescriptionProduct,
+      'header-description-input':lenghtFormDescriptionProduct
+    })
   }
 
   onChangeSelect(event,id){
@@ -66,12 +91,12 @@ export class ProductInfoComponent implements OnInit {
   }
 
   onChangeSelectBadge(event,id){
-    console.log(event,id);
+    console.log(event,`#option-${event}-${id}`);
     if (event == 'file'){
-      $(`#option-url-${id}`).hide();
+      $(`#option-url-badge-${id}`).hide();
     }
     else if (event == 'url'){
-      $(`#option-file-${id}`).hide();
+      $(`#option-file-badge-${id}`).hide();
 
     }
     $(`#option-${event}-${id}`).fadeIn(2000);

@@ -16,15 +16,20 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="formDescriptionProduct && formDescriptionProduct.length > 0">
   <h1>Product Description Optimization</h1>
   <div class="col-12" *ngFor="let productForm of formDescriptionProduct">
     <div class="card" id="cardId-{{productForm.cardId}}">
+      <div class="header-delete-button">
+        <button mat-icon-button color="danger" aria-label="Delete Button">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
       <div class="product-description-header">
         <div class="col-12">
           <mat-form-field appearance="fill" class="form-description-product-input">
             <mat-label>Pick An Option (Image Main)</mat-label>
-            <mat-select id="selectOptionImageId-{{productForm.selectOptionImageId}}" (selectionChange)="onChangeSelect($event.value,'1')">
+            <mat-select id="selectOptionImageId-{{productForm.selectOptionImageId}}" (selectionChange)="onChangeSelect($event.value,productForm.selectOptionImageId)">
               <mat-option value="file">File</mat-option>
               <mat-option value="url">Url</mat-option>
             </mat-select>
@@ -38,16 +43,16 @@
 
         </div>
         <div class="col-12">
-          <mat-form-field class="form-description-product-input options-select" id="option-url-{{productForm.option-url}}">
+          <mat-form-field class="form-description-product-input options-select" id="option-url-{{productForm['option-url']}}">
             <mat-label>Enter Url</mat-label>
-            <input matInput placeholder="url" value="" type="url" id="option-url-input-{{productForm.option-url-input}}">
+            <input matInput placeholder="url" value="" type="url" id="option-url-input-{{productForm['option-url-input']}}">
           </mat-form-field>
         </div>
 
         <div class="col-12">
           <mat-form-field appearance="fill" class="form-description-product-input">
             <mat-label>Pick An Option (Image badge)</mat-label>
-            <mat-select id="selectOptionBadgeId-{{productForm.selectOptionBadgeId}}" (selectionChange)="onChangeSelectBadge($event.value,'1')">
+            <mat-select id="selectOptionBadgeId-{{productForm.selectOptionBadgeId}}" (selectionChange)="onChangeSelectBadge($event.value,productForm.selectOptionBadgeId)">
               <mat-option value="file">File</mat-option>
               <mat-option value="url">Url</mat-option>
             </mat-select>
@@ -55,30 +60,30 @@
         </div>
 
         <div class="col-12">
-          <div class="form-description-product-input options-select" id="option-file-badge-{{productForm.option-file-badge}}">
+          <div class="form-description-product-input options-select" id="option-file-badge-{{productForm['option-file-badge']}}">
             <mat-label>Pick file Badge</mat-label>
-            <input placeholder="file" value="" type="file" id="option-file-input-badge-{{productForm.option-file-input-badge}}">
+            <input placeholder="file" value="" type="file" id="option-file-input-badge-{{productForm['option-file-input-badge']}}">
           </div>
 
         </div>
         <div class="col-12">
-          <mat-form-field class="form-description-product-input options-select" id="option-url-badge-{{productForm.option-url-badge}}">
+          <mat-form-field class="form-description-product-input options-select" id="option-url-badge-{{productForm['option-url-badge']}}">
             <mat-label>Enter Url Badge</mat-label>
-            <input matInput placeholder="url" value="" type="url" id="option-url-input-badge-{{productForm.option-url-input-badge}}">
+            <input matInput placeholder="url" value="" type="url" id="option-url-input-badge-{{productForm['option-url-input-badge']}}">
           </mat-form-field>
         </div>
 
         <div class="col-12">
           <mat-form-field class="form-description-product-input" id="header-{{productForm.header}}">
             <mat-label>Product Header Description</mat-label>
-            <input matInput placeholder="url" value="" type="url" id="header-input-{{productForm.header-input}}">
+            <input matInput placeholder="url" value="" type="url" id="header-input-{{productForm['header-input']}}">
           </mat-form-field>
         </div>
 
         <div class="col-12">
-          <mat-form-field class="form-description-product-input" id="header-description-{{productForm.header-description}}">
+          <mat-form-field class="form-description-product-input" id="header-description-{{productForm['header-description']}}">
             <mat-label>Product Description</mat-label>
-            <textarea matInput placeholder="This is a cool Product" rows="5" cols="40" id="header-description-input-{{productForm.header-description-input}}"></textarea>
+            <textarea matInput placeholder="This is a cool Product" rows="5" cols="40" id="header-description-input-{{productForm['header-description-input']}}"></textarea>
           </mat-form-field>
         </div>
 
@@ -87,7 +92,7 @@
     </div>
   </div>
   <div class="col-12 text-center">
-    <button mat-mini-fab color="primary" aria-label="Add Another Form" (click)="addAnotherForm()">
+    <button mat-mini-fab color="primary" aria-label="Add Another Form" (click)="addAnotherForm()" class="add-more-button">
       <mat-icon>add</mat-icon>
     </button>
   </div>
