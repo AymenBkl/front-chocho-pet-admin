@@ -48,6 +48,7 @@ import { NgxMatDatetimePickerModule, NgxMatNativeDateModule } from '@angular-mat
 import { SubscribersComponent } from 'app/pages/subscribers/subscribers.component';
 import { ContactsComponent } from 'app/pages/contacts/contacts.component';
 import { ProductInfoComponent } from 'app/pages/product-info/product-info.component';
+import { MatFileUploadModule } from 'angular-material-fileupload';
 @NgModule({
   imports: [
     CommonModule,
@@ -75,7 +76,8 @@ import { ProductInfoComponent } from 'app/pages/product-info/product-info.compon
     MatDatepickerModule,
     MatNativeDateModule,
     NgxMatDatetimePickerModule,
-    NgxMatNativeDateModule
+    NgxMatNativeDateModule,
+    MatFileUploadModule
   ],
   declarations: [
     DashboardComponent,

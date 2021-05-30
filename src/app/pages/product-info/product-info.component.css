@@ -1,0 +1,41 @@
+.card-img-holder {
+  text-align: center;
+    display: inline-block;
+    width: 20%;
+    padding: 50px;
+}
+
+.card-title-product {
+  text-align: center;
+    width: 70%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.product-holder {
+  width: 100%;
+  display: inline-block;
+}
+
+.date {
+  font-size: 15px;
+  color:gray;
+}
+
+.product-description-header {
+  width: 100%;
+  display: block;
+}
+
+.form-description-product-input {
+  width: 100%;
+  display: block;
+}
+
+.options-select {
+  display:none;
+}

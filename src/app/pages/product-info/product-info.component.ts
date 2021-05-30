@@ -11,11 +11,13 @@ import { StorageService } from 'app/services/storage.service';
 export class ProductInfoComponent implements OnInit {
 
   product: Product;
+  selectOption = [];
   constructor(private route: ActivatedRoute,
               private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.getCurrentProduct();
+    this.getSelectOption();
   }
 
 
@@ -23,7 +25,22 @@ export class ProductInfoComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.product = this.storageService.getProduct(params['id']);
       console.log(this.product);
+
     });
+  }
+
+  onChangeSelect(event,id){
+    console.log(event,id);
+    $(`option-${event}-input-${id}`).fadeIn(2000);
+  }
+
+
+  getSelectOption() {
+    $(document).ready(() => {
+      $('#select-product-1').on('change', function() {
+        console.log($('#select-product-1').val());
+      });
+    })
   }
 
 
