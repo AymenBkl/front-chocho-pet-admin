@@ -5,6 +5,7 @@ import { callFilter, callUpdateLink } from 'app/functions/openDialog';
 import { Product } from 'app/interface/product';
 import { InteractionService } from 'app/services/interaction.service';
 import { ProductsService } from 'app/services/products.service';
+import { StorageService } from 'app/services/storage.service';
 
 @Component({
   selector: 'app-products',
@@ -22,7 +23,7 @@ export class ProductsComponent implements OnInit,OnDestroy {
   constructor(private productService: ProductsService,
               private interactionService: InteractionService,
               private matDialog: MatDialog,
-              private router: Router) { }
+              private storageService: StorageService) { }
 
 
   ngOnInit(): void {
@@ -57,7 +58,7 @@ export class ProductsComponent implements OnInit,OnDestroy {
   }
 
   goProductInfo(product: Product) {
-    this.router.createUrlTree(['/product-info', {productObj: JSON.stringify(product)}]);
+    this.storageService.saveProduct(product);
     window.open(`/#/product-info/${product.productId}`, '_blank')
   }
 

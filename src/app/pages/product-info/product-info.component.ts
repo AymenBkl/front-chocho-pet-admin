@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'app/interface/product';
+import { StorageService } from 'app/services/storage.service';
 
 @Component({
   selector: 'app-product-info',
@@ -10,7 +11,8 @@ import { Product } from 'app/interface/product';
 export class ProductInfoComponent implements OnInit {
 
   product: Product;
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+              private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.getCurrentProduct();
@@ -19,7 +21,7 @@ export class ProductInfoComponent implements OnInit {
 
   getCurrentProduct() {
     this.route.params.subscribe(params => {
-      this.product = JSON.parse(this.route.snapshot.paramMap.get('productObj'));
+      this.product = this.storageService.getProduct(params['id']);
       console.log(this.product);
     });
   }

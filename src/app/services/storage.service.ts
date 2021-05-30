@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Admin } from 'app/interface/admin';
+import { Product } from 'app/interface/product';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,20 @@ export class StorageService {
     const admin = JSON.parse(localStorage.getItem('admin'));
     if (admin) {
       return admin;
+    }
+    else {
+      return null;
+    }
+  }
+
+  saveProduct(product: Product) {
+    localStorage.setItem(product.productId,JSON.stringify(product));
+  }
+
+  getProduct(key:string) {
+    const product = localStorage.getItem(key);
+    if (product && product != null){
+      return JSON.parse(product);
     }
     else {
       return null;
