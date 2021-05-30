@@ -30,6 +30,7 @@ import { SubscribersComponent } from './pages/subscribers/subscribers.component'
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EmailsService } from "./services/emails.service";
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
 
 
 @NgModule({

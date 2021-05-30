@@ -47,6 +47,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 import { SubscribersComponent } from 'app/pages/subscribers/subscribers.component';
 import { ContactsComponent } from 'app/pages/contacts/contacts.component';
+import { ProductInfoComponent } from 'app/pages/product-info/product-info.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -87,7 +88,8 @@ import { ContactsComponent } from 'app/pages/contacts/contacts.component';
     LogsDetailComponent,
     SubscribersComponent,
     ContactsComponent,
-    ComplaintResponseComponent
+    ComplaintResponseComponent,
+    ProductInfoComponent
   ]
 })
 

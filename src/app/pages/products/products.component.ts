@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { callFilter, callUpdateLink } from 'app/functions/openDialog';
 import { Product } from 'app/interface/product';
 import { InteractionService } from 'app/services/interaction.service';
@@ -20,7 +21,8 @@ export class ProductsComponent implements OnInit,OnDestroy {
   filterOptions:{dateCreateMAx:string,dateCreateMin:string} = {dateCreateMAx:new Date().toISOString(),dateCreateMin:new Date().toISOString()};
   constructor(private productService: ProductsService,
               private interactionService: InteractionService,
-              private matDialog: MatDialog) { }
+              private matDialog: MatDialog,
+              private router: Router) { }
 
 
   ngOnInit(): void {
@@ -52,6 +54,11 @@ export class ProductsComponent implements OnInit,OnDestroy {
   openImageInput(selectedIndex:number) {
     this.selectedIndex = selectedIndex;
     this.files.nativeElement.click();
+  }
+
+  goProductInfo(product: Product) {
+    this.router.createUrlTree(['/product-info', {productObj: JSON.stringify(product)}]);
+    window.open(`/#/product-info/${product.productId}`, '_blank')
   }
 
   selectedImage(event): void {
