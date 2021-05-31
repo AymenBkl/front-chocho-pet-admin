@@ -5,5 +5,6 @@ export interface Product {
   productBadge:string;
   images:[{src:string}];
   createdAt:string;
+  tableProduct:{};
   description:any[];
 }

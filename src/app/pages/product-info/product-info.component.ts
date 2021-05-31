@@ -17,6 +17,7 @@ export class ProductInfoComponent implements OnInit {
 
   product: Product;
   formDescriptionProduct = [];
+  tableDescriptionProduct = [];
   selectOption = [];
   selectedValue = 'url';
   header = new FormControl('', [Validators.required]);
@@ -40,12 +41,17 @@ export class ProductInfoComponent implements OnInit {
             let formFields = productDescription;
             this.addAnotherForm(formFields)
           })
-
       }
       else if (this.product && (!this.product.description || (this.product.description && this.product.description.length == 0))) {
         this.initFirstForm(1);
       }
 
+      if (this.product && this.product.tableProduct){
+
+      }
+      else if (this.product && !this.product.tableProduct){
+        this.initTableProductDescription();
+      }
     });
   }
 
@@ -56,6 +62,9 @@ export class ProductInfoComponent implements OnInit {
     }
     else if (type == 'badge'){
       $(`#option-file-input-badge-${id}`).click();
+    }
+    else if (type == 'table-file'){
+      $(`#option-file-main-benifts-input`).click();
     }
   }
 
@@ -352,6 +361,35 @@ export class ProductInfoComponent implements OnInit {
         console.log($('#select-product-1').val());
       });
     })
+  }
+
+  initTableProductDescription(){
+    this.tableDescriptionProduct = [1]
+  }
+
+  addMainBeniftsInput() {
+    let tableLenght = this.tableDescriptionProduct.length;
+    this.tableDescriptionProduct.push(tableLenght + 1);
+  }
+
+  onChangeSelectMainBeniftsImage(value) {
+    if (value == 'url') {
+      $(`#option-url-main-benifts`).show();
+      $(`#option-file-main-benifts`).hide();
+    }
+    else if (value == 'file') {
+      $(`#option-url-main-benifts`).hide();
+      $(`#option-file-main-benifts`).show();
+    }
+  }
+
+  onChangeSelectMainBenifts(value){
+    if (value == 'none') {
+      $(`#mainBeniftsHolder`).hide();
+    }
+    else if (value == 'display') {
+      $(`#mainBeniftsHolder`).show();
+    }
   }
 
 
