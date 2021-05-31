@@ -141,6 +141,44 @@
         </mat-form-field>
       </div>
   </div>
+  <div class="col-12">
+    <mat-form-field appearance="fill" class="form-description-product-input">
+      <mat-label>Pick An Option Color </mat-label>
+      <mat-select id="selectOptionColor" (selectionChange)="onChangeSelectColor($event.value)">
+        <mat-option value="none">None</mat-option>
+        <mat-option value="display" >Display</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div id="colorHolder" class="options-select">
+    <div class="col-12">
+      <mat-form-field appearance="fill" class="form-description-product-input">
+        <mat-label>Pick An Option Color(Image Main)</mat-label>
+        <mat-select id="selectOptionBuy" (selectionChange)="onChangeSelectColorImage($event.value)">
+          <mat-option value="url">Url</mat-option>
+          <mat-option value="file" >File</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-12">
+      <div class="form-description-product-input options-select" id="option-file-color">
+        <mat-label>Pick file</mat-label>
+        <button (click)="openUploadFile('option-file-color-input','table-file')" mat-icon-button class="input-file-button" >
+          <mat-icon>image</mat-icon>
+         </button>
+        <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" id="option-file-color-input" style="display:none">
+        <span class="error" id="option-file-color-error">Please Put A File</span>
+      </div>
+
+    </div>
+    <div class="col-12">
+      <mat-form-field class="form-description-product-input options-select" id="option-url-color">
+        <mat-label>Enter Url</mat-label>
+        <input matInput placeholder="url" value="" type="url" id="option-url-color-input">
+        <span class="error" id="option-url-color-url">Please Enter  A Url</span>
+      </mat-form-field>
+    </div>
+</div>
       </div>
     </div>
   </div>
