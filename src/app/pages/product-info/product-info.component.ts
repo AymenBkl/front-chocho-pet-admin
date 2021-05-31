@@ -394,6 +394,17 @@ export class ProductInfoComponent implements OnInit {
     }
   }
 
+  onChangeSelectBuyImage(value) {
+    if (value == 'url') {
+      $(`#option-url-buy`).show();
+      $(`#option-file-buy`).hide();
+    }
+    else if (value == 'file') {
+      $(`#option-url-buy`).hide();
+      $(`#option-file-buy`).show();
+    }
+  }
+
   onChangeSelectMainBenifts(value){
     if (value == 'none') {
       $(`#mainBeniftsHolder`).hide();
@@ -411,6 +422,17 @@ export class ProductInfoComponent implements OnInit {
       $(`#sizeChartHolder`).show();
     }
   }
+
+  onChangeSelectBuy(value){
+    if (value == 'none') {
+      $(`#buyHolder`).hide();
+    }
+    else if (value == 'display') {
+      $(`#buyHolder`).show();
+    }
+  }
+
+
 
 
 }
