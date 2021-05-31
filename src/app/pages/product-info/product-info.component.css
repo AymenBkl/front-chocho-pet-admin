@@ -116,4 +116,13 @@
     font-size: 50px !important;
 }
 
+.input-file-button {
+  width: 90%;
+  text-align: center;
+}
+
+.input-file-button:focus{
+  outline: none;
+}
+
 

@@ -18,6 +18,7 @@ export class ProductInfoComponent implements OnInit {
   product: Product;
   formDescriptionProduct = [];
   selectOption = [];
+  selectedValue = 'url';
   header = new FormControl('', [Validators.required]);
   constructor(private route: ActivatedRoute,
     private productService: ProductsService,
@@ -48,8 +49,14 @@ export class ProductInfoComponent implements OnInit {
     });
   }
 
-  openUploadFile(id){
-    $(`#selectOptionErrorBadge-${id}`).click();
+  openUploadFile(id,type){
+    if (type == 'main'){
+      $(`#option-file-input-${id}`).click();
+
+    }
+    else if (type == 'badge'){
+      $(`#option-file-input-badge-${id}`).click();
+    }
   }
 
   initFirstForm(formNumber: number,formField = {header:'',description:'',imageURL:'',imageBadgeURL:''}) {
@@ -158,7 +165,7 @@ export class ProductInfoComponent implements OnInit {
         let fileOption = $(`#option-file-input-${productForm.idFields['option-file-input']}`).prop('files');
         let urlOption = $(`#option-url-input-${productForm.idFields['option-url-input']}`).val();
         console.log(fileOption.length)
-        if (!selecOption) {
+        if (!selecOption && productForm.formField.imageURL == '') {
           $(`#selectOptionError-${productForm.idFields['selectOptionError']}`).show();
         }
         else {
@@ -188,7 +195,7 @@ export class ProductInfoComponent implements OnInit {
         let fileOptionBadge = $(`#option-file-input-badge-${productForm.idFields['option-file-input-badge']}`).prop('files');
         let urlOptionBadge = $(`#option-url-input-badge-${productForm.idFields['option-url-input-badge']}`).val();
         console.log(fileOptionBadge.length)
-        if (!selecOptionBadge) {
+        if (!selecOptionBadge && productForm.formField.imageBadgeURL == '') {
           $(`#selectOptionErrorBadge-${productForm.idFields['selectOptionErrorBadge']}`).show();
         }
         else {
