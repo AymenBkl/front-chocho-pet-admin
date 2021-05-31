@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from 'app/interface/product';
 import { ImgbbService } from 'app/services/imgbb.service';
 import { InteractionService } from 'app/services/interaction.service';
+import { ProductsService } from 'app/services/products.service';
 import { StorageService } from 'app/services/storage.service';
 import * as $ from "jquery";
 
@@ -19,6 +20,7 @@ export class ProductInfoComponent implements OnInit {
   selectOption = [];
   header = new FormControl('', [Validators.required]);
   constructor(private route: ActivatedRoute,
+    private productService: ProductsService,
     private storageService: StorageService,
     private imgbbService: ImgbbService,
     private interactionService: InteractionService) { }
@@ -224,6 +226,25 @@ export class ProductInfoComponent implements OnInit {
           productDescription.imageURL = result;
           this.interactionService.closeToaster(id);
           this.interactionService.displayToaster('Image Uploaded Successfuly','success','Uploaded');
+          if (productDescription.imageBadge){
+            let id = this.interactionService.displayToaster('Uploading Image Badge','loading','Upload');
+            this.imgbbService.uploadImage(productDescription.imageBadge[0])
+            .then((result) => {
+              productDescription.imageBadgeURL = result;
+              this.interactionService.closeToaster(id);
+              this.interactionService.displayToaster('Image Uploaded Badge Successfuly','success','Uploaded');
+              this.saveProductDescription(productDescription);
+            })
+            .catch((err) => {
+              this.interactionService.closeToaster(id);
+              this.interactionService.displayToaster('Erro Uploading Image','error','Error');
+              delete productDescription.imageBadgeURL;
+            })
+        }
+        else {
+          productDescription.imageBadgeURL = productDescription.urlBadge;
+          this.saveProductDescription(productDescription);
+        }
         })
         .catch((err) => {
           this.interactionService.closeToaster(id);
@@ -231,24 +252,46 @@ export class ProductInfoComponent implements OnInit {
           delete productDescription.imageURL;
         })
     }
-    if (productDescription.imageBadge){
-      let id = this.interactionService.displayToaster('Uploading Image Badge','loading','Upload');
-      this.imgbbService.uploadImage(productDescription.imageBadge[0])
-      .then((result) => {
-        productDescription.imageBadgeURL = result;
-        this.interactionService.closeToaster(id);
+    else {
+      productDescription.imageURL = productDescription.url;
+      if (productDescription.imageBadge){
+        let id = this.interactionService.displayToaster('Uploading Image Badge','loading','Upload');
+        this.imgbbService.uploadImage(productDescription.imageBadge[0])
+        .then((result) => {
+          productDescription.imageBadgeURL = result;
+          this.interactionService.closeToaster(id);
           this.interactionService.displayToaster('Image Uploaded Badge Successfuly','success','Uploaded');
-      })
-      .catch((err) => {
-        this.interactionService.closeToaster(id);
-        this.interactionService.displayToaster('Erro Uploading Image','error','Error');
-        delete productDescription.imageBadgeURL;
-      })
-  }
+          this.saveProductDescription(productDescription);
+        })
+        .catch((err) => {
+          this.interactionService.closeToaster(id);
+          this.interactionService.displayToaster('Erro Uploading Image','error','Error');
+          delete productDescription.imageBadgeURL;
+        })
+    }
+    else {
+      productDescription.imageBadgeURL = productDescription.urlBadge;
+      this.saveProductDescription(productDescription);
+    }
+    }
   })
   }
 
-  saveProductDescription(productForm) {
+  saveProductDescription(productDescription) {
+    let id = this.interactionService.displayToaster('Saving Description','loading','Saving');
+    this.productService.saveDescription(productDescription,this.product._id,this.product.productId)
+      .then((result:any) => {
+        this.interactionService.closeToaster(id);
+        if (result && result != false){
+          this.interactionService.displayToaster('Description Saved Succesfully','success','Saved');
+        }
+        else {
+          this.interactionService.displayToaster('Something Went Wrong !','error','ERROR');
+        }
+      })
+      .catch(err => {
+        this.interactionService.displayToaster('Something Went Wrong !','error','ERROR');
+      })
 
   }
 
