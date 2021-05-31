@@ -14,8 +14,13 @@ export class InterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const authToken = this.storageService.getToken();
-    console.log(authToken);
-    const authReq = req.clone({ headers: req.headers.set('Authorization', 'bearer ' + authToken) });
+    let authReq;
+    if (!req.url.includes('https://api.imgbb.com')){
+      authReq = req.clone({ headers: req.headers.set('Authorization', 'bearer ' + authToken) });
+    }
+    else {
+      authReq = req;
+    }
     console.log(authReq)
       return next.handle(authReq);
   }
@@ -30,6 +35,8 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const storageService = this.inj.get(StorageService);
     const authToken = this.storageService.getToken();
+    console.log(req.url);
+
     return next
       .handle(req)
       .pipe(tap((event: HttpEvent<any>) => {

@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'app/interface/product';
+import { ImgbbService } from 'app/services/imgbb.service';
+import { InteractionService } from 'app/services/interaction.service';
 import { StorageService } from 'app/services/storage.service';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-product-info',
@@ -16,7 +19,9 @@ export class ProductInfoComponent implements OnInit {
   selectOption = [];
   header = new FormControl('', [Validators.required]);
   constructor(private route: ActivatedRoute,
-    private storageService: StorageService) { }
+    private storageService: StorageService,
+    private imgbbService: ImgbbService,
+    private interactionService: InteractionService) { }
 
   ngOnInit(): void {
     this.getCurrentProduct();
@@ -205,8 +210,45 @@ export class ProductInfoComponent implements OnInit {
     })
     console.log(data.length);
     if (lenghtActive == data.length){
-      console.log('true');
+      this.uploadImages(data);
     }
+
+  }
+
+  uploadImages(productsDescription){
+    productsDescription.map((productDescription) => {
+      if (productDescription.image){
+        let id = this.interactionService.displayToaster('Uploading Image','loading','Upload');
+        this.imgbbService.uploadImage(productDescription.image[0])
+        .then((result) => {
+          productDescription.imageURL = result;
+          this.interactionService.closeToaster(id);
+          this.interactionService.displayToaster('Image Uploaded Successfuly','success','Uploaded');
+        })
+        .catch((err) => {
+          this.interactionService.closeToaster(id);
+          this.interactionService.displayToaster('Erro Uploading Image','error','Error');
+          delete productDescription.imageURL;
+        })
+    }
+    if (productDescription.imageBadge){
+      let id = this.interactionService.displayToaster('Uploading Image Badge','loading','Upload');
+      this.imgbbService.uploadImage(productDescription.imageBadge[0])
+      .then((result) => {
+        productDescription.imageBadgeURL = result;
+        this.interactionService.closeToaster(id);
+          this.interactionService.displayToaster('Image Uploaded Badge Successfuly','success','Uploaded');
+      })
+      .catch((err) => {
+        this.interactionService.closeToaster(id);
+        this.interactionService.displayToaster('Erro Uploading Image','error','Error');
+        delete productDescription.imageBadgeURL;
+      })
+  }
+  })
+  }
+
+  saveProductDescription(productForm) {
 
   }
 
