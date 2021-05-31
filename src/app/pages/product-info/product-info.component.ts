@@ -35,6 +35,10 @@ export class ProductInfoComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.product = this.storageService.getProduct(params['id']);
       if (this.product && this.product.description && this.product.description.length > 0) {
+          this.product.description.map((productDescription) => {
+            let formFields = productDescription;
+            this.addAnotherForm(formFields)
+          })
 
       }
       else if (this.product && (!this.product.description || (this.product.description && this.product.description.length == 0))) {
@@ -44,7 +48,11 @@ export class ProductInfoComponent implements OnInit {
     });
   }
 
-  initFirstForm(formNumber: number) {
+  openUploadFile(id){
+    $(`#selectOptionErrorBadge-${id}`).click();
+  }
+
+  initFirstForm(formNumber: number,formField = {header:'',description:'',imageURL:'',imageBadgeURL:''}) {
     this.formDescriptionProduct = [
       {
         idFields: {
@@ -73,12 +81,13 @@ export class ProductInfoComponent implements OnInit {
           selectOptionError: formNumber,
 
         },
-        status: "active"
+        status: "active",
+        formField:formField
       }
     ]
   }
 
-  addAnotherForm() {
+  addAnotherForm(formField = {header:'',description:'',imageURL:'',imageBadgeURL:'',status:'active'}) {
     let lenghtFormDescriptionProduct = this.formDescriptionProduct.length + 1;
     this.formDescriptionProduct.push({
       idFields: {
@@ -106,10 +115,10 @@ export class ProductInfoComponent implements OnInit {
         descriptionProductError: lenghtFormDescriptionProduct,
         selectOptionError: lenghtFormDescriptionProduct,
       },
-      status: "active"
-
+      status: formField.status,
+      formField:formField
     })
-  }
+}
 
   deleteFormProduct(index: number) {
     this.formDescriptionProduct[index - 1].status = 'deleted';
@@ -125,6 +134,7 @@ export class ProductInfoComponent implements OnInit {
     this.formDescriptionProduct.map(productForm => {
       if (productForm.status == 'active') {
         let initData :any = {};
+        initData._id = productForm.formField._id;
         let productHeaderValue = $(`#header-input-${productForm.idFields['header-input']}`).val();
         if (!productHeaderValue) {
           $(`#headerProductError-${productForm.idFields['headerProductError']}`).show();
@@ -204,7 +214,7 @@ export class ProductInfoComponent implements OnInit {
 
         }
         console.log(initData)
-        if (Object.keys(initData).length == 4){
+        if (Object.keys(initData).length == 5){
           data.push(initData);
         }
 
@@ -214,6 +224,15 @@ export class ProductInfoComponent implements OnInit {
     if (lenghtActive == data.length){
       this.uploadImages(data);
     }
+
+    this.formDescriptionProduct.filter(formProduct => formProduct.status == 'deleted').map(formProduct => {
+      console.log(formProduct)
+      let newFormProduct = {
+        _id :formProduct.formField._id,
+        status:'deleted'
+      }
+      this.saveProductDescription(newFormProduct);
+    })
 
   }
 
