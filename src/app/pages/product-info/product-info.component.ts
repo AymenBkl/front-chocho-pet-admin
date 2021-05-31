@@ -64,7 +64,7 @@ export class ProductInfoComponent implements OnInit {
       $(`#option-file-input-badge-${id}`).click();
     }
     else if (type == 'table-file'){
-      $(`#option-file-main-benifts-input`).click();
+      $(`#${id}`).click();
     }
   }
 
@@ -383,12 +383,32 @@ export class ProductInfoComponent implements OnInit {
     }
   }
 
+  onChangeSelectSizeChartImage(value) {
+    if (value == 'url') {
+      $(`#option-url-size-chart`).show();
+      $(`#option-file-size-chart`).hide();
+    }
+    else if (value == 'file') {
+      $(`#option-url-size-chart`).hide();
+      $(`#option-file-size-chart`).show();
+    }
+  }
+
   onChangeSelectMainBenifts(value){
     if (value == 'none') {
       $(`#mainBeniftsHolder`).hide();
     }
     else if (value == 'display') {
       $(`#mainBeniftsHolder`).show();
+    }
+  }
+
+  onChangeSelectSizeChart(value){
+    if (value == 'none') {
+      $(`#sizeChartHolder`).hide();
+    }
+    else if (value == 'display') {
+      $(`#sizeChartHolder`).show();
     }
   }
 
