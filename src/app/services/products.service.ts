@@ -121,6 +121,24 @@ export class ProductsService {
     });
   }
 
+  saveProductDescriptionTable(dataToSave:any,productId:string) {
+    return new Promise((resolve, reject) => {
+      this.httpClient.put<ProductResponse>(environment.url + 'products/updateproducttabledescription',{dataToSave:dataToSave,productId:productId})
+        .subscribe(response => {
+          console.log(response);
+          if (response.status === 200) {
+            resolve(response);
+          }
+          else {
+            resolve(false);
+          }
+        }, err => {
+          console.log(err);
+          reject(this.httpErrorHandlerService.handleError(err));
+        });
+    });
+  }
+
 
 
   onDestroy() {

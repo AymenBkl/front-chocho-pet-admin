@@ -419,7 +419,7 @@ this.submitTable();
     }
     else if (data.imageUrlMain) {
       let dataToSave = {mainBenifts:data.valMainBenifts,imageMainBeniftsUrl:data.imageUrlMain};
-      console.log("Saving : ",dataToSave);
+      this.saveDescriptionTableProduct(dataToSave);
     }
 
     if (data.imageColor) {
@@ -427,14 +427,14 @@ this.submitTable();
     }
     else if (data.imageColorUrl){
       let dataToSave = {imageColorUrl:data.imageColorUrl};
-          console.log("Saving : ",dataToSave);
+      this.saveDescriptionTableProduct(dataToSave);
     }
     if (data.imageBuy) {
       this.uploadImagesTable(data.imageBuy,'buy');
     }
     else if (data.imageUrlBuy) {
       let dataToSave = {imageBuyUrl:data.imageUrlBuy};
-          console.log("Saving : ",dataToSave);
+      this.saveDescriptionTableProduct(dataToSave);
     }
 
     if (data.imageSizeChart) {
@@ -442,7 +442,7 @@ this.submitTable();
     }
     else if (data.imageUrlSizeChart) {
       let dataToSave = {imageSizeChartUrl:data.imageUrlSizeChart};
-          console.log("Saving : ",dataToSave);
+      this.saveDescriptionTableProduct(dataToSave);
     }
   }
 
@@ -455,23 +455,41 @@ this.submitTable();
         this.interactionService.displayToaster('Image Uploaded Succesfully','success','Uploaded');
         if (field == 'mainBenifts') {
           let dataToSave = {mainBenifts:text,imageMainBeniftsUrl:result};
-          console.log("Saving : ",dataToSave);
+          this.saveDescriptionTableProduct(dataToSave);
         }
         else if (field == 'color'){
           let dataToSave = {imageColorUrl:result};
-          console.log("Saving : ",dataToSave);
+          this.saveDescriptionTableProduct(dataToSave);
         }
         else if (field == 'buy'){
           let dataToSave = {imageBuyUrl:result};
-          console.log("Saving : ",dataToSave);
+          this.saveDescriptionTableProduct(dataToSave);
         }
         else if (field == 'sizechart'){
           let dataToSave = {imageSizeChartUrl:result};
-          console.log("Saving : ",dataToSave);
+          this.saveDescriptionTableProduct(dataToSave);
         }
       })
       .catch(err => {
         this.interactionService.displayToaster('Error While Upload Image','success','ERROR');
+      })
+  }
+
+  saveDescriptionTableProduct(dataToSave:any) {
+    let id = this.interactionService.displayToaster('Saving Product Description Table','loading','Saving');
+    this.productService.saveProductDescriptionTable(dataToSave,this.product.productId)
+      .then((result) => {
+        this.interactionService.closeToaster(id);
+        if (result && result != false){
+          this.interactionService.displayToaster('Product Description Table Saved Successfully','success','SAVED');
+        }
+        else {
+          this.interactionService.displayToaster('Error While Saving Product Table Description','error','ERROR');
+        }
+      })
+      .catch(err => {
+        this.interactionService.closeToaster(id);
+        this.interactionService.displayToaster('Error While Saving Product Table Description','error','ERROR');
       })
   }
 
