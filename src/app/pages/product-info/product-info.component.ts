@@ -39,7 +39,7 @@ export class ProductInfoComponent implements OnInit {
       if (this.product && this.product.description && this.product.description.length > 0) {
           this.product.description.map((productDescription) => {
             let formFields = productDescription;
-            this.addAnotherForm(formFields)
+            this.addAnotherForm(formFields);
           })
       }
       else if (this.product && (!this.product.description || (this.product.description && this.product.description.length == 0))) {
@@ -105,7 +105,11 @@ export class ProductInfoComponent implements OnInit {
 
   addAnotherForm(formField = {header:'',description:'',imageURL:'',imageBadgeURL:'',status:'active'}) {
     let lenghtFormDescriptionProduct = this.formDescriptionProduct.length + 1;
+    let selectOption = {mainImageOption:formField.imageURL == '' ? 'none' : 'url',badgeImageOption:formField.imageBadgeURL == '' ? 'none' : 'url'};
+
+
     this.formDescriptionProduct.push({
+      selectOption: selectOption,
       idFields: {
         cardId: lenghtFormDescriptionProduct,
         selectOptionImageId: lenghtFormDescriptionProduct,
@@ -134,6 +138,16 @@ export class ProductInfoComponent implements OnInit {
       status: formField.status,
       formField:formField
     })
+    setTimeout(() => {
+      if (formField.imageURL != '') {
+        console.log('here',`#option-url-${lenghtFormDescriptionProduct}`)
+        $(`#option-url-${lenghtFormDescriptionProduct}`).show();
+        $(`#option-url-${lenghtFormDescriptionProduct}`).fadeIn(2000);
+      }
+      if (formField.imageBadgeURL != '') {
+        $(`#option-url-badge-${lenghtFormDescriptionProduct}`).show();
+      }
+    },500)
 }
 
   deleteFormProduct(index: number) {
@@ -230,8 +244,9 @@ export class ProductInfoComponent implements OnInit {
 
         }
         console.log(initData)
-        if (Object.keys(initData).length == 5){
-          data.push(initData);
+        initData.status = 'active';
+        if (Object.keys(initData).length == 6){
+          this.uploadImages([initData]);
         }
 
       }
@@ -583,12 +598,12 @@ this.submitTable();
   }
 
   onChangeSelectBadge(event, id) {
-    console.log(event, `#option-${event}-${id}`);
+    console.log(event, `#option-${event}-${id}`,id);
     if (event == 'file') {
-      $(`#option-url-badge-${id}`).hide();
+      $(`#option-url-${id}`).hide();
     }
     else if (event == 'url') {
-      $(`#option-file-badge-${id}`).hide();
+      $(`#option-file-${id}`).hide();
 
     }
     $(`#option-${event}-${id}`).fadeIn(2000);
