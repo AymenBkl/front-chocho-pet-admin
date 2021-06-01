@@ -145,7 +145,7 @@ export class ProductInfoComponent implements OnInit {
   }
 
   submitForms() {
-    let data = [];
+    /**let data = [];
     let lenghtActive = this.formDescriptionProduct.filter(formProduct => formProduct.status == 'active').length;
     this.formDescriptionProduct.map(productForm => {
       if (productForm.status == 'active') {
@@ -249,7 +249,230 @@ export class ProductInfoComponent implements OnInit {
       }
       this.saveProductDescription(newFormProduct);
     })
+**/
+this.submitTable();
+  }
 
+  submitTable() {
+    let data : any = {};
+    let numberOfDataValid = 0;
+    let selectOptionMain = $(`#selectOptionMainBenifts`).text();
+    if (selectOptionMain && selectOptionMain == 'Display') {
+      numberOfDataValid += 2;
+      let valMainBenifts = $('#mainbeniftsinput').val();
+      if (valMainBenifts){
+        data.valMainBenifts = valMainBenifts;
+        $('#mainbeniftsinput-error').hide();
+      }
+      else {
+        $('#mainbeniftsinput-error').show();
+      }
+      let selectOptionMainImage = $(`#selectOptionMainBeniftsImage`).text();
+      if (selectOptionMainImage){
+        $('#selectOptionMainBeniftsErrorImage').hide();
+        if (selectOptionMainImage == 'Url'){
+          let valUrl = $('#option-url-main-benifts-input').val();
+          if (valUrl) {
+
+            data.imageUrlMain = valUrl;
+            $('#option-url-main-benifts-url').hide();
+          }
+          else {
+            $('#option-url-main-benifts-url').show();
+          }
+        }
+        else if (selectOptionMainImage == 'File'){
+          let fileOption = $('#option-file-main-benifts-input').prop('files');
+          if (fileOption && fileOption.length > 0){
+            data.image = fileOption[0];
+
+            $('#option-file-main-benifts-error').hide();
+          }
+          else {
+            $('#option-file-main-benifts-error').show();
+          }
+        }
+      }
+      else {
+        $('#selectOptionMainBeniftsErrorImage').show();
+      }
+    }
+    else {
+      numberOfDataValid = 0;
+      delete data.valMainBenifts;
+      delete data.image;
+      delete data.imageUrlMain;
+    }
+    let selectOptionSizeChart = $(`#selectOptionSizeChart`).text();
+    if (selectOptionSizeChart && selectOptionSizeChart == 'Display'){
+      let selectionOptionSizeChartImage = $('#selectOptionSizeChartMain').text();
+      numberOfDataValid += 1;
+      if (selectionOptionSizeChartImage){
+        $('#selectOptionSizeChartErrorImage').hide();
+        if (selectionOptionSizeChartImage == 'Url') {
+          let urlVal = $('#option-url-size-chart-input').val();
+          if (urlVal){
+            data.imageUrlSizeChart = urlVal;
+            $('#option-url-size-chart-url').hide();
+          }
+          else {
+            $('#option-url-size-chart-url').show();
+          }
+        }
+        else if (selectionOptionSizeChartImage == 'File'){
+          let fileOption = $('#option-file-size-chart-input').prop('files');
+          if (fileOption && fileOption.length > 0){
+            $('#option-file-size-chart-error').hide();
+            data.imageSizeChart = fileOption[0];
+          }
+          else {
+            $('#option-file-size-chart-error').show();
+          }
+        }
+      }
+      else {
+        $('#selectOptionSizeChartErrorImage').show();
+      }
+    } else {
+      delete data.imageUrlSizeChart;
+      delete data.imageSizeChart;
+    }
+
+    let selectOptionBuy = $(`#selectOptionBuy`).text();
+    if (selectOptionBuy && selectOptionBuy == 'Display'){
+      let selectionOptionSizeChartImage = $('#selectOptionBuyMain').text();
+      numberOfDataValid += 1;
+      if (selectionOptionSizeChartImage){
+        $('#selectBuyErrorImage').hide();
+        if (selectionOptionSizeChartImage == 'Url') {
+          let urlVal = $('#option-url-buy-input').val();
+          if (urlVal){
+            data.imageUrlBuy = urlVal;
+            $('#option-url-buy-url').hide();
+          }
+          else {
+            $('#option-url-buy-url').show();
+          }
+        }
+        else if (selectionOptionSizeChartImage == 'File'){
+          let fileOption = $('#option-file-buy-input').prop('files');
+          if (fileOption && fileOption.length > 0){
+            $('#option-file-buy-error').hide();
+            data.imageBuy = fileOption[0];
+          }
+          else {
+            $('#option-file-buy-error').show();
+          }
+        }
+      }
+      else {
+        $('#selectBuyErrorImage').show();
+      }
+    } else {
+      delete data.imageUrlBuy;
+      delete data.imageBuy;
+    }
+    let selectOptionColor = $(`#selectOptionColor`).text();
+    if (selectOptionColor && selectOptionColor == 'Display'){
+      let selectionOptionSizeChartImage = $('#selectOptionColorMain').text();
+      numberOfDataValid += 1;
+      if (selectionOptionSizeChartImage){
+        $('#selectColorErrorImage').hide();
+        if (selectionOptionSizeChartImage == 'Url') {
+          let urlVal = $('#option-url-color-input').val();
+          if (urlVal){
+            data.imageColorUrl = urlVal;
+            $('#option-url-color-url').hide();
+          }
+          else {
+            $('#option-url-color-url').show();
+          }
+        }
+        else if (selectionOptionSizeChartImage == 'File'){
+          let fileOption = $('#option-file-color-input').prop('files');
+          if (fileOption && fileOption.length > 0){
+            $('#option-file-color-error').hide();
+            data.imageColor = fileOption[0];
+          }
+          else {
+            $('#option-file-color-error').show();
+          }
+        }
+      }
+      else {
+        $('#selectColorErrorImage').show();
+      }
+    } else {
+      delete data.imageColor;
+      delete data.imageColorUrl;
+    }
+    console.log(numberOfDataValid);
+    console.log(data);
+    if (Object.keys(data).length == numberOfDataValid){
+      this.checkImageData(data);
+    }
+  }
+
+  checkImageData(data) {
+    if (data.image){
+      this.uploadImagesTable(data.image,'mainBenifts',data.valMainBenifts);
+    }
+    else if (data.imageUrlMain) {
+      let dataToSave = {mainBenifts:data.valMainBenifts,imageMainBeniftsUrl:data.imageUrlMain};
+      console.log("Saving : ",dataToSave);
+    }
+
+    if (data.imageColor) {
+      this.uploadImagesTable(data.imageColor,'color');
+    }
+    else if (data.imageColorUrl){
+      let dataToSave = {imageColorUrl:data.imageColorUrl};
+          console.log("Saving : ",dataToSave);
+    }
+    if (data.imageBuy) {
+      this.uploadImagesTable(data.imageBuy,'buy');
+    }
+    else if (data.imageUrlBuy) {
+      let dataToSave = {imageBuyUrl:data.imageUrlBuy};
+          console.log("Saving : ",dataToSave);
+    }
+
+    if (data.imageSizeChart) {
+      this.uploadImagesTable(data.imageSizeChart,'sizechart');
+    }
+    else if (data.imageUrlSizeChart) {
+      let dataToSave = {imageSizeChartUrl:data.imageUrlSizeChart};
+          console.log("Saving : ",dataToSave);
+    }
+  }
+
+  uploadImagesTable(file,field,text = '') {
+    let id = this.interactionService.displayToaster('Uploading Icon Main Benifts','loading','Upload');
+    console.log(field,id);
+    this.imgbbService.uploadImage(file)
+      .then((result) => {
+        this.interactionService.closeToaster(id);
+        this.interactionService.displayToaster('Image Uploaded Succesfully','success','Uploaded');
+        if (field == 'mainBenifts') {
+          let dataToSave = {mainBenifts:text,imageMainBeniftsUrl:result};
+          console.log("Saving : ",dataToSave);
+        }
+        else if (field == 'color'){
+          let dataToSave = {imageColorUrl:result};
+          console.log("Saving : ",dataToSave);
+        }
+        else if (field == 'buy'){
+          let dataToSave = {imageBuyUrl:result};
+          console.log("Saving : ",dataToSave);
+        }
+        else if (field == 'sizechart'){
+          let dataToSave = {imageSizeChartUrl:result};
+          console.log("Saving : ",dataToSave);
+        }
+      })
+      .catch(err => {
+        this.interactionService.displayToaster('Error While Upload Image','success','ERROR');
+      })
   }
 
   uploadImages(productsDescription){
