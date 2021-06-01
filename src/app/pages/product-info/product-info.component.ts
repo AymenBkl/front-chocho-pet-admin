@@ -17,8 +17,7 @@ export class ProductInfoComponent implements OnInit {
 
   product: Product;
   formDescriptionProduct = [];
-  tableDescriptionProduct = [];
-  selectOption = [];
+  tableDescriptionProduct : {imageSizeChartUrl:string,imageBuyUrl:string,imageColorUrl:string,mainBenifts:string,imageMainBeniftsUrl:string};
   selectedValue = 'url';
   header = new FormControl('', [Validators.required]);
   constructor(private route: ActivatedRoute,
@@ -46,10 +45,10 @@ export class ProductInfoComponent implements OnInit {
         this.initFirstForm(1);
       }
 
-      if (this.product && this.product.tableProduct){
-
+      if (this.product && this.product.tableDescription){
+        this.initTableProductDescription(this.product.tableDescription);
       }
-      else if (this.product && !this.product.tableProduct){
+      else if (this.product && !this.product.tableDescription){
         this.initTableProductDescription();
       }
     });
@@ -145,7 +144,7 @@ export class ProductInfoComponent implements OnInit {
   }
 
   submitForms() {
-    /**let data = [];
+    let data = [];
     let lenghtActive = this.formDescriptionProduct.filter(formProduct => formProduct.status == 'active').length;
     this.formDescriptionProduct.map(productForm => {
       if (productForm.status == 'active') {
@@ -249,7 +248,6 @@ export class ProductInfoComponent implements OnInit {
       }
       this.saveProductDescription(newFormProduct);
     })
-**/
 this.submitTable();
   }
 
@@ -604,14 +602,11 @@ this.submitTable();
     })
   }
 
-  initTableProductDescription(){
-    this.tableDescriptionProduct = [1]
+  initTableProductDescription(value = {imageSizeChartUrl:'',imageBuyUrl:'',imageColorUrl:'',mainBenifts:'',imageMainBeniftsUrl:''}){
+    this.tableDescriptionProduct = value;
   }
 
-  addMainBeniftsInput() {
-    let tableLenght = this.tableDescriptionProduct.length;
-    this.tableDescriptionProduct.push(tableLenght + 1);
-  }
+
 
   onChangeSelectMainBeniftsImage(value) {
     if (value == 'url') {
