@@ -32,6 +32,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EmailsService } from "./services/emails.service";
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { ImgbbService } from "./services/imgbb.service";
+import { ProductdescriptionviewerComponent } from './components/productdescriptionviewer/productdescriptionviewer.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ImgbbService } from "./services/imgbb.service";
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
+    ProductdescriptionviewerComponent,
   ],
   imports: [
     BrowserAnimationsModule,

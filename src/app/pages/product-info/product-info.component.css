@@ -125,4 +125,13 @@
   outline: none;
 }
 
+.btn-view {
+  right:140px;
+  background-color: #5cb85c;
+}
+
+.btn-view .mat-icon {
+  color:white;
+}
+
 

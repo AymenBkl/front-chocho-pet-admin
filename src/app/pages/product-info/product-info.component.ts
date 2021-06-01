@@ -158,7 +158,7 @@ export class ProductInfoComponent implements OnInit {
     this.formDescriptionProduct[index - 1].status = 'active';
   }
 
-  submitForms() {
+  submitForms(submit:boolean) {
     let data = [];
     let lenghtActive = this.formDescriptionProduct.filter(formProduct => formProduct.status == 'active').length;
     this.formDescriptionProduct.map(productForm => {
@@ -246,16 +246,16 @@ export class ProductInfoComponent implements OnInit {
         console.log(initData)
         initData.status = 'active';
         if (Object.keys(initData).length == 6){
-          this.uploadImages([initData]);
+          data.push(initData);
+          if (submit){
+            this.uploadImages([initData]);
+          }
         }
 
       }
     })
-    console.log(data.length);
-    if (lenghtActive == data.length){
-      this.uploadImages(data);
-    }
-
+    let viewData :any = {};
+    viewData.productDescription = data;
     this.formDescriptionProduct.filter(formProduct => formProduct.status == 'deleted').map(formProduct => {
       console.log(formProduct)
       let newFormProduct = {
@@ -264,10 +264,11 @@ export class ProductInfoComponent implements OnInit {
       }
       this.saveProductDescription(newFormProduct);
     })
-this.submitTable();
+   viewData.tableProductDescription = this.submitTable(submit);
+   console.log('view',viewData)
   }
 
-  submitTable() {
+  submitTable(submit:boolean) {
     let data : any = {};
     let numberOfDataValid = 0;
     let selectOptionMain = $(`#selectOptionMainBenifts`).text();
@@ -422,9 +423,10 @@ this.submitTable();
     }
     console.log(numberOfDataValid);
     console.log(data);
-    if (Object.keys(data).length == numberOfDataValid){
+    if (Object.keys(data).length == numberOfDataValid && submit){
       this.checkImageData(data);
     }
+    return data;
   }
 
   checkImageData(data) {
@@ -728,6 +730,8 @@ this.submitTable();
       $(`#colorHolder`).show();
     }
   }
+
+
 
 
 
