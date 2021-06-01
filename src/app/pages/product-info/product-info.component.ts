@@ -19,6 +19,7 @@ export class ProductInfoComponent implements OnInit {
   formDescriptionProduct = [];
   tableDescriptionProduct : {imageSizeChartUrl:string,imageBuyUrl:string,imageColorUrl:string,mainBenifts:string,imageMainBeniftsUrl:string};
   selectedValue = 'url';
+  selectOptionTableProduct = {displayMainBenifts:'none',displaySizeChart:'none',displayColor:'none',displayBuy:'none',displayMainBeniftsOption:'none',displaySizeChartOption:'none',displayColorOption:'none',displayBuyOption:'none'}
   header = new FormControl('', [Validators.required]);
   constructor(private route: ActivatedRoute,
     private productService: ProductsService,
@@ -604,6 +605,31 @@ this.submitTable();
 
   initTableProductDescription(value = {imageSizeChartUrl:'',imageBuyUrl:'',imageColorUrl:'',mainBenifts:'',imageMainBeniftsUrl:''}){
     this.tableDescriptionProduct = value;
+    if (this.tableDescriptionProduct.imageBuyUrl != ''){
+      this.selectOptionTableProduct.displayBuy = 'display';
+      this.selectOptionTableProduct.displayBuyOption = 'url';
+      $('#buyHolder').show();
+      $('#option-url-buy').show();
+    }
+    if (this.tableDescriptionProduct.imageColorUrl != ''){
+      this.selectOptionTableProduct.displayColor = 'display';
+      this.selectOptionTableProduct.displayColorOption = 'url';
+      $('#colorHolder').show();
+      $('#option-url-color').show();
+    }
+    if (this.tableDescriptionProduct.imageMainBeniftsUrl != ''){
+      this.selectOptionTableProduct.displayMainBenifts = 'display';
+      this.selectOptionTableProduct.displayMainBeniftsOption = 'url';
+      $('#mainBeniftsHolder').show();
+      $('#option-url-main-benifts').show();
+    }
+    if (this.tableDescriptionProduct.imageSizeChartUrl != '') {
+      this.selectOptionTableProduct.displaySizeChart = 'display';
+      this.selectOptionTableProduct.displaySizeChartOption = 'url';
+      $('#sizeChartHolder').show();
+      $('#option-url-size-chart').show();
+    }
+    console.log(this.selectOptionTableProduct);
   }
 
 

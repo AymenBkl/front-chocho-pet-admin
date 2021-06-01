@@ -23,7 +23,7 @@
         <div class="col-12">
           <mat-form-field appearance="fill" class="form-description-product-input">
             <mat-label>Pick An Option Main Benifts </mat-label>
-            <mat-select id="selectOptionMainBenifts" (selectionChange)="onChangeSelectMainBenifts($event.value)">
+            <mat-select id="selectOptionMainBenifts" (selectionChange)="onChangeSelectMainBenifts($event.value)" [(value)]='selectOptionTableProduct.displayMainBenifts'>
               <mat-option value="none">None</mat-option>
               <mat-option value="display" >Display</mat-option>
             </mat-select>
@@ -33,7 +33,7 @@
           <div class="col-12">
             <mat-form-field appearance="fill" class="form-description-product-input">
               <mat-label>Pick An Option Main Benifts(Image Main)</mat-label>
-              <mat-select id="selectOptionMainBeniftsImage" (selectionChange)="onChangeSelectMainBeniftsImage($event.value)">
+              <mat-select id="selectOptionMainBeniftsImage" (selectionChange)="onChangeSelectMainBeniftsImage($event.value)" [(value)]='selectOptionTableProduct.displayMainBeniftsOption'>
                 <mat-option value="url">Url</mat-option>
                 <mat-option value="file" >File</mat-option>
               </mat-select>
@@ -69,7 +69,7 @@
       <div class="col-12">
         <mat-form-field appearance="fill" class="form-description-product-input">
           <mat-label>Pick An Option Size Chart </mat-label>
-          <mat-select id="selectOptionSizeChart" (selectionChange)="onChangeSelectSizeChart($event.value)">
+          <mat-select id="selectOptionSizeChart" (selectionChange)="onChangeSelectSizeChart($event.value)" [(value)]='selectOptionTableProduct.displaySizeChart'>
             <mat-option value="none">None</mat-option>
             <mat-option value="display" >Display</mat-option>
           </mat-select>
@@ -79,7 +79,7 @@
         <div class="col-12">
           <mat-form-field appearance="fill" class="form-description-product-input">
             <mat-label>Pick An Option Size Chart(Image Main)</mat-label>
-            <mat-select id="selectOptionSizeChartMain" (selectionChange)="onChangeSelectSizeChartImage($event.value)">
+            <mat-select id="selectOptionSizeChartMain" (selectionChange)="onChangeSelectSizeChartImage($event.value)" [(value)]='selectOptionTableProduct.displaySizeChartOption'>
               <mat-option value="url">Url</mat-option>
               <mat-option value="file" >File</mat-option>
             </mat-select>
@@ -108,7 +108,7 @@
     <div class="col-12">
       <mat-form-field appearance="fill" class="form-description-product-input">
         <mat-label>Pick An Option Buy And Save </mat-label>
-        <mat-select id="selectOptionBuy" (selectionChange)="onChangeSelectBuy($event.value)">
+        <mat-select id="selectOptionBuy" (selectionChange)="onChangeSelectBuy($event.value)" [(value)]='selectOptionTableProduct.displayBuy'>
           <mat-option value="none">None</mat-option>
           <mat-option value="display" >Display</mat-option>
         </mat-select>
@@ -118,7 +118,7 @@
       <div class="col-12">
         <mat-form-field appearance="fill" class="form-description-product-input">
           <mat-label>Pick An Option Buy And Save(Image Main)</mat-label>
-          <mat-select id="selectOptionBuyMain" (selectionChange)="onChangeSelectBuyImage($event.value)">
+          <mat-select id="selectOptionBuyMain" (selectionChange)="onChangeSelectBuyImage($event.value)" [(value)]='selectOptionTableProduct.displayBuyOption'>
             <mat-option value="url">Url</mat-option>
             <mat-option value="file" >File</mat-option>
           </mat-select>
@@ -147,7 +147,7 @@
   <div class="col-12">
     <mat-form-field appearance="fill" class="form-description-product-input">
       <mat-label>Pick An Option Color </mat-label>
-      <mat-select id="selectOptionColor" (selectionChange)="onChangeSelectColor($event.value)">
+      <mat-select id="selectOptionColor" (selectionChange)="onChangeSelectColor($event.value)" [(value)]='selectOptionTableProduct.displayColor'>
         <mat-option value="none">None</mat-option>
         <mat-option value="display" >Display</mat-option>
       </mat-select>
@@ -157,7 +157,7 @@
     <div class="col-12">
       <mat-form-field appearance="fill" class="form-description-product-input">
         <mat-label>Pick An Option Color(Image Main)</mat-label>
-        <mat-select id="selectOptionColorMain" (selectionChange)="onChangeSelectColorImage($event.value)">
+        <mat-select id="selectOptionColorMain" (selectionChange)="onChangeSelectColorImage($event.value)" [(value)]='selectOptionTableProduct.displayColorOption'>
           <mat-option value="url">Url</mat-option>
           <mat-option value="file" >File</mat-option>
         </mat-select>
