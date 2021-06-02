@@ -1,0 +1,137 @@
+.card-img-holder {
+  text-align: center;
+    display: inline-block;
+    width: 20%;
+    padding: 50px;
+}
+
+.card-title-product {
+  text-align: center;
+    width: 70%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.product-holder {
+  width: 100%;
+  display: inline-block;
+  padding: 15px;
+}
+
+.date {
+  font-size: 15px;
+  color:gray;
+}
+
+.product-description-header {
+  width: 100%;
+  display: block;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+}
+
+.form-description-product-input {
+  width: 100%;
+  display: block;
+}
+
+.options-select {
+  display:none;
+}
+
+.header-delete-button {
+  width: 100%;
+  text-align: right;
+}
+
+.header-delete-button button{
+  color:red
+}
+
+.header-product-description-title {
+  font-size: 20px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-top: 50px;
+    color:white;
+}
+
+.header-delete-button button:focus{
+  outline: none;
+}
+
+.row-card {
+  background-color:  #283136;
+
+}
+
+.header-return-button {
+  width: 100%;
+  text-align: center;
+}
+
+
+.header-return-button button:focus{
+  outline: none;
+}
+
+.add-more-button button:focus {
+  outline:none;
+}
+
+.add-more-button {
+  padding-bottom: 10px;
+}
+
+
+
+.btn-sent-all {
+  position: fixed;
+    bottom: 49px;
+    right: 30px;
+    width: 100px;
+    height: 100px;
+}
+
+.btn-sent-all:focus {
+  outline:none;
+}
+
+.error {
+  font-size: 10px;
+  color: red;
+  margin-left: 30px;
+  display: none;
+}
+
+.btn-sent-all .mat-icon {
+  height: 50px !important;
+    width: 50px !important;
+    font-size: 50px !important;
+}
+
+.input-file-button {
+  width: 90%;
+  text-align: center;
+}
+
+.input-file-button:focus{
+  outline: none;
+}
+
+.btn-view {
+  right:140px;
+  background-color: #5cb85c;
+}
+
+.btn-view .mat-icon {
+  color:white;
+}
+
+

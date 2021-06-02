@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BestReviewsComponent implements OnInit {
 
+  bestReviewsForm:{mainImgUrl:'',descriptionReview:'',authorReview:'',status:''};
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
+  openUploadFile(id,type) {
+
+  }
+
+  onChangeSelect(event,id) {
+
+  }
 }
