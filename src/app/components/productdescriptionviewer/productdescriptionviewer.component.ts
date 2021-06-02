@@ -30,7 +30,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
         if (result && result != false) {
           this.storageService.saveProduct(result);
           this.product = result;
-          this.productDescriptionTotal = this.buildTabs();
+          this.productDescriptionTotal = this.buildTabs() + this.buildDescription();
         }
         else {
           this.interactionService.closeToast();
@@ -143,7 +143,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
       <a class="nav-link nav-product-item" id="color-tab" data-bs-toggle="tab" href="#color" data-toggle="tab"
            aria-controls="color" aria-selected="false">Color Chart </a>
   </li>`;
-      allElemets.contentElements += `div class="tab-pane fade " id="color" role="tabpanel" aria-labelledby="color">
+      allElemets.contentElements += `<div class="tab-pane fade " id="color" role="tabpanel" aria-labelledby="color">
       <img src="${this.product.tableDescription.imageColorUrl}">
 
   </div>`;
@@ -182,7 +182,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
               <img src="${productDescription.imageBadgeURL}">
               <h2 class="h3">${productDescription.header}</h2>
               <div class="content">
-                  <p>${description}</p>
+                  <p>${productDescription.description}</p>
               </div>
           </div>
       </div>`;

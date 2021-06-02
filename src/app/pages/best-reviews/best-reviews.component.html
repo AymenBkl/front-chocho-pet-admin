@@ -1,7 +1,7 @@
-<div class="row card row-card">
-  <h1 class="header-product-description-title">Best Reviews Optimization</h1>
+<div class="row card row-card" data-aos="zoom-in-down">
+  <h1 class="header-product-description-title" data-aos="fade-down-left">Best Reviews Optimization</h1>
   <div class="col-12" *ngFor='let formField of formFields'>
-    <div class="card"  id="cardId-{{formField.formId}}">
+    <div class="card"  id="cardId-{{formField.formId}}" data-aos="fade-up-left">
       <div class="header-delete-button" *ngIf="formField.value.status == 'active'">
         <button mat-icon-button color="danger" aria-label="Delete Button" (click)="deleteReviewForm(formField.formId)">
           <mat-icon>delete</mat-icon>
