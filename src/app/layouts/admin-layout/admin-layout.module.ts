@@ -53,6 +53,7 @@ import { ProductdescriptionviewerComponent } from 'app/components/productdescrip
 import { BestReviewsComponent } from 'app/pages/best-reviews/best-reviews.component';
 import { GeneratingBestReviewsComponent } from 'app/components/generating-best-reviews/generating-best-reviews.component';
 import { BestTipsComponent } from 'app/pages/best-tips/best-tips.component';
+import { GenerateCodeBestTipsComponent } from 'app/components/generate-code-best-tips/generate-code-best-tips.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -99,7 +100,8 @@ import { BestTipsComponent } from 'app/pages/best-tips/best-tips.component';
     ProductdescriptionviewerComponent,
     BestReviewsComponent,
     GeneratingBestReviewsComponent,
-    BestTipsComponent
+    BestTipsComponent,
+    GenerateCodeBestTipsComponent
   ]
 })
 

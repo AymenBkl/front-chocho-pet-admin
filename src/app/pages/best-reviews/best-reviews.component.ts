@@ -64,7 +64,7 @@ export class BestReviewsComponent implements OnInit {
       if (fields.mainImgUrl != ''){
         $(`#review-form-${lenghtFormField}`).find('.field-url-review').fadeIn(2000);
       }
-    },500)
+    },1500)
 
     this.formFields.push({
       value:fields,
@@ -163,6 +163,8 @@ export class BestReviewsComponent implements OnInit {
       let id = this.interactionService.displayToaster('Uploading Image','loading','UPLOADING');
       $(`#review-form-${formId}`).find('.file-error-upload').hide();
       $(`#review-form-${formId}`).find('.file-success-upload').hide();
+      $(`#review-form-${formId}`).find('.review-error-saved').hide();
+      $(`#review-form-${formId}`).find('.review-success-saved').hide();
       this.imgbbService.uploadImage(data.image)
         .then((result) => {
             this.interactionService.closeToaster(id);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { generateCodeBestTips } from 'app/functions/openDialog';
 import { ImgbbService } from 'app/services/imgbb.service';
 import { InteractionService } from 'app/services/interaction.service';
 import { ToolsService } from 'app/services/tools.service';
@@ -12,7 +13,7 @@ import * as $ from "jquery";
 })
 export class BestTipsComponent implements OnInit {
 
-  bestTipsForm = {titleTips:'',mainImageUrl:'',description:'',status:'active',_id:''};
+  bestTipsForm = {title:'',mainImageUrl:'',description:'',status:'active',_id:''};
   formTips = []
   constructor(private interactionService: InteractionService,
               private toolsService: ToolsService,
@@ -57,13 +58,13 @@ export class BestTipsComponent implements OnInit {
     })
   }
 
-  addAnotherForm(fields = {titleTips:'',mainImageUrl:'',description:'',status:'active',_id:''}) {
+  addAnotherForm(fields = {title:'',mainImageUrl:'',description:'',status:'active',_id:''}) {
     let formTipsLength = this.formTips.length + 1;
     setTimeout(() => {
       if (fields.mainImageUrl != ''){
         $(`#tips-form-${formTipsLength}`).find('.field-url-tips').fadeIn(2000);
       }
-    },500)
+    },1500)
     this.formTips.push({
       value:fields,
       formId:formTipsLength,
@@ -200,7 +201,10 @@ export class BestTipsComponent implements OnInit {
   }
 
   openGenerateBestTips() {
-
+    let dialog = generateCodeBestTips(this.matDialog);
+    dialog.afterClosed().subscribe(resullt => {
+      this.getBestTips();
+    })
   }
 
 
