@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { generateCodeProduct } from 'app/functions/openDialog';
 import { Product } from 'app/interface/product';
 import { ImgbbService } from 'app/services/imgbb.service';
 import { InteractionService } from 'app/services/interaction.service';
@@ -25,7 +27,8 @@ export class ProductInfoComponent implements OnInit {
     private productService: ProductsService,
     private storageService: StorageService,
     private imgbbService: ImgbbService,
-    private interactionService: InteractionService) { }
+    private interactionService: InteractionService,
+    private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getCurrentProduct();
@@ -158,7 +161,7 @@ export class ProductInfoComponent implements OnInit {
     this.formDescriptionProduct[index - 1].status = 'active';
   }
 
-  submitForms(submit:boolean) {
+  submitForms() {
     let data = [];
     let lenghtActive = this.formDescriptionProduct.filter(formProduct => formProduct.status == 'active').length;
     this.formDescriptionProduct.map(productForm => {
@@ -247,15 +250,12 @@ export class ProductInfoComponent implements OnInit {
         initData.status = 'active';
         if (Object.keys(initData).length == 6){
           data.push(initData);
-          if (submit){
-            this.uploadImages([initData]);
-          }
+          this.uploadImages([initData]);
         }
 
       }
     })
-    let viewData :any = {};
-    viewData.productDescription = data;
+
     this.formDescriptionProduct.filter(formProduct => formProduct.status == 'deleted').map(formProduct => {
       console.log(formProduct)
       let newFormProduct = {
@@ -264,11 +264,10 @@ export class ProductInfoComponent implements OnInit {
       }
       this.saveProductDescription(newFormProduct);
     })
-   viewData.tableProductDescription = this.submitTable(submit);
-   console.log('view',viewData)
+this.submitTable();
   }
 
-  submitTable(submit:boolean) {
+  submitTable() {
     let data : any = {};
     let numberOfDataValid = 0;
     let selectOptionMain = $(`#selectOptionMainBenifts`).text();
@@ -423,10 +422,9 @@ export class ProductInfoComponent implements OnInit {
     }
     console.log(numberOfDataValid);
     console.log(data);
-    if (Object.keys(data).length == numberOfDataValid && submit){
+    if (Object.keys(data).length == numberOfDataValid){
       this.checkImageData(data);
     }
-    return data;
   }
 
   checkImageData(data) {
@@ -732,7 +730,12 @@ export class ProductInfoComponent implements OnInit {
   }
 
 
-
+  openDialogGenerateCode() {
+    let dialogToOpen = generateCodeProduct(this.matDialog,{productId:this.product._id});
+    dialogToOpen.afterClosed().subscribe(result => {
+      this.getCurrentProduct()
+    })
+  }
 
 
 

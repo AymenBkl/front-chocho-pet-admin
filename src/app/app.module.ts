@@ -40,7 +40,6 @@ import { ProductdescriptionviewerComponent } from './components/productdescripti
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    ProductdescriptionviewerComponent,
   ],
   imports: [
     BrowserAnimationsModule,

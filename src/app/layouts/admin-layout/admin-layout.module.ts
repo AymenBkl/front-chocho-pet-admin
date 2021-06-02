@@ -49,6 +49,7 @@ import { SubscribersComponent } from 'app/pages/subscribers/subscribers.componen
 import { ContactsComponent } from 'app/pages/contacts/contacts.component';
 import { ProductInfoComponent } from 'app/pages/product-info/product-info.component';
 import { MatFileUploadModule } from 'angular-material-fileupload';
+import { ProductdescriptionviewerComponent } from 'app/components/productdescriptionviewer/productdescriptionviewer.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -91,7 +92,8 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
     SubscribersComponent,
     ContactsComponent,
     ComplaintResponseComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    ProductdescriptionviewerComponent
   ]
 })
 

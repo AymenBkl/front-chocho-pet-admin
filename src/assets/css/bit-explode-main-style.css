@@ -245,6 +245,15 @@
   padding: 0;
 }
 
+.cdk-overlay-container {
+  z-index:9999999999 !important;
+}
+
+.mat-dialog-generate-code {
+  min-width: 95% !important;
+  min-height: 95% !important;
+}
+
 
 .mat-dialog-container-update-link > mat-dialog-container {
 

@@ -1,5 +1,6 @@
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { FilterOrderComponent } from "app/components/filter-order/filter-order.component";
+import { ProductdescriptionviewerComponent } from "app/components/productdescriptionviewer/productdescriptionviewer.component";
 import { ResetpasswordComponent } from "app/components/resetpassword/resetpassword.component";
 import { UpdateLinkComponent } from "app/components/update-link/update-link.component";
 import { Product } from "app/interface/product";
@@ -10,6 +11,18 @@ export function callResetPassword(dialog: MatDialog): MatDialogRef<Resetpassword
     width: '50%',
     height: '50%',
     panelClass: 'mat-dialog-container-reset-password'
+  });
+
+  return dialogToOpen;
+}
+
+export function generateCodeProduct(dialog: MatDialog,productId:any): MatDialogRef<ProductdescriptionviewerComponent,any> {
+
+  const dialogToOpen = dialog.open(ProductdescriptionviewerComponent, {
+    width: '80%',
+    height: '80%',
+    panelClass: 'mat-dialog-generate-code',
+    data: productId
   });
 
   return dialogToOpen;

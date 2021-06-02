@@ -6,3 +6,7 @@
 .mat-dialog-container {
   border-radius: 20px !important;
 }
+
+.cdk-overlay-container {
+  z-index:9999999999;
+}

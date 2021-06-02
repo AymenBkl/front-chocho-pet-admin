@@ -36,6 +36,23 @@ export class ProductsService {
     })
   }
 
+  getProduct(productId) {
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<ProductResponse>(environment.url + 'products/getproduct/' + productId)
+        .subscribe(productResponse => {
+          if (productResponse.status == 200 && productResponse.success) {
+            this.products = productResponse.products;
+            resolve(productResponse.products);
+          }
+          else if (productResponse.status == 404 && !productResponse.success) {
+            reject(this.httpErrorHandlerService.handleError(productResponse));
+          }
+        }, err => {
+          reject(this.httpErrorHandlerService.handleError(err));
+        })
+    })
+  }
+
   updateProductLink(productId: string, newBadge: string) {
     return new Promise((resolve, reject) => {
       this.onDestroyUpdate()
@@ -90,18 +107,7 @@ export class ProductsService {
     })
   }
 
-  getProduct(productId: string) {
-    return new Promise(async (resolve, reject) => {
-      if (!this.products || (this.products && this.products.length == 0)) {
-        const product = await this.getProducts();
-        console.log(this.products);
-        resolve(this.products.filter(product => product.productId == productId));
-      }
-      else {
-        resolve(this.products.filter(product => product.productId == productId));
-      }
-    })
-  }
+
 
   saveDescription(description:any,productId:string,productMainId:string) {
     return new Promise((resolve, reject) => {
