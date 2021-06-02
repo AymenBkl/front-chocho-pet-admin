@@ -134,4 +134,12 @@
   color:white;
 }
 
+.success {
+  font-size: 10px;
+  color: #5cb85c;
+  margin-left: 30px;
+  width: 100%;
+  display: none;
+}
+
 

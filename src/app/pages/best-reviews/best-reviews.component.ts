@@ -59,10 +59,16 @@ export class BestReviewsComponent implements OnInit {
   }
 
   addFormField(fields = {mainImgUrl:'',descriptionReview:'',authorReview:'',status:'active',_id:''}) {
-    let lenghtFormField = this.formFields.length;
+    let lenghtFormField = this.formFields.length + 1;
+    setTimeout(() => {
+      if (fields.mainImgUrl != ''){
+        $(`#review-form-${lenghtFormField}`).find('.field-url-review').fadeIn(2000);
+      }
+    },500)
+
     this.formFields.push({
       value:fields,
-      formId:lenghtFormField + 1,
+      formId:lenghtFormField,
       selectOption: fields.mainImgUrl == '' ? 'none' : 'url'
     })
   }
@@ -106,7 +112,7 @@ export class BestReviewsComponent implements OnInit {
         }
         if (selectOption && selectOption == 'File') {
           reviewForm.find('.error-mat-select').hide();
-          let files = reviewForm.find('.input-file').prop('files');
+          let files = reviewForm.find('.file-input').prop('files');
           if (files && files.length > 0){
             reviewForm.find('.input-file-error').hide();
             data.image = files[0];
@@ -155,6 +161,8 @@ export class BestReviewsComponent implements OnInit {
   handleDataReview(data,formId) {
     if (data.image) {
       let id = this.interactionService.displayToaster('Uploading Image','loading','UPLOADING');
+      $(`#review-form-${formId}`).find('.file-error-upload').hide();
+      $(`#review-form-${formId}`).find('.file-success-upload').hide();
       this.imgbbService.uploadImage(data.image)
         .then((result) => {
             this.interactionService.closeToaster(id);
@@ -162,15 +170,18 @@ export class BestReviewsComponent implements OnInit {
               data.mainImgUrl = result;
               delete data.image;
               this.interactionService.displayToaster('Image Uploaded Successfuly','success','UPLOADED');
+              $(`#review-form-${formId}`).find('.file-success-upload').show();
               this.saveDescription(data,formId);
             }
             else {
               this.interactionService.displayToaster('Error While Uploading Image','error','ERROR');
+              $(`#review-form-${formId}`).find('.file-error-upload').show();
             }
         })
         .catch(err => {
           this.interactionService.closeToaster(id);
           this.interactionService.displayToaster('Error While Uploading Image','error','ERROR');
+          $(`#review-form-${formId}`).find('.file-error-upload').show();
         })
     }
     else {
@@ -180,6 +191,8 @@ export class BestReviewsComponent implements OnInit {
 
   saveDescription(data,formId) {
     let id = this.interactionService.displayToaster('Saving Best Review','loading','Saving');
+    $(`#review-form-${formId}`).find('.review-error-saved').hide();
+    $(`#review-form-${formId}`).find('.review-success-saved').hide();
     this.toolsService.saveBestReviews(data)
       .then((result:any) => {
         console.log(result)
@@ -187,13 +200,16 @@ export class BestReviewsComponent implements OnInit {
         if (result && result != false){
           this.formFields.find(formField => formField.formId == formId).value._id = result._id;
           this.interactionService.displayToaster('Best Review Saved Successfully','success','SAVED');
+          $(`#review-form-${formId}`).find('.review-success-saved').show();
         }
         else {
           this.interactionService.displayToaster('Error While Saving Best Review','error','ERROR');
+          $(`#review-form-${formId}`).find('.review-error-saved').show();
         }
       })
       .catch(err => {
         this.interactionService.displayToaster('Error While Saving Best Review','error','ERROR');
+        $(`#review-form-${formId}`).find('.review-error-saved').show();
       })
   }
 

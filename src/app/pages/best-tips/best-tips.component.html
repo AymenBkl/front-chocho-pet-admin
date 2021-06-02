@@ -16,7 +16,7 @@
         <div class="col-12">
           <mat-form-field appearance="fill" class="form-description-product-input">
             <mat-label>Pick An Option (Image Main)</mat-label>
-            <mat-select  (selectionChange)="onChangeSelect(formField.formId)" class="select-option" [(value)]="formField.selectOption">
+            <mat-select  (selectionChange)="onChangeSelect($event.value,formField.formId)" class="select-option" [(value)]="formField.selectOption">
               <mat-option value="file">File</mat-option>
               <mat-option value="url" >Url</mat-option>
             </mat-select>
@@ -24,20 +24,20 @@
           </mat-form-field>
         </div>
         <div class="col-12">
-          <div class="form-description-product-input field-file-tips" *ngIf='formField.selectOption == "file"'>
+          <div class="form-description-product-input options-select field-file-tips">
             <mat-label>Pick file</mat-label>
             <button (click)="openUploadFile(formField.formId)" mat-icon-button class="input-file-button" >
               <mat-icon>image</mat-icon>
              </button>
-            <input accept="image/png, image/gif, image/jpeg" placeholder="file" [(ngModel)]='formField.value.mainImageUrl' type="file" class="file-input" style="display:none">
+            <input accept="image/png, image/gif, image/jpeg" placeholder="file"  type="file" class="file-input" style="display:none">
             <span class="error input-file-error" >Please Put A File</span>
           </div>
 
         </div>
         <div class="col-12">
-          <mat-form-field class="form-description-product-input  field-url-tips" *ngIf='formField.selectOption == "url"'>
+          <mat-form-field class="form-description-product-input options-select field-url-tips">
             <mat-label>Enter Url</mat-label>
-            <input matInput placeholder="url" value="{{formField.value.mainImgUrl}}" type="url" class="input-url" >
+            <input matInput placeholder="url" value="{{formField.value.mainImageUrl}}" type="url" class="input-url" >
             <span class="error input-url-error">Please Enter  A Url</span>
           </mat-form-field>
         </div>
@@ -47,7 +47,7 @@
         <div class="col-12">
           <mat-form-field class="form-description-product-input" appearance="fill">
             <mat-label>Title Tip</mat-label>
-            <input matInput placeholder="Title" [(ngModel)]='formField.value.titleTips' type="text" class="input-tips">
+            <input matInput placeholder="Title" value="{{formField.value.title}}" type="text" class="input-tips">
             <span class="error input-tips-error">Please Enter Title</span>
           </mat-form-field>
         </div>
@@ -55,10 +55,14 @@
         <div class="col-12">
           <mat-form-field class="form-description-product-input">
             <mat-label>Tips Description</mat-label>
-            <textarea matInput [(ngModel)]='formField.value.description' placeholder="This a cool Tip" rows="5" cols="40" class="input-tips"></textarea>
+            <textarea matInput value="{{formField.value.description}}" placeholder="This a cool Tip" rows="5" cols="40" class="input-tips"></textarea>
             <span class="error input-tips-description-error">Please Enter tips Description </span>
           </mat-form-field>
         </div>
+        <div class="error file-error-upload">Error Uploading File </div>
+        <div class="success file-success-upload">File Uploaded Successfully </div>
+        <div class="success tip-success-saved">Tip Saved Successfully </div>
+        <div class="error tip-error-saved">Error While Saving Tip  </div>
 
       </div>
 

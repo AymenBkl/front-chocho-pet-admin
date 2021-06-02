@@ -43,4 +43,38 @@ export class ToolsService {
     })
 
   }
+
+  getBestTips() {
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<any>(environment.url + 'tools/getbesttips')
+        .subscribe(result => {
+          if (result.status == 200 && result.success) {
+            resolve(result.object);
+          }
+          else if (result.status == 404 && !result.success) {
+            resolve(false);
+          }
+        }, err => {
+          reject(err);
+        })
+    })
+
+  }
+
+  saveBestTips(tipBody) {
+    return new Promise((resolve, reject) => {
+      this.httpClient.post<any>(environment.url + 'tools/savetip',{tipBody:tipBody})
+        .subscribe(result => {
+          if (result.status == 200 && result.success) {
+            resolve(result.object);
+          }
+          else if (result.status == 404 && !result.success) {
+            resolve(false);
+          }
+        }, err => {
+          reject(err);
+        })
+    })
+
+  }
 }
