@@ -18,7 +18,6 @@ export class BestReviewsComponent implements OnInit {
               private imgbbService: ImgbbService) { }
 
   ngOnInit(): void {
-    this.addFormField();
     this.getBestReviews();
   }
 
@@ -29,14 +28,17 @@ export class BestReviewsComponent implements OnInit {
         console.log(bestReviews);
         this.interactionService.closeToast();
           if (bestReviews && bestReviews != false){
+            this.addFormFields(bestReviews);
             this.interactionService.displayToaster('Best Reviews Loadded Succesfully','success','LOADED');
           }
           else {
+            this.addFormField();
             this.interactionService.displayToaster('Error While Loading Best Reviews','error','ERROR');
           }
       })
       .catch(err => {
         this.interactionService.closeToast();
+        this.addFormField();
         if (err && err.status == '404' && err.error && err.error.err == 'YOU HAVE NO REVIEWS'){
           this.interactionService.displayToaster('You Don"t have any Best Reviews','warning','WARNING');
         }
@@ -46,11 +48,18 @@ export class BestReviewsComponent implements OnInit {
       })
   }
 
+  addFormFields(reviews) {
+    reviews.map((review) => {
+      this.addFormField({mainImgUrl:review.mainImgUrl,descriptionReview:review.descriptionReview,authorReview:review.authorReview,status:review.status,_id:review._id});
+    })
+  }
+
   addFormField(fields = {mainImgUrl:'',descriptionReview:'',authorReview:'',status:'active',_id:''}) {
     let lenghtFormField = this.formFields.length;
     this.formFields.push({
       value:fields,
-      formId:lenghtFormField + 1
+      formId:lenghtFormField + 1,
+      selectOption: fields.mainImgUrl == '' ? 'none' : 'url'
     })
   }
 
@@ -126,12 +135,12 @@ export class BestReviewsComponent implements OnInit {
         }
         console.log(data);
         if (Object.keys(data).length == 5){
-          this.handleDataReview(data);
+          this.handleDataReview(data,formField.formId);
         }
       }
       else {
         if (formField.value._id != ''){
-          this.handleDataReview({status:'deleted'});
+          this.handleDataReview({status:'deleted',_id:formField.value._id},formField.formId);
         }
       }
 
@@ -139,7 +148,7 @@ export class BestReviewsComponent implements OnInit {
   }
 
 
-  handleDataReview(data) {
+  handleDataReview(data,formId) {
     if (data.image) {
       let id = this.interactionService.displayToaster('Uploading Image','loading','UPLOADING');
       this.imgbbService.uploadImage(data.image)
@@ -149,7 +158,7 @@ export class BestReviewsComponent implements OnInit {
               data.mainImgUrl = result;
               delete data.image;
               this.interactionService.displayToaster('Image Uploaded Successfuly','success','UPLOADED');
-              this.saveDescription(data);
+              this.saveDescription(data,formId);
             }
             else {
               this.interactionService.displayToaster('Error While Uploading Image','error','ERROR');
@@ -161,16 +170,18 @@ export class BestReviewsComponent implements OnInit {
         })
     }
     else {
-      this.saveDescription(data)
+      this.saveDescription(data,formId)
     }
   }
 
-  saveDescription(data) {
+  saveDescription(data,formId) {
     let id = this.interactionService.displayToaster('Saving Best Review','loading','Saving');
     this.toolsService.saveBestReviews(data)
       .then((result:any) => {
+        console.log(result)
         this.interactionService.closeToaster(id);
         if (result && result != false){
+          this.formFields.find(formField => formField.formId == formId).value._id = result._id;
           this.interactionService.displayToaster('Best Review Saved Successfully','success','SAVED');
         }
         else {

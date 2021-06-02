@@ -15,7 +15,7 @@ export class ToolsService {
       this.httpClient.post<any>(environment.url + 'tools/savereview',{reviewBody:reviewBody})
         .subscribe(result => {
           if (result.status == 200 && result.success) {
-            resolve(true);
+            resolve(result.object);
           }
           else if (result.status == 404 && !result.success) {
             resolve(false);

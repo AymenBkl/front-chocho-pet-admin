@@ -16,7 +16,7 @@
         <div class="col-12">
           <mat-form-field appearance="fill" class="form-description-product-input">
             <mat-label>Pick An Option (Image Main)</mat-label>
-            <mat-select  (selectionChange)="onChangeSelect($event.value,formField.formId)" class="select-option">
+            <mat-select  (selectionChange)="onChangeSelect($event.value,formField.formId)" class="select-option" [(value)]="formField.selectOption">
               <mat-option value="file">File</mat-option>
               <mat-option value="url" >Url</mat-option>
             </mat-select>
@@ -29,7 +29,7 @@
             <button (click)="openUploadFile(formField.formId)" mat-icon-button class="input-file-button" >
               <mat-icon>image</mat-icon>
              </button>
-            <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" class="file-input" style="display:none">
+            <input accept="image/png, image/gif, image/jpeg" placeholder="file" type="file" class="file-input" style="display:none">
             <span class="error input-file-error" >Please Put A File</span>
           </div>
 
@@ -37,7 +37,7 @@
         <div class="col-12">
           <mat-form-field class="form-description-product-input options-select field-url-review">
             <mat-label>Enter Url</mat-label>
-            <input matInput placeholder="url" value="" type="url" class="input-url" >
+            <input matInput placeholder="url" value="{{formField.value.mainImgUrl}}" type="url" class="input-url" >
             <span class="error input-url-error">Please Enter  A Url</span>
           </mat-form-field>
         </div>
@@ -47,7 +47,7 @@
         <div class="col-12">
           <mat-form-field class="form-description-product-input" appearance="fill">
             <mat-label>Review Author</mat-label>
-            <input matInput placeholder="Header" value="" type="text" class="input-author">
+            <input matInput placeholder="Header" value="{{formField.value.authorReview}}" type="text" class="input-author">
             <span class="error input-author-error">Please Enter Author</span>
           </mat-form-field>
         </div>
@@ -55,7 +55,7 @@
         <div class="col-12">
           <mat-form-field class="form-description-product-input">
             <mat-label>Review Description</mat-label>
-            <textarea matInput value="" placeholder="This is a cool Product" rows="5" cols="40" class="input-review"></textarea>
+            <textarea matInput value="{{formField.value.descriptionReview}}" placeholder="This is a cool Product" rows="5" cols="40" class="input-review"></textarea>
             <span class="error input-review-description-error">Please Enter Review Description </span>
           </mat-form-field>
         </div>
