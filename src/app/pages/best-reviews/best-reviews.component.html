@@ -1,13 +1,13 @@
 <div class="row card row-card">
   <h1 class="header-product-description-title">Best Reviews Optimization</h1>
-  <div class="col-12">
-    <div class="card"  id="cardId-1">
+  <div class="col-12" *ngFor='let formField of formFields'>
+    <div class="card"  id="cardId-{{formField.formId}}">
 
-      <div class="product-description-header" id="review-form-1">
+      <div class="product-description-header" id="review-form-{{formField.formId}}">
         <div class="col-12">
           <mat-form-field appearance="fill" class="form-description-product-input">
             <mat-label>Pick An Option (Image Main)</mat-label>
-            <mat-select  (selectionChange)="onChangeSelect($event.value,1)" >
+            <mat-select  (selectionChange)="onChangeSelect($event.value,formField.formId)" >
               <mat-option value="file">File</mat-option>
               <mat-option value="url" >Url</mat-option>
             </mat-select>
@@ -15,9 +15,9 @@
           </mat-form-field>
         </div>
         <div class="col-12">
-          <div class="form-description-product-input options-select">
+          <div class="form-description-product-input options-select field-file-review">
             <mat-label>Pick file</mat-label>
-            <button (click)="openUploadFile(1,'main')" mat-icon-button class="input-file-button" >
+            <button (click)="openUploadFile(formField.formId,'main')" mat-icon-button class="input-file-button" >
               <mat-icon>image</mat-icon>
              </button>
             <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" class="file-input" style="display:none">
@@ -26,7 +26,7 @@
 
         </div>
         <div class="col-12">
-          <mat-form-field class="form-description-product-input options-select">
+          <mat-form-field class="form-description-product-input options-select field-url-review">
             <mat-label>Enter Url</mat-label>
             <input matInput placeholder="url" value="" type="url" class="input-url" >
             <span class="error input-url-error">Please Enter  A Url</span>
@@ -55,6 +55,10 @@
 
     </div>
   </div>
-
+  <div class="col-12 text-center add-more-button">
+    <button mat-mini-fab color="primary" aria-label="Add Another Form" (click)="addAnotherForm()" >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 
 </div>
