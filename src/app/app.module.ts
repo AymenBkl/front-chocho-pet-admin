@@ -29,6 +29,7 @@ import { LogsServiceService } from "./services/logs-service.service";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EmailsService } from "./services/emails.service";
 import { ImgbbService } from "./services/imgbb.service";
+import { ToolsService } from "./services/tools.service";
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { ImgbbService } from "./services/imgbb.service";
     LogsServiceService,
     EmailsService,
     ImgbbService,
+    ToolsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
