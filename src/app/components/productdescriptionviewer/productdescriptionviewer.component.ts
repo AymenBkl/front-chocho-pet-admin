@@ -30,8 +30,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
         if (result && result != false) {
           this.storageService.saveProduct(result);
           this.product = result;
-          this.productDescriptionTotal = this.buildTabs() + this.buildDescription();
-
+          this.productDescriptionTotal = this.buildTabs();
         }
         else {
           this.interactionService.closeToast();
@@ -174,19 +173,23 @@ export class ProductdescriptionviewerComponent implements OnInit {
       console.log(this.product.description);
       let description = '<div class="full-description">';
       this.product.description.map((productDescription) => {
-        description += `<div class="item-image-text">
-        <div class="image-holder">
-            <img src="${productDescription.imageURL}" />
-        </div>
-        <div class="text-holder">
-            <img src="${productDescription.imageBadgeURL}">
-            <h2 class="h3">${productDescription.header}</h2>
-            <div class="content">
-                <p>${description}</p>
-            </div>
-        </div>
-    </div>`;
+        if (productDescription.status == 'active'){
+          description += `<div class="item-image-text">
+          <div class="image-holder">
+              <img src="${productDescription.imageURL}" />
+          </div>
+          <div class="text-holder">
+              <img src="${productDescription.imageBadgeURL}">
+              <h2 class="h3">${productDescription.header}</h2>
+              <div class="content">
+                  <p>${description}</p>
+              </div>
+          </div>
+      </div>`;
+        }
+
       })
+      description += '</div>';
       return description;
     }
     else {

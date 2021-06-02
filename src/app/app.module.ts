@@ -26,13 +26,9 @@ import { MatIconModule } from "@angular/material/icon";
 import { OrdersService } from "./services/orders.service";
 import { ProductsService } from "./services/products.service";
 import { LogsServiceService } from "./services/logs-service.service";
-import { SubscribersComponent } from './pages/subscribers/subscribers.component';
-import { ContactsComponent } from './pages/contacts/contacts.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EmailsService } from "./services/emails.service";
-import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { ImgbbService } from "./services/imgbb.service";
-import { ProductdescriptionviewerComponent } from './components/productdescriptionviewer/productdescriptionviewer.component';
 
 
 @NgModule({

@@ -11,6 +11,7 @@ import { LogsDetailComponent } from 'app/components/logs-detail/logs-detail.comp
 import { SubscribersComponent } from 'app/pages/subscribers/subscribers.component';
 import { ContactsComponent } from 'app/pages/contacts/contacts.component';
 import { ProductInfoComponent } from 'app/pages/product-info/product-info.component';
+import { BestReviewsComponent } from 'app/pages/best-reviews/best-reviews.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -19,6 +20,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'subscribers', component: SubscribersComponent , canActivate: [AuthGuard] },
   { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard] },
   { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
+  { path: 'best-reviews', component: BestReviewsComponent, canActivate: [AuthGuard] },
   { path: 'product-info/:id', component: ProductInfoComponent, canActivate: [AuthGuard] },
 
   //{ path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },

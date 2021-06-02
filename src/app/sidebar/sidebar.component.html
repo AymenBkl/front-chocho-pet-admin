@@ -10,12 +10,30 @@
       Chocho Pet
     </a>
   </div>
+  <div class="menuItem">
+    <p class="header-info-side-bar">Menu</p>
+
     <ul class="nav">
-        <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}" data-aos="zoom-out-right">
-            <a [routerLink]="[menuItem.path]">
-                <i class="{{menuItem.icon}}"></i>
-                <p>{{menuItem.title}}</p>
-            </a>
-        </li>
-    </ul>
+      <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}" data-aos="zoom-out-right">
+          <a [routerLink]="[menuItem.path]">
+              <i class="{{menuItem.icon}}"></i>
+              <p>{{menuItem.title}}</p>
+          </a>
+      </li>
+  </ul>
+  </div>
+
+  <div class="menuItem">
+    <p class="header-info-side-bar">Generating Tools</p>
+
+    <ul class="nav">
+      <li *ngFor="let bestReviewsItem of bestReviewsItems" routerLinkActive="active" class="{{bestReviewsItem.class}}" data-aos="zoom-out-right">
+          <a [routerLink]="[bestReviewsItem.path]">
+              <i class="{{bestReviewsItem.icon}}"></i>
+              <p>{{bestReviewsItem.title}}</p>
+          </a>
+      </li>
+  </ul>
+  </div>
+
 </div>

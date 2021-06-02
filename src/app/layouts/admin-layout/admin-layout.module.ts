@@ -50,6 +50,7 @@ import { ContactsComponent } from 'app/pages/contacts/contacts.component';
 import { ProductInfoComponent } from 'app/pages/product-info/product-info.component';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import { ProductdescriptionviewerComponent } from 'app/components/productdescriptionviewer/productdescriptionviewer.component';
+import { BestReviewsComponent } from 'app/pages/best-reviews/best-reviews.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -93,7 +94,8 @@ import { ProductdescriptionviewerComponent } from 'app/components/productdescrip
     ContactsComponent,
     ComplaintResponseComponent,
     ProductInfoComponent,
-    ProductdescriptionviewerComponent
+    ProductdescriptionviewerComponent,
+    BestReviewsComponent
   ]
 })
 

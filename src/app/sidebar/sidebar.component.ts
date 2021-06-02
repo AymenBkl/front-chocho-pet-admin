@@ -23,15 +23,22 @@ export const ROUTES: RouteInfo[] = [
     //{ path: '/upgrade',       title: 'Upgrade to PRO',    icon:'nc-spaceship',  class: 'active-pro' },
 ];
 
+export const ROUTESTOOLS: RouteInfo[] = [
+  { path: '/best-reviews',          title: 'Best Reviews',      icon:'fa fa-user',  class: '' },
+];
+
 @Component({
     moduleId: module.id,
     selector: 'sidebar-cmp',
     templateUrl: 'sidebar.component.html',
+    styleUrls: ['sidebar.component.css']
 })
 
 export class SidebarComponent implements OnInit {
     public menuItems: any[];
+    public bestReviewsItems : any[];
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
+        this.bestReviewsItems = ROUTESTOOLS.filter(bestReviewItem => bestReviewItem);
     }
 }
