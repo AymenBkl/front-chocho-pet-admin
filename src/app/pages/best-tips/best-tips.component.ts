@@ -205,11 +205,11 @@ export class BestTipsComponent implements OnInit {
 
 
   deleteTipsForm(id:number){
-
+    this.formTips.find(formTip => formTip.formId == id).value.status = 'deleted';
   }
 
   activeFormTips(id:number) {
-
+    this.formTips.find(formTip => formTip.formId == id).value.status = 'active';
   }
 
   onChangeSelect(event:string,id:number){
