@@ -7,7 +7,7 @@
         <div class="col-12">
           <mat-form-field appearance="fill" class="form-description-product-input">
             <mat-label>Pick An Option (Image Main)</mat-label>
-            <mat-select  (selectionChange)="onChangeSelect($event.value,formField.formId)" >
+            <mat-select  (selectionChange)="onChangeSelect($event.value,formField.formId)" class="select-option">
               <mat-option value="file">File</mat-option>
               <mat-option value="url" >Url</mat-option>
             </mat-select>
@@ -17,7 +17,7 @@
         <div class="col-12">
           <div class="form-description-product-input options-select field-file-review">
             <mat-label>Pick file</mat-label>
-            <button (click)="openUploadFile(formField.formId,'main')" mat-icon-button class="input-file-button" >
+            <button (click)="openUploadFile(formField.formId)" mat-icon-button class="input-file-button" >
               <mat-icon>image</mat-icon>
              </button>
             <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" class="file-input" style="display:none">
@@ -62,3 +62,7 @@
   </div>
 
 </div>
+
+<button mat-fab color="primary" aria-label="Submit All Unsent Coupon" class="btn-sent-all" matTooltip="Submit Forms" (click)="submitForm()">
+  <mat-icon>cloud_upload</mat-icon>
+</button>
