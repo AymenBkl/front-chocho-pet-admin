@@ -462,29 +462,62 @@ this.submitTable();
 
   uploadImagesTable(file,field,text = '') {
     let id = this.interactionService.displayToaster('Uploading Icon Main Benifts','loading','Upload');
-    console.log(field,id);
+    if (field == 'mainBenifts') {
+      $('#option-file-main-benifts-error-upload').hide();
+      $('#option-file-main-benifts-success-upload').hide();
+    }
+    else if (field == 'color'){
+      $('#option-file-color-error-upload').hide();
+      $('#option-file-color-success-upload').hide();
+
+    }
+    else if (field == 'buy'){
+      $('#option-file-buy-error-upload').hide();
+      $('#option-file-buy-success-upload').hide();
+    }
+    else if (field == 'sizechart'){
+      $('#option-file-size-chart-error-upload').hide();
+      $('#option-file-size-chart-success-upload').hide();
+    }
     this.imgbbService.uploadImage(file)
       .then((result) => {
         this.interactionService.closeToaster(id);
         this.interactionService.displayToaster('Image Uploaded Succesfully','success','Uploaded');
         if (field == 'mainBenifts') {
           let dataToSave = {mainBenifts:text,imageMainBeniftsUrl:result};
+          $('#option-file-main-benifts-success-upload').show();
           this.saveDescriptionTableProduct(dataToSave);
         }
         else if (field == 'color'){
           let dataToSave = {imageColorUrl:result};
+          $('#option-file-color-success-upload').show();
           this.saveDescriptionTableProduct(dataToSave);
         }
         else if (field == 'buy'){
           let dataToSave = {imageBuyUrl:result};
+          $('#option-file-buy-success-upload').show();
           this.saveDescriptionTableProduct(dataToSave);
         }
         else if (field == 'sizechart'){
           let dataToSave = {imageSizeChartUrl:result};
+          $('#option-file-size-chart-success-upload').show();
           this.saveDescriptionTableProduct(dataToSave);
         }
       })
       .catch(err => {
+        this.interactionService.closeToaster(id);
+        if (field == 'mainBenifts') {
+          $('#option-file-main-benifts-error-upload').show();
+        }
+        else if (field == 'color'){
+          $('#option-file-color-error-upload').show();
+        }
+        else if (field == 'buy'){
+          $('#option-file-buy-error-upload').show();
+        }
+        else if (field == 'sizechart'){
+          $('#option-file-size-chart-error-upload').show();
+        }
         this.interactionService.displayToaster('Error While Upload Image','success','ERROR');
       })
   }
