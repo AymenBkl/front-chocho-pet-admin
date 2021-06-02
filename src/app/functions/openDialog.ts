@@ -1,5 +1,6 @@
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { FilterOrderComponent } from "app/components/filter-order/filter-order.component";
+import { GeneratingBestReviewsComponent } from "app/components/generating-best-reviews/generating-best-reviews.component";
 import { ProductdescriptionviewerComponent } from "app/components/productdescriptionviewer/productdescriptionviewer.component";
 import { ResetpasswordComponent } from "app/components/resetpassword/resetpassword.component";
 import { UpdateLinkComponent } from "app/components/update-link/update-link.component";
@@ -23,6 +24,17 @@ export function generateCodeProduct(dialog: MatDialog,productId:any): MatDialogR
     height: '80%',
     panelClass: 'mat-dialog-generate-code',
     data: productId
+  });
+
+  return dialogToOpen;
+}
+
+export function generateCodeBestReviews(dialog: MatDialog): MatDialogRef<GeneratingBestReviewsComponent,any> {
+
+  const dialogToOpen = dialog.open(GeneratingBestReviewsComponent, {
+    width: '80%',
+    height: '80%',
+    panelClass: 'mat-dialog-generate-code',
   });
 
   return dialogToOpen;

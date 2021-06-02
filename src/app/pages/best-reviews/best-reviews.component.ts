@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { generateCodeBestReviews } from 'app/functions/openDialog';
 import { ImgbbService } from 'app/services/imgbb.service';
 import { InteractionService } from 'app/services/interaction.service';
 import { ToolsService } from 'app/services/tools.service';
@@ -15,7 +17,8 @@ export class BestReviewsComponent implements OnInit {
   formFields = [];
   constructor(private interactionService: InteractionService,
               private toolsService: ToolsService,
-              private imgbbService: ImgbbService) { }
+              private imgbbService: ImgbbService,
+              private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getBestReviews();
@@ -28,6 +31,7 @@ export class BestReviewsComponent implements OnInit {
         console.log(bestReviews);
         this.interactionService.closeToast();
           if (bestReviews && bestReviews != false){
+            this.formFields = [];
             this.addFormFields(bestReviews);
             this.interactionService.displayToaster('Best Reviews Loadded Succesfully','success','LOADED');
           }
@@ -202,5 +206,12 @@ export class BestReviewsComponent implements OnInit {
       $(`#review-form-${id}`).find('.field-url-review').hide();
       $(`#review-form-${id}`).find('.field-file-review').show();
     }
+  }
+
+  openGenerateBestReviews() {
+    let dialog = generateCodeBestReviews(this.matDialog);
+    dialog.afterClosed().subscribe(() => {
+      this.getBestReviews();
+    })
   }
 }
