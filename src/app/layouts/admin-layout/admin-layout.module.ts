@@ -52,6 +52,7 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
 import { ProductdescriptionviewerComponent } from 'app/components/productdescriptionviewer/productdescriptionviewer.component';
 import { BestReviewsComponent } from 'app/pages/best-reviews/best-reviews.component';
 import { GeneratingBestReviewsComponent } from 'app/components/generating-best-reviews/generating-best-reviews.component';
+import { BestTipsComponent } from 'app/pages/best-tips/best-tips.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -97,7 +98,8 @@ import { GeneratingBestReviewsComponent } from 'app/components/generating-best-r
     ProductInfoComponent,
     ProductdescriptionviewerComponent,
     BestReviewsComponent,
-    GeneratingBestReviewsComponent
+    GeneratingBestReviewsComponent,
+    BestTipsComponent
   ]
 })
 

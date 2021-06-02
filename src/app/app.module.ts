@@ -30,7 +30,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EmailsService } from "./services/emails.service";
 import { ImgbbService } from "./services/imgbb.service";
 import { ToolsService } from "./services/tools.service";
-import { BestTipsComponent } from './pages/best-tips/best-tips.component';
 
 
 @NgModule({
@@ -38,7 +37,6 @@ import { BestTipsComponent } from './pages/best-tips/best-tips.component';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    BestTipsComponent,
   ],
   imports: [
     BrowserAnimationsModule,

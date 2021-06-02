@@ -1,1 +1,81 @@
-<p>best-tips works!</p>
+<div class="row card row-card" data-aos="zoom-in-down">
+  <h1 class="header-product-description-title" data-aos="fade-down-left">Best Tips Optimization</h1>
+  <div class="col-12" *ngFor='let formField of formTips'>
+    <div class="card"  id="cardId-{{formField.formId}}" data-aos="fade-up-left">
+      <div class="header-delete-button" *ngIf="formField.value.status == 'active'">
+        <button mat-icon-button color="danger" aria-label="Delete Button" (click)="deleteTipsForm(formField.formId)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <div class="header-return-button" *ngIf="formField.value.status == 'deleted'">
+        <button mat-icon-button  color="primary" aria-label="Delete Button" (click)="activeFormTips(formField.formId)">
+          <mat-icon>reply</mat-icon>
+        </button>
+      </div>
+      <div class="product-description-header" id="tips-form-{{formField.formId}}" *ngIf='formField.value.status == "active"'>
+        <div class="col-12">
+          <mat-form-field appearance="fill" class="form-description-product-input">
+            <mat-label>Pick An Option (Image Main)</mat-label>
+            <mat-select  (selectionChange)="onChangeSelect(formField.formId)" class="select-option" [(value)]="formField.selectOption">
+              <mat-option value="file">File</mat-option>
+              <mat-option value="url" >Url</mat-option>
+            </mat-select>
+            <span class="error error-mat-select" >Please Select An Option</span>
+          </mat-form-field>
+        </div>
+        <div class="col-12">
+          <div class="form-description-product-input field-file-tips" *ngIf='formField.selectOption == "file"'>
+            <mat-label>Pick file</mat-label>
+            <button (click)="openUploadFile(formField.formId)" mat-icon-button class="input-file-button" >
+              <mat-icon>image</mat-icon>
+             </button>
+            <input accept="image/png, image/gif, image/jpeg" placeholder="file" [(ngModel)]='formField.value.mainImageUrl' type="file" class="file-input" style="display:none">
+            <span class="error input-file-error" >Please Put A File</span>
+          </div>
+
+        </div>
+        <div class="col-12">
+          <mat-form-field class="form-description-product-input  field-url-tips" *ngIf='formField.selectOption == "url"'>
+            <mat-label>Enter Url</mat-label>
+            <input matInput placeholder="url" value="{{formField.value.mainImgUrl}}" type="url" class="input-url" >
+            <span class="error input-url-error">Please Enter  A Url</span>
+          </mat-form-field>
+        </div>
+
+
+
+        <div class="col-12">
+          <mat-form-field class="form-description-product-input" appearance="fill">
+            <mat-label>Title Tip</mat-label>
+            <input matInput placeholder="Title" [(ngModel)]='formField.value.titleTips' type="text" class="input-tips">
+            <span class="error input-tips-error">Please Enter Title</span>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12">
+          <mat-form-field class="form-description-product-input">
+            <mat-label>Tips Description</mat-label>
+            <textarea matInput [(ngModel)]='formField.value.description' placeholder="This a cool Tip" rows="5" cols="40" class="input-tips"></textarea>
+            <span class="error input-tips-description-error">Please Enter tips Description </span>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="col-12 text-center add-more-button">
+    <button mat-mini-fab color="primary" aria-label="Add Another Form" (click)="addAnotherForm()" >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+</div>
+
+<button mat-fab color="primary" aria-label="Submit All Unsent Coupon" class="btn-sent-all" matTooltip="Submit Forms" (click)="submitForm()">
+  <mat-icon>cloud_upload</mat-icon>
+</button>
+
+<button mat-fab color="success" aria-label="Submit All Unsent Coupon" class="btn-sent-all btn-view" matTooltip="tips Best Tips" (click)="openGenerateBestTips()">
+  <mat-icon>remove_red_eye</mat-icon>
+</button>
