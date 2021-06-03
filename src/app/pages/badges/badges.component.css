@@ -5,7 +5,7 @@
     padding: 50px;
 }
 
-.header-product-description-title {
+.header-badge-description-title {
   font-size: 20px;
     padding-right: 30px;
     padding-bottom: 20px;
@@ -14,7 +14,7 @@
     color:white;
 }
 
-.card-title-product {
+.card-title-badge {
   text-align: center;
     width: 70%;
     display: inline-block;
@@ -34,7 +34,7 @@
   padding: 50px;
 }
 
-.product-holder {
+.badge-holder {
   width: 100%;
   display: inline-block;
   padding: 15px;
@@ -59,7 +59,7 @@
     width: 100% !important;
   }
 
-  .card-title-product {
+  .card-title-badge {
     width: 100% !important;
   }
 

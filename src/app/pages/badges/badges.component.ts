@@ -23,11 +23,13 @@ export class BadgesComponent implements OnInit {
     this.interactionService.createLoading("Loading badges Please Wait");
     this.productService.getMainBadges()
       .then((result:any) => {
-
         this.interactionService.closeToast();
-        if (result && result != false){
+        if (result && result != false && result.status != 'not found'){
           this.badges = result;
           this.interactionService.displayToast('Badges Loadded Successfully',false,'success');
+        }
+        else if (result && result != false && result.status == 'not found') {
+          this.interactionService.displayToast('You have no badges',false,'warning');
         }
         else {
           this.interactionService.displayToast('Something Went Wrong !',false,'error');

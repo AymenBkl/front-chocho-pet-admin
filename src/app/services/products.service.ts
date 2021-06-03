@@ -48,6 +48,9 @@ export class ProductsService {
             resolve(badgesResponse.badges);
           }
           else if (badgesResponse.status == 404 && !badgesResponse.success) {
+            resolve({status:'not found'});
+          }
+          else {
             resolve(false);
           }
         }, err => {
