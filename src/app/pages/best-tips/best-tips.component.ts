@@ -54,18 +54,23 @@ export class BestTipsComponent implements OnInit {
   }
 
   addFormFields(bestTips) {
-    bestTips.map((bestTip) => {
-      this.addAnotherForm(bestTip);
-    })
+    let newSortedBestTips = bestTips.sort((a,b) => a.position - b.position);
+      newSortedBestTips.map((bestTip) => {
+        this.addAnotherForm(bestTip);
+      })
+
   }
 
-  addAnotherForm(fields = {title:'',mainImageUrl:'',description:'',status:'active',_id:''}) {
+  addAnotherForm(fields = {title:'',mainImageUrl:'',description:'',status:'active',_id:'',position:-1}) {
     let formTipsLength = this.formTips.length + 1;
     setTimeout(() => {
       if (fields.mainImageUrl != ''){
         $(`#tips-form-${formTipsLength}`).find('.field-url-tips').fadeIn(2000);
       }
     },1500)
+    if (fields.position == -1){
+      fields.position = formTipsLength - 1;
+    }
     this.formTips.push({
       value:fields,
       formId:formTipsLength,
@@ -80,6 +85,7 @@ export class BestTipsComponent implements OnInit {
         let data : any = {};
         data.status = 'active';
         data._id = formField.value._id;
+
         data.position = indexForm;
         let tipsForm = $(`#tips-form-${formField.formId}`);
         let selectOption = tipsForm.find('.select-option').text();
@@ -122,7 +128,7 @@ export class BestTipsComponent implements OnInit {
           tipsForm.find('.input-tips-error').show();
         }
 
-        let description = tipsForm.find('.input-tips').val();
+        let description = tipsForm.find('.input-tips-description').val();
         if (description && description != '') {
           tipsForm.find('.input-tips-description-error').hide();
           data.description = description;
@@ -131,7 +137,7 @@ export class BestTipsComponent implements OnInit {
           tipsForm.find('.input-tips-description-error').show();
         }
         console.log(data);
-        if (Object.keys(data).length == 5){
+        if (Object.keys(data).length == 6){
           this.handleDatatips(data,formField.formId);
         }
       }

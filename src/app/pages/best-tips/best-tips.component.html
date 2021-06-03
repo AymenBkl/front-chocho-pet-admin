@@ -1,4 +1,4 @@
-<div class="row card row-card" data-aos="zoom-in-down" cdkDropList (cdkDropListDropped)="drop($event)" *ngIf="formTips && formTips.length > 0" >
+<div class="row card row-card main-holder-best-tips" data-aos="zoom-in-down" cdkDropList (cdkDropListDropped)="drop($event)"  >
   <h1 class="header-product-description-title" data-aos="fade-down-left">Best Tips Optimization</h1>
   <div class="col-12 tips-holder" *ngFor='let formField of formTips' cdkDrag>
     <div class="card "  id="cardId-{{formField.formId}}" data-aos="fade-up-left" >
@@ -55,7 +55,7 @@
         <div class="col-12">
           <mat-form-field class="form-description-product-input">
             <mat-label>Tips Description</mat-label>
-            <textarea matInput value="{{formField.value.description}}" placeholder="This a cool Tip" rows="5" cols="40" class="input-tips"></textarea>
+            <textarea matInput value="{{formField.value.description}}" placeholder="This a cool Tip" rows="5" cols="40" class="input-tips-description"></textarea>
             <span class="error input-tips-description-error">Please Enter tips Description </span>
           </mat-form-field>
         </div>
