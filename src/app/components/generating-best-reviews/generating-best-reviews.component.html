@@ -1,3 +1,55 @@
-<div *ngIf='segmentToShow == "code"'>
-  <span *ngIf="bestReviewsCode != ''">{{bestReviewsCode}}</span>
+<div class="close">
+  <button mat-icon-button color="danger" aria-label="Delete Button" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div *ngIf='segmentToShow == "code"' class="code-generated">
+  <span *ngIf="bestreviewsCode != ''">{{bestReviewsCode}}</span>
+</div>
+
+<div class="code-html">
+  <ngx-slick-carousel [config]='slideConfig ' *ngIf='segmentToShow == "html"' class="carousel"
+    #slickModal="slick-carousel">
+    <div class="slide" *ngFor='let bestReview of bestReviews ' ngxSlickItem>
+      <div class="best-reviews-item-container">
+        <div class="best-reviews-image-container">
+          <img [src]='bestReview.mainImgUrl'>
+        </div>
+        <div class="best-reviews-text-container">
+          <div class="icon-images">
+            <img src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/5-stars.png?v=1618404898">
+          </div>
+          <div class="rating-section">
+           {{bestReview.descriptionReview}}
+          </div>
+          <div class="author-review">
+            - {{bestReview.authorReview}}
+          </div>
+        </div>
+      </div>
+    </div>
+</ngx-slick-carousel>
+</div>
+
+
+<div class="copy-button">
+  <button mat-icon-button color="danger" aria-label="Delete Button" (click)="copyCode()">
+    <mat-icon>file_copy</mat-icon>
+  </button>
+</div>
+<div class="segment-buttons">
+  <button mat-raised-button class="segment-button" (click)='switchSegments("html")'>
+    <i class="far fa-file-code"></i>
+    HTML
+  </button>
+  <button mat-raised-button class="segment-button" (click)='switchSegments("code")'>
+    <i class="fa fa-code"></i>
+    Code
+  </button>
+</div>
+
+
+<div class="copied-holder ">
+  <mat-icon>check_circle_outline</mat-icon>
+  <span>Copied</span>
 </div>

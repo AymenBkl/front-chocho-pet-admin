@@ -1,0 +1,241 @@
+.segment-buttons {
+  width: 95%;
+    position: absolute;
+    bottom: 2%;
+    left: 2.5%;
+    display: inline-block;
+}
+
+.segment-button {
+  width: 50%;
+  padding: 20px;
+  display: inline-block;
+  background-color: white;
+}
+
+
+
+.segment-button:focus {
+  outline: none;
+}
+
+.segment-button i {
+  font-size: 30px;
+  margin-right: 20px;
+}
+
+.code-generated {
+  margin-bottom: 30%;
+  margin-top: 20px;
+}
+
+.copy-button {
+  position: absolute;
+  bottom: 100px;
+  right: 2.5%;
+}
+
+.copy-button button:focus {
+  outline: none;
+}
+
+.copied-holder {
+  position: absolute;
+    z-index: 999;
+    padding: 50px;
+    background: #283136;
+    color: white;
+    bottom: 20%;
+    left: 45%;
+    display: none;
+    border-radius: 30px;
+}
+
+.copied-holder .mat-icon {
+  font-size: 40px;
+    vertical-align: middle;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.copied-holder span {
+  font-size: 28px;
+  vertical-align: middle;
+}
+
+.close {
+  right: 2.5%;
+    top: 3%;
+    position: absolute;
+}
+
+.close button:focus {
+  outline: none;
+}
+
+.code-html {
+  margin: 0 !important;
+  margin-top: 14% !important;
+
+}
+
+
+body {
+  margin: 0 !important;
+}
+
+.best-reviews-container {
+  width: 100% !important;
+  display: block !important;
+  background-color: black !important;
+  padding-top: 46px !important;
+
+
+}
+
+.best-reviews-item-container {
+  max-width: 3700px !important;
+  display: flex !important;
+  padding-left: 55px !important;
+  padding-right: 55px !important;
+  margin: 0 auto !important;
+  height: auto !important;
+  padding-top: 46px !important;
+
+}
+
+.best-reviews-image-container {
+  display: flex !important;
+  width: 50% !important;
+  float: left !important;
+  padding-bottom: 55px !important;
+
+}
+
+.best-reviews-image-container img {
+  width: 100% !important;
+}
+
+.best-reviews-text-container {
+  width: 50% !important;
+  padding: 87px 42px 55px 42px !important;
+  align-self: center !important;
+
+  float: right !important;
+}
+
+.icon-images {
+  display: block !important;
+}
+
+.rating-section {
+  display: block !important;
+  color: #fff !important;
+  text-align: initial !important;
+  font-size: 22px !important;
+  margin-top: 20px !important;
+  font-weight: 100 !important;
+  font-family: 'Roboto', sans-serif !important;
+  width: 90% !important;
+}
+
+.author-review {
+  text-align: right !important;
+  width: 90% !important;
+  font-size: 18px !important;
+  color: #fff !important;
+  text-align: right !important;
+  margin-top: 30px;
+}
+
+.slick-next-carousel {
+
+  position: absolute !important;
+  display: block !important;
+  height: 33px !important;
+  width: 33px !important;
+  line-height: 0px !important;
+  font-size: 0px !important;
+  cursor: pointer !important;
+  background: transparent !important;
+  color: transparent !important;
+  top: 50% !important;
+  -webkit-transform: translate(0, -50%) !important;
+  -ms-transform: translate(0, -50%) !important;
+  transform: translate(0, -50%) !important;
+  padding: 0 !important;
+  border: none !important;
+  width: 33px !important;
+  right: 13px !important;
+  float: right !important;
+  z-index: 999999;
+}
+
+.slick-prev-carousel {
+  position: absolute !important;
+  display: block !important;
+  height: 33px !important;
+  width: 33px !important;
+  line-height: 0px !important;
+  font-size: 0px !important;
+  cursor: pointer !important;
+  background: transparent !important;
+  color: transparent !important;
+  top: 50% !important;
+  -webkit-transform: translate(0, -50%) !important;
+  -ms-transform: translate(0, -50%) !important;
+  transform: translate(0, -50%) !important;
+  padding: 0 !important;
+  border: none !important;
+  z-index: 999999;
+}
+
+@media screen and (max-width: 749px) {
+  .best-reviews-image-container {
+      width: 100% !important;
+      display: block !important;
+
+  }
+
+  .best-reviews-text-container {
+      width: 100% !important;
+      display: block !important;
+      text-align: center !important;
+      margin: 0 auto;
+      float: auto !important;
+      width: 100%;
+      padding: 33px 0px 33px 11px !important;
+
+  }
+
+  .best-reviews-item-container {
+      display: block !important;
+      padding-left: 22px !important;
+      padding-right: 22px !important;
+  }
+
+
+}
+
+.slick-slider {
+  width: 88%;
+  margin: auto;
+  background: rgb(14, 13, 13);
+}
+
+body .slick-prev,
+body .slick-next {
+  height: 45px;
+  width: 40px;
+  background: grey !important;
+  z-index: 100;
+}
+
+.slick-next {
+  right: 3px !important;
+}
+
+.slick-prev {
+  left: 3px !important;
+}

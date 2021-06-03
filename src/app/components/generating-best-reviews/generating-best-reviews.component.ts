@@ -1,4 +1,6 @@
+import { Clipboard } from '@angular/cdk/clipboard';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { InteractionService } from 'app/services/interaction.service';
 import { ToolsService } from 'app/services/tools.service';
 
@@ -11,8 +13,21 @@ export class GeneratingBestReviewsComponent implements OnInit {
 
   segmentToShow : string = 'code';
   bestReviewsCode: string = '';
+  bestReviews: {mainImgUrl:'',descriptionReview:'',authorReview:'',status:'active',_id:'',position:number}[];
+  slideCarouselConfig = {
+    "infinite": true,
+    "autoplay": false,
+    "slidesToShow": 1,
+    "slidesToScroll": 1,
+    "pauseOnHover": true,
+    "arrows": true,
+    "prevArrow": '<button type="button" class="slick-prev-carousel"><img class="left_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle-1.png?v=1618817807"></button>',
+    "nextArrow": '<button type="button" class="slick-next-carousel"><img class="right_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle.png?v=1618817807"></button>',
+  };
   constructor(private interactionService: InteractionService,
-                      private toolsService: ToolsService) { }
+                      private toolsService: ToolsService,
+                      private clipboard: Clipboard,
+                      private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getBestReviews();
@@ -24,7 +39,8 @@ export class GeneratingBestReviewsComponent implements OnInit {
       .then((bestReviews:any) => {
         this.interactionService.closeToast();
           if (bestReviews && bestReviews != false){
-            this.bestReviewsCode = this.buildBestReviews(bestReviews);
+            this.bestReviews = bestReviews;
+            this.bestReviewsCode = this.buildBestReviews();
             this.interactionService.displayToaster('Best Reviews Loadded Succesfully','success','LOADED');
           }
           else {
@@ -42,10 +58,11 @@ export class GeneratingBestReviewsComponent implements OnInit {
       })
   }
 
-  buildBestReviews(bestReviews: [{mainImgUrl:'',descriptionReview:'',authorReview:'',status:'active',_id:''}]) {
+  buildBestReviews() {
     let bestReviewCode = '<div class="best-reviews-container">';
-    bestReviews.map((bestReview) => {
-      if (bestReview.status == 'active'){
+    this.bestReviews= this.bestReviews.sort((a,b) => a.position - b.position)
+    this.bestReviews = this.bestReviews.filter(bestTip => bestTip.status == 'active');
+    this.bestReviews.map((bestReview) => {
         bestReviewCode += `<div class="best-reviews-item-container">
         <div class="best-reviews-image-container">
             <img src="${bestReview.mainImgUrl}">
@@ -62,11 +79,25 @@ export class GeneratingBestReviewsComponent implements OnInit {
             </div>
         </div>
     </div>`;
-      }
+
     })
     bestReviewCode += '</div>';
     console.log(bestReviewCode);
     return bestReviewCode;
+  }
+
+  copyCode() {
+    this.clipboard.copy(this.bestReviewsCode);
+    $('.copied-holder').css('display','flex').hide().fadeIn(1200).fadeOut(1200);
+  }
+
+  close() {
+    this.matDialog.closeAll();
+  }
+
+  switchSegments(segment:string){
+    this.segmentToShow = segment;
+
   }
 
 }
