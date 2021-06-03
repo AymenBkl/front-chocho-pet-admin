@@ -1,7 +1,7 @@
-<div class="row card row-card" data-aos="zoom-in-down">
+<div class="row card row-card" data-aos="zoom-in-down" cdkDropList (cdkDropListDropped)="drop($event)">
   <h1 class="header-product-description-title" data-aos="fade-down-left">Best Tips Optimization</h1>
-  <div class="col-12" *ngFor='let formField of formTips'>
-    <div class="card"  id="cardId-{{formField.formId}}" data-aos="fade-up-left">
+  <div class="col-12 tips-holder" *ngFor='let formField of formTips' cdkDrag>
+    <div class="card "  id="cardId-{{formField.formId}}" data-aos="fade-up-left" >
       <div class="header-delete-button" *ngIf="formField.value.status == 'active'">
         <button mat-icon-button color="danger" aria-label="Delete Button" (click)="deleteTipsForm(formField.formId)">
           <mat-icon>delete</mat-icon>

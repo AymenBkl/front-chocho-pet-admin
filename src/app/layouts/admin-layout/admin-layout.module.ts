@@ -54,6 +54,8 @@ import { BestReviewsComponent } from 'app/pages/best-reviews/best-reviews.compon
 import { GeneratingBestReviewsComponent } from 'app/components/generating-best-reviews/generating-best-reviews.component';
 import { BestTipsComponent } from 'app/pages/best-tips/best-tips.component';
 import { GenerateCodeBestTipsComponent } from 'app/components/generate-code-best-tips/generate-code-best-tips.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -82,7 +84,8 @@ import { GenerateCodeBestTipsComponent } from 'app/components/generate-code-best
     MatNativeDateModule,
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
-    MatFileUploadModule
+    MatFileUploadModule,
+    DragDropModule
   ],
   declarations: [
     DashboardComponent,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { generateCodeBestTips } from 'app/functions/openDialog';
 import { ImgbbService } from 'app/services/imgbb.service';
@@ -229,6 +230,13 @@ export class BestTipsComponent implements OnInit {
 
   openUploadFile(id:number) {
     $(`#tips-form-${id}`).find('.file-input').click();
+  }
+
+
+  drop(event: CdkDragDrop<string[]>) {
+    console.log(event.previousIndex,event.currentIndex,event);
+    moveItemInArray(this.formTips, event.previousIndex, event.currentIndex);
+    console.log(this.formTips);
   }
 
 
