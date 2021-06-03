@@ -25,8 +25,8 @@ export const ROUTES: RouteInfo[] = [
 ];
 
 export const ROUTESTOOLS: RouteInfo[] = [
-  { path: '/best-reviews',          title: 'Best Reviews',      icon:'fa fa-user',  class: '' },
-  { path: '/best-tips',          title: 'Best Tips',      icon:'fa fa-user',  class: '' },
+  { path: '/best-reviews',          title: 'Best Reviews',      icon:'fas fa-star',  class: '' },
+  { path: '/best-tips',          title: 'Best Tips',      icon:'fab fa-gratipay',  class: '' },
 ];
 
 @Component({

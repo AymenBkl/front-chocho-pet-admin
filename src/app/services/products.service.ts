@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Badge } from 'app/interface/badge';
 import { Product } from 'app/interface/product';
 import { environment } from 'environments/environment';
 import { Subscription } from 'rxjs';
@@ -29,6 +30,23 @@ export class ProductsService {
           }
           else if (productResponse.status == 404 && !productResponse.success) {
             reject(this.httpErrorHandlerService.handleError(productResponse));
+          }
+        }, err => {
+          reject(this.httpErrorHandlerService.handleError(err));
+        })
+    })
+  }
+
+  getBadges() {
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<any>(environment.url + 'products/getbadges')
+        .subscribe(badgesResponse => {
+          if (badgesResponse.status == 200 && badgesResponse.success) {
+            this.products = badgesResponse.products;
+            resolve(badgesResponse.products);
+          }
+          else if (badgesResponse.status == 404 && !badgesResponse.success) {
+            reject(this.httpErrorHandlerService.handleError(badgesResponse));
           }
         }, err => {
           reject(this.httpErrorHandlerService.handleError(err));
@@ -112,6 +130,24 @@ export class ProductsService {
   saveDescription(description:any,productId:string,productMainId:string) {
     return new Promise((resolve, reject) => {
       this.httpClient.post<ProductResponse>(environment.url + 'products/adddescription',{description:description,productId:productId,productMainId:productMainId})
+        .subscribe(response => {
+          console.log(response);
+          if (response.status === 200) {
+            resolve(response);
+          }
+          else {
+            resolve(false);
+          }
+        }, err => {
+          console.log(err);
+          reject(this.httpErrorHandlerService.handleError(err));
+        });
+    });
+  }
+
+  saveBadge(badgeBody:Badge) {
+    return new Promise((resolve, reject) => {
+      this.httpClient.post<ProductResponse>(environment.url + 'products/savebadge',{badgeBody:badgeBody})
         .subscribe(response => {
           console.log(response);
           if (response.status === 200) {
