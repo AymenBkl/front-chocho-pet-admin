@@ -56,6 +56,7 @@ import { BestTipsComponent } from 'app/pages/best-tips/best-tips.component';
 import { GenerateCodeBestTipsComponent } from 'app/components/generate-code-best-tips/generate-code-best-tips.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import {ClipboardModule} from '@angular/cdk/clipboard';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   imports: [
@@ -87,7 +88,8 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
     NgxMatNativeDateModule,
     MatFileUploadModule,
     DragDropModule,
-    ClipboardModule
+    ClipboardModule,
+    SlickCarouselModule
   ],
   declarations: [
     DashboardComponent,

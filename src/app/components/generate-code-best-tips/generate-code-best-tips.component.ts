@@ -1,5 +1,6 @@
 import { Clipboard } from '@angular/cdk/clipboard';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { InteractionService } from 'app/services/interaction.service';
 import { ToolsService } from 'app/services/tools.service';
 import * as $ from "jquery";
@@ -7,15 +8,28 @@ import * as $ from "jquery";
 @Component({
   selector: 'app-generate-code-best-tips',
   templateUrl: './generate-code-best-tips.component.html',
-  styleUrls: ['./generate-code-best-tips.component.css']
+  styleUrls: ['./generate-code-best-tips.component.css'],
+  encapsulation: ViewEncapsulation.None,
+
 })
 export class GenerateCodeBestTipsComponent implements OnInit {
 
   segmentToShow : string = 'code';
   bestTipsCode: string = '';
+  slideCarouselConfig = {
+    infinite: true,
+    autoplay: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    pauseOnHover: true,
+    arrows: true,
+    prevArrow: '<button type="button" class="slick-prev-carousel"><img class="left_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle-1.png?v=1618817807"></button>',
+    nextArrow: '<button type="button" class="slick-next-carousel"><img class="right_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle.png?v=1618817807"></button>',
+  }
   constructor(private interactionService: InteractionService,
                       private toolsService: ToolsService,
-                      private clipboard: Clipboard) { }
+                      private clipboard: Clipboard,
+                      private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getBestTips();
@@ -78,5 +92,20 @@ export class GenerateCodeBestTipsComponent implements OnInit {
     this.clipboard.copy(this.bestTipsCode);
     $('.copied-holder').css('display','flex').hide().fadeIn(1200).fadeOut(1200);
   }
+
+  close() {
+    this.matDialog.closeAll();
+  }
+
+  switchSegments(segment:string){
+    this.segmentToShow = segment;
+
+  }
+
+  slickInit(e) {
+    console.log('slick initialized');
+  }
+
+
 
 }

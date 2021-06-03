@@ -48,8 +48,10 @@
     "moment": "2.29.1",
     "ngx-material-timepicker": "^5.5.3",
     "ngx-skeleton-loader": "^2.9.1",
+    "ngx-slick-carousel": "^0.5.1",
     "ngx-toastr": "^13.1.0",
     "rxjs": "6.6.3",
+    "slick-carousel": "^1.8.1",
     "sweetalert2": "^10.15.7",
     "tslib": "2.0.2",
     "zone.js": "0.11.1"

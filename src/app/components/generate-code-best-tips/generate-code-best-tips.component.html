@@ -1,6 +1,17 @@
+
+<div class="close" >
+  <button mat-icon-button color="danger" aria-label="Delete Button" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 <div *ngIf='segmentToShow == "code"' class="code-generated">
   <span *ngIf="bestTipsCode != ''">{{bestTipsCode}}</span>
 </div>
+
+<ngx-slick-carousel  [config]='slideCarouselConfig' *ngIf='segmentToShow == "html"'  class="carousel"
+#slickModal="slick-carousel"  (init)="slickInit($event)">
+  <div class="code-html" [innerHTML]='bestTipsCode'></div>
+</ngx-slick-carousel>
 
 <div class="copy-button" >
   <button mat-icon-button color="danger" aria-label="Delete Button" (click)="copyCode()">
@@ -8,10 +19,12 @@
   </button>
 </div>
 <div class="segment-buttons">
-  <button mat-raised-button class="segment-button">
+  <button mat-raised-button class="segment-button" (click)='switchSegments("html")'>
+    <i class="far fa-file-code"></i>
     HTML
   </button>
-  <button  mat-raised-button class="segment-button">
+  <button  mat-raised-button class="segment-button" (click)='switchSegments("code")'>
+    <i class="fa fa-code"></i>
     Code
   </button>
 </div>
