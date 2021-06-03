@@ -65,3 +65,15 @@
 
 
 }
+
+.btn-bottom {
+  position: fixed;
+    bottom: 49px;
+    right: 30px;
+    width: 100px;
+    height: 100px;
+}
+
+.btn-bottom:focus {
+  outline:none;
+}

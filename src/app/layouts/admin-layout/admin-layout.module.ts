@@ -58,6 +58,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BadgesComponent } from 'app/pages/badges/badges.component';
+import { AddBadgeComponent } from 'app/components/add-badge/add-badge.component';
 
 @NgModule({
   imports: [
@@ -110,7 +111,8 @@ import { BadgesComponent } from 'app/pages/badges/badges.component';
     GeneratingBestReviewsComponent,
     BestTipsComponent,
     GenerateCodeBestTipsComponent,
-    BadgesComponent
+    BadgesComponent,
+    AddBadgeComponent
   ]
 })
 

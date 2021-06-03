@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { calladdBadge } from 'app/functions/openDialog';
 import { Badge } from 'app/interface/badge';
 import { InteractionService } from 'app/services/interaction.service';
 import { ProductsService } from 'app/services/products.service';
@@ -13,7 +15,7 @@ export class BadgesComponent implements OnInit {
   badges: Badge[];
   constructor(private interactionService: InteractionService,
               private productService: ProductsService,
-              ) { }
+              private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getBadges();
@@ -38,6 +40,14 @@ export class BadgesComponent implements OnInit {
       .catch(err => {
         console.log(err);
       })
+  }
+
+
+  addBadge() {
+    let dialog = calladdBadge(this.matDialog,null)
+    dialog.afterClosed().subscribe(result => {
+
+    })
   }
 
 }
