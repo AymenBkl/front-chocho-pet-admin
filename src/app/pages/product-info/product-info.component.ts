@@ -41,14 +41,17 @@ export class ProductInfoComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.product = this.storageService.getProduct(params['id']);
       if (this.product && this.product.description && this.product.description.length > 0) {
-          this.product.description = this.product.description.sort((a,b) => a - b);
-          console.log(this.product.description);
-          this.product.description.map((productDescription) => {
-            let formFields = productDescription;
-            this.addAnotherForm(formFields);
-          })
+          this.product.description  = this.product.description.sort((a,b) => a.position - b.position);
+
+            this.formDescriptionProduct = [];
+            this.product.description.map((productDescription) => {
+              let formFields = productDescription;
+              this.addAnotherForm(formFields);
+            })
+
       }
       else if (this.product && (!this.product.description || (this.product.description && this.product.description.length == 0))) {
+        this.formDescriptionProduct = [];
         this.initFirstForm(1);
       }
 
@@ -250,9 +253,9 @@ export class ProductInfoComponent implements OnInit {
           }
 
         }
-        console.log('initData',initData)
         initData.status = 'active';
-        if (Object.keys(initData).length == 6){
+        console.log('initData',initData)
+        if (Object.keys(initData).length == 7){
           data.push(initData);
           this.uploadImages([initData]);
         }
@@ -778,6 +781,27 @@ this.submitTable();
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.formDescriptionProduct, event.previousIndex, event.currentIndex);
+  }
+
+  refreshProduct(){
+      this.interactionService.createLoading('Loading Data Please Wait !!');
+      this.productService.getProduct(this.product._id)
+        .then((result: any) => {
+          this.interactionService.closeToast();
+          if (result && result != false) {
+            this.storageService.saveProduct(result);
+            this.product = result;
+            this.getCurrentProduct();
+          }
+          else {
+            this.interactionService.closeToast();
+            this.interactionService.displayToast('Something Went Wrong', false, 'Error');
+          }
+        })
+        .catch(err => {
+          this.interactionService.closeToast();
+          this.interactionService.displayToast('Something Went Wrong', false, 'Error');
+        })
   }
 
 

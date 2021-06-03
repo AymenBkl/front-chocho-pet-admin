@@ -302,10 +302,14 @@
 </div>
 
 
-<button mat-fab color="primary" aria-label="Submit All Unsent Coupon" class="btn-sent-all" matTooltip="Submit Forms" (click)="submitForms()">
+<button mat-fab color="primary" aria-label="Submit Form" class="btn-sent-all" matTooltip="Submit Forms" (click)="submitForms()">
   <mat-icon>cloud_upload</mat-icon>
 </button>
 
-<button mat-fab color="success" aria-label="Submit All Unsent Coupon" class="btn-sent-all btn-view" matTooltip="Review Description Product" (click)="openDialogGenerateCode()">
+<button mat-fab color="success" aria-label="Preview Description" class="btn-sent-all btn-view" matTooltip="Review Description Product" (click)="openDialogGenerateCode()">
   <mat-icon>remove_red_eye</mat-icon>
+</button>
+
+<button mat-fab color="warn" aria-label="Refresh Product" class="btn-sent-all btn-refresh" matTooltip="Refresh Product" (click)="refreshProduct()">
+  <mat-icon>refresh</mat-icon>
 </button>

@@ -27,6 +27,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
     this.interactionService.createLoading('Loading Data Please Wait !!');
     this.productService.getProduct(this.data.productId)
       .then((result: any) => {
+        this.interactionService.closeToast();
         if (result && result != false) {
           this.storageService.saveProduct(result);
           this.product = result;

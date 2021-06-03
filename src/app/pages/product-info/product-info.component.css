@@ -68,7 +68,10 @@
 
 .row-card {
   background-color:  #283136;
+}
 
+.row-card:last-of-type{
+  margin-bottom: 20%;
 }
 
 .header-return-button {
@@ -130,6 +133,15 @@
   background-color: #5cb85c;
 }
 
+.btn-refresh {
+  right:250px;
+}
+
+
+.btn-refresh .mat-icon {
+  color:white;
+}
+
 .btn-view .mat-icon {
   color:white;
 }
@@ -162,6 +174,18 @@
 
 .cdk-drag-animating {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+@media screen and (max-width: 749px) {
+  .card-img-holder {
+    width: 100% !important;
+  }
+
+  .card-title-product {
+    width: 100% !important;
+  }
+
+
 }
 
 
