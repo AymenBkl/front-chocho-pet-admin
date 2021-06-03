@@ -1,0 +1,34 @@
+.segment-buttons {
+  width: 95%;
+    position: absolute;
+    bottom: 2%;
+    left: 2.5%;
+    display: inline-block;
+}
+
+.segment-button {
+  width: 50%;
+  padding: 20px;
+  display: inline-block;
+  background-color: white;
+}
+
+
+
+.segment-button:focus {
+  outline: none;
+}
+
+.code-generated {
+  margin-bottom: 30%;
+}
+
+.copy-button {
+  position: absolute;
+  bottom: 100px;
+  right: 2.5%;
+}
+
+.copy-button button:focus {
+  outline: none;
+}

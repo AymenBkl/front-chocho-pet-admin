@@ -173,13 +173,8 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.tips-holder:last-child {
-  border: none;
-}
 
-.main-holder-best-tips.cdk-drop-list-dragging .tips-holder:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
+
 
 .card-placeHolder {
   background: #ccc;

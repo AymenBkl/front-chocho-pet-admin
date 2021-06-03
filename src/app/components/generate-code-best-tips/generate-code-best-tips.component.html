@@ -1,3 +1,17 @@
-<div *ngIf='segmentToShow == "code"'>
+<div *ngIf='segmentToShow == "code"' class="code-generated">
   <span *ngIf="bestTipsCode != ''">{{bestTipsCode}}</span>
+</div>
+
+<div class="copy-button" >
+  <button mat-icon-button color="danger" aria-label="Delete Button" (click)="copyCode()">
+    <mat-icon>file_copy</mat-icon>
+  </button>
+</div>
+<div class="segment-buttons">
+  <button mat-raised-button class="segment-button">
+    HTML
+  </button>
+  <button  mat-raised-button class="segment-button">
+    Code
+  </button>
 </div>

@@ -1,3 +1,4 @@
+import { Clipboard } from '@angular/cdk/clipboard';
 import { Component, OnInit } from '@angular/core';
 import { InteractionService } from 'app/services/interaction.service';
 import { ToolsService } from 'app/services/tools.service';
@@ -12,7 +13,8 @@ export class GenerateCodeBestTipsComponent implements OnInit {
   segmentToShow : string = 'code';
   bestTipsCode: string = '';
   constructor(private interactionService: InteractionService,
-                      private toolsService: ToolsService) { }
+                      private toolsService: ToolsService,
+                      private clipboard: Clipboard) { }
 
   ngOnInit(): void {
     this.getBestTips();
@@ -42,9 +44,12 @@ export class GenerateCodeBestTipsComponent implements OnInit {
       })
   }
 
-  buildBestTips(bestTips: [{title:'',mainImageUrl:'',description:'',status:'active',_id:''}]) {
+
+
+  buildBestTips(bestTips: [{title:'',mainImageUrl:'',description:'',status:'active',_id:'',position:number}]) {
     let bestTipsCode = '<div class="best-reviews-container">';
-    bestTips.map((bestReview) => {
+    let sortedBestTips = bestTips.sort((a,b) => a.position - b.position)
+    sortedBestTips.map((bestReview) => {
       if (bestReview.status == 'active'){
         bestTipsCode += `<div class="best-tips-item-container">
         <div class="best-tips-image-container">
@@ -66,6 +71,10 @@ export class GenerateCodeBestTipsComponent implements OnInit {
     })
     bestTipsCode += '</div>';
     return bestTipsCode;
+  }
+
+  copyCode() {
+    this.clipboard.copy(this.bestTipsCode);
   }
 
 }
