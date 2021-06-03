@@ -3,4 +3,5 @@ export interface Badge {
   name:string;
   mainImgUrl:string;
   status:string;
+  createdAt:string;
 }

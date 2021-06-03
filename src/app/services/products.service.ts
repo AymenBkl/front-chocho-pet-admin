@@ -15,6 +15,7 @@ export class ProductsService {
   updateProductSub: Subscription;
   postImageSub: Subscription;
   products: Product[];
+  badges: Badge[];
   constructor(private httpClient: HttpClient,
     private httpErrorHandlerService: HttpErrorHandlerService) {
   }
@@ -42,14 +43,15 @@ export class ProductsService {
       this.httpClient.get<any>(environment.url + 'products/getbadges')
         .subscribe(badgesResponse => {
           if (badgesResponse.status == 200 && badgesResponse.success) {
-            this.products = badgesResponse.products;
-            resolve(badgesResponse.products);
+            this.badges = badgesResponse.badges;
+            console.log(badgesResponse)
+            resolve(badgesResponse.badges);
           }
           else if (badgesResponse.status == 404 && !badgesResponse.success) {
-            reject(this.httpErrorHandlerService.handleError(badgesResponse));
+            resolve(false);
           }
         }, err => {
-          reject(this.httpErrorHandlerService.handleError(err));
+          reject(err);
         })
     })
   }
@@ -199,5 +201,17 @@ export class ProductsService {
     if (this.postImageSub) {
       this.postImageSub.unsubscribe();
     }
+  }
+
+  getMainBadges() {
+    return new Promise(resolve => {
+      if (this.badges && this.badges.length > 0){
+        resolve(this.badges);
+      }
+      else {
+        resolve(this.getBadges());
+      }
+
+    })
   }
 }

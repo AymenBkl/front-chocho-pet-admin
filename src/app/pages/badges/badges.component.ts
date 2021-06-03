@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Badge } from 'app/interface/badge';
+import { InteractionService } from 'app/services/interaction.service';
+import { ProductsService } from 'app/services/products.service';
 
 @Component({
   selector: 'app-badges',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BadgesComponent implements OnInit {
 
-  constructor() { }
+  badges: Badge[];
+  constructor(private interactionService: InteractionService,
+              private productService: ProductsService,
+              ) { }
 
   ngOnInit(): void {
+    this.getBadges();
+  }
+
+  getBadges() {
+    this.interactionService.createLoading("Loading badges Please Wait");
+    this.productService.getMainBadges()
+      .then((result:any) => {
+
+        this.interactionService.closeToast();
+        if (result && result != false){
+          this.badges = result;
+          this.interactionService.displayToast('Badges Loadded Successfully',false,'success');
+        }
+        else {
+          this.interactionService.displayToast('Something Went Wrong !',false,'error');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
 }
