@@ -75,11 +75,12 @@ export class BestTipsComponent implements OnInit {
   }
 
   submitForm() {
-    this.formTips.map((formField) => {
+    this.formTips.map((formField,indexForm) => {
       if (formField.value.status == 'active'){
         let data : any = {};
         data.status = 'active';
         data._id = formField.value._id;
+        data.position = indexForm;
         let tipsForm = $(`#tips-form-${formField.formId}`);
         let selectOption = tipsForm.find('.select-option').text();
         console.log(selectOption)
@@ -136,7 +137,7 @@ export class BestTipsComponent implements OnInit {
       }
       else {
         if (formField.value._id != ''){
-          this.handleDatatips({status:'deleted',_id:formField.value._id},formField.formId);
+          this.handleDatatips({status:'deleted',_id:formField.value._id,position:indexForm},formField.formId);
         }
       }
 

@@ -1,4 +1,4 @@
-<div class="row card row-card" data-aos="zoom-in-down" cdkDropList (cdkDropListDropped)="drop($event)">
+<div class="row card row-card" data-aos="zoom-in-down" cdkDropList (cdkDropListDropped)="drop($event)" *ngIf="formTips && formTips.length > 0" >
   <h1 class="header-product-description-title" data-aos="fade-down-left">Best Tips Optimization</h1>
   <div class="col-12 tips-holder" *ngFor='let formField of formTips' cdkDrag>
     <div class="card "  id="cardId-{{formField.formId}}" data-aos="fade-up-left" >
