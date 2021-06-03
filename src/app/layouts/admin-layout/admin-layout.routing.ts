@@ -13,6 +13,7 @@ import { ContactsComponent } from 'app/pages/contacts/contacts.component';
 import { ProductInfoComponent } from 'app/pages/product-info/product-info.component';
 import { BestReviewsComponent } from 'app/pages/best-reviews/best-reviews.component';
 import { BestTipsComponent } from 'app/pages/best-tips/best-tips.component';
+import { BadgesComponent } from 'app/pages/badges/badges.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -23,6 +24,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
   { path: 'best-reviews', component: BestReviewsComponent, canActivate: [AuthGuard] },
   { path: 'best-tips', component: BestTipsComponent, canActivate: [AuthGuard] },
+  { path: 'badges', component: BadgesComponent, canActivate: [AuthGuard] },
   { path: 'product-info/:id', component: ProductInfoComponent, canActivate: [AuthGuard] },
 
   //{ path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
