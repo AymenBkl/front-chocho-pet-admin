@@ -2,6 +2,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 import { Component, OnInit } from '@angular/core';
 import { InteractionService } from 'app/services/interaction.service';
 import { ToolsService } from 'app/services/tools.service';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-generate-code-best-tips',
@@ -75,6 +76,7 @@ export class GenerateCodeBestTipsComponent implements OnInit {
 
   copyCode() {
     this.clipboard.copy(this.bestTipsCode);
+    $('.copied-holder').css('display','flex').hide().fadeIn(1200).fadeOut(1200);
   }
 
 }

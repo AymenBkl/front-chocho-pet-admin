@@ -32,3 +32,28 @@
 .copy-button button:focus {
   outline: none;
 }
+
+.copied-holder {
+  position: absolute;
+    z-index: 999;
+    padding: 50px;
+    background: #283136;
+    color: white;
+    bottom: 20%;
+    left: 45%;
+    display: none;
+    border-radius: 30px;
+}
+
+.copied-holder .mat-icon {
+  font-size: 40px;
+    vertical-align: middle;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.copied-holder span {
+  font-size: 28px;
+  vertical-align: middle;
+}
