@@ -1,5 +1,4 @@
-
-<div class="close" >
+<div class="close">
   <button mat-icon-button color="danger" aria-label="Delete Button" (click)="close()">
     <mat-icon>close</mat-icon>
   </button>
@@ -8,12 +7,33 @@
   <span *ngIf="bestTipsCode != ''">{{bestTipsCode}}</span>
 </div>
 
-<ngx-slick-carousel  [config]='slideCarouselConfig' *ngIf='segmentToShow == "html"'  class="carousel"
-#slickModal="slick-carousel"  (init)="slickInit($event)">
-  <div class="code-html" [innerHTML]='bestTipsCode'></div>
-</ngx-slick-carousel>
+<div class="code-html">
+  <ngx-slick-carousel [config]='slideConfig ' *ngIf='segmentToShow == "html"' class="carousel"
+  #slickModal="slick-carousel" >
+  <div class="slide" *ngFor='let bestTip of bestTips ' ngxSlickItem>
+    <div class="best-tips-item-container">
 
-<div class="copy-button" >
+      <div class="best-tips-image-container">
+        <img [src]='bestTip.mainImageUrl'>
+      </div>
+      <div class="best-tips-text-container">
+        <h1 class="header-tips-container">TIPS</h1>
+
+        <div class="header-text-tips">
+          <h3>{{bestTip.title}}</h3>
+        </div>
+        <div class="rating-section">
+          {{bestTip.description}}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ngx-slick-carousel>
+</div>
+
+
+<div class="copy-button">
   <button mat-icon-button color="danger" aria-label="Delete Button" (click)="copyCode()">
     <mat-icon>file_copy</mat-icon>
   </button>
@@ -23,7 +43,7 @@
     <i class="far fa-file-code"></i>
     HTML
   </button>
-  <button  mat-raised-button class="segment-button" (click)='switchSegments("code")'>
+  <button mat-raised-button class="segment-button" (click)='switchSegments("code")'>
     <i class="fa fa-code"></i>
     Code
   </button>
