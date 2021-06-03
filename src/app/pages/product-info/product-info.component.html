@@ -200,9 +200,9 @@
 
 
 
-<div class="row card row-card" *ngIf="formDescriptionProduct && formDescriptionProduct.length > 0" data-aos="zoom-in-down">
+<div class="row card row-card" *ngIf="formDescriptionProduct && formDescriptionProduct.length > 0" data-aos="zoom-in-down" cdkDropList (cdkDropListDropped)="drop($event)">
   <h1 class="header-product-description-title" data-aos="fade-down-left">Product Description Optimization</h1>
-  <div class="col-12" *ngFor="let productForm of formDescriptionProduct">
+  <div class="col-12 product-info-holder" *ngFor="let productForm of formDescriptionProduct" cdkDrag>
     <div class="card"  id="cardId-{{productForm.idFields.cardId}}" data-aos="fade-up-left">
       <div class="header-delete-button" *ngIf="productForm.status == 'active'">
         <button mat-icon-button color="danger" aria-label="Delete Button" (click)="deleteFormProduct(productForm.idFields.cardId)">

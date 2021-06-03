@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -40,6 +41,8 @@ export class ProductInfoComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.product = this.storageService.getProduct(params['id']);
       if (this.product && this.product.description && this.product.description.length > 0) {
+          this.product.description = this.product.description.sort((a,b) => a - b);
+          console.log(this.product.description);
           this.product.description.map((productDescription) => {
             let formFields = productDescription;
             this.addAnotherForm(formFields);
@@ -164,10 +167,11 @@ export class ProductInfoComponent implements OnInit {
   submitForms() {
     let data = [];
     let lenghtActive = this.formDescriptionProduct.filter(formProduct => formProduct.status == 'active').length;
-    this.formDescriptionProduct.map(productForm => {
+    this.formDescriptionProduct.map((productForm,index) => {
       if (productForm.status == 'active') {
         let initData :any = {};
         initData._id = productForm.formField._id;
+        initData.position = index;
         let productHeaderValue = $(`#header-input-${productForm.idFields['header-input']}`).val();
         if (!productHeaderValue) {
           $(`#headerProductError-${productForm.idFields['headerProductError']}`).show();
@@ -246,7 +250,7 @@ export class ProductInfoComponent implements OnInit {
           }
 
         }
-        console.log(initData)
+        console.log('initData',initData)
         initData.status = 'active';
         if (Object.keys(initData).length == 6){
           data.push(initData);
@@ -254,16 +258,17 @@ export class ProductInfoComponent implements OnInit {
         }
 
       }
+      else {
+        let newFormProduct = {
+          _id :productForm.formField._id,
+          status:'deleted',
+          position:index
+        }
+        this.saveProductDescription(newFormProduct);
+      }
     })
 
-    this.formDescriptionProduct.filter(formProduct => formProduct.status == 'deleted').map(formProduct => {
-      console.log(formProduct)
-      let newFormProduct = {
-        _id :formProduct.formField._id,
-        status:'deleted'
-      }
-      this.saveProductDescription(newFormProduct);
-    })
+
 this.submitTable();
   }
 
@@ -613,6 +618,7 @@ this.submitTable();
         }
       })
       .catch(err => {
+        this.interactionService.closeToaster(id);
         this.interactionService.displayToaster('Something Went Wrong !','error','ERROR');
       })
 
@@ -768,6 +774,10 @@ this.submitTable();
     dialogToOpen.afterClosed().subscribe(result => {
       this.getCurrentProduct()
     })
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.formDescriptionProduct, event.previousIndex, event.currentIndex);
   }
 
 
