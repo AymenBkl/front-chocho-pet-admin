@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { generateCodeBestReviews } from 'app/functions/openDialog';
 import { ImgbbService } from 'app/services/imgbb.service';
@@ -53,7 +54,8 @@ export class BestReviewsComponent implements OnInit {
   }
 
   addFormFields(reviews) {
-    reviews.map((review) => {
+    let newSortedReviewsTips = reviews.sort((a,b) => a.position - b.position);
+    newSortedReviewsTips.map((review) => {
       this.addFormField({mainImgUrl:review.mainImgUrl,descriptionReview:review.descriptionReview,authorReview:review.authorReview,status:review.status,_id:review._id});
     })
   }
@@ -90,10 +92,11 @@ export class BestReviewsComponent implements OnInit {
   }
 
   submitForm() {
-    this.formFields.map((formField) => {
+    this.formFields.map((formField,index) => {
       if (formField.value.status == 'active'){
         let data : any = {};
         data.status = 'active';
+        data.position = index;
         data._id = formField.value._id;
         let reviewForm = $(`#review-form-${formField.formId}`);
         let selectOption = reviewForm.find('.select-option').text();
@@ -144,13 +147,13 @@ export class BestReviewsComponent implements OnInit {
           reviewForm.find('.input-review-description-error').show();
         }
         console.log(data);
-        if (Object.keys(data).length == 5){
+        if (Object.keys(data).length == 6){
           this.handleDataReview(data,formField.formId);
         }
       }
       else {
         if (formField.value._id != ''){
-          this.handleDataReview({status:'deleted',_id:formField.value._id},formField.formId);
+          this.handleDataReview({status:'deleted',_id:formField.value._id,position:index},formField.formId);
         }
       }
 
@@ -231,5 +234,9 @@ export class BestReviewsComponent implements OnInit {
     dialog.afterClosed().subscribe(() => {
       this.getBestReviews();
     })
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.formFields, event.previousIndex, event.currentIndex);
   }
 }

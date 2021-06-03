@@ -85,7 +85,6 @@ export class BestTipsComponent implements OnInit {
         let data : any = {};
         data.status = 'active';
         data._id = formField.value._id;
-
         data.position = indexForm;
         let tipsForm = $(`#tips-form-${formField.formId}`);
         let selectOption = tipsForm.find('.select-option').text();
@@ -241,9 +240,7 @@ export class BestTipsComponent implements OnInit {
 
 
   drop(event: CdkDragDrop<string[]>) {
-    console.log(event.previousIndex,event.currentIndex,event);
     moveItemInArray(this.formTips, event.previousIndex, event.currentIndex);
-    console.log(this.formTips);
   }
 
 
