@@ -31,4 +31,10 @@ mat-form-field {
 .img-holder img {
   border-radius: 50%;
   margin: 0 auto !important;
+  width: 50%;
+}
+
+.submit-btn {
+  margin-bottom: 15px;
+  margin-top: 15px;
 }

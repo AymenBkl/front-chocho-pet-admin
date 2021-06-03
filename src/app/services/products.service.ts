@@ -15,7 +15,7 @@ export class ProductsService {
   updateProductSub: Subscription;
   postImageSub: Subscription;
   products: Product[];
-  badges: Badge[];
+  badges: Badge[] = [];
   constructor(private httpClient: HttpClient,
     private httpErrorHandlerService: HttpErrorHandlerService) {
   }
@@ -153,9 +153,10 @@ export class ProductsService {
   saveBadge(badgeBody:Badge) {
     return new Promise((resolve, reject) => {
       this.httpClient.post<ProductResponse>(environment.url + 'products/savebadge',{badgeBody:badgeBody})
-        .subscribe(response => {
-          console.log(response);
+        .subscribe((response:any) => {
           if (response.status === 200) {
+            this.badges.push(response.badge);
+            console.log(this.badges)
             resolve(response);
           }
           else {

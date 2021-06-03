@@ -4,6 +4,7 @@ import { Badge } from 'app/interface/badge';
 import { InteractionService } from 'app/services/interaction.service';
 import { ProductsService } from 'app/services/products.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ImgbbService } from 'app/services/imgbb.service';
 
 @Component({
   selector: 'app-add-badge',
@@ -15,10 +16,12 @@ export class AddBadgeComponent implements OnInit {
   badge:any;
   @ViewChild('files') files: ElementRef;
   image: { imageSrc: any, file: any } = {imageSrc: null,file:null};
+  submited:boolean = false
   constructor(@Inject(MAT_DIALOG_DATA) public data: Badge,
               private interactionService: InteractionService,
               private productService: ProductsService,
-              private domSanitizer: DomSanitizer) { }
+              private domSanitizer: DomSanitizer,
+              private imgbb: ImgbbService) { }
 
   ngOnInit(): void {
     this.initBadge();
@@ -51,6 +54,55 @@ export class AddBadgeComponent implements OnInit {
       reader.readAsDataURL(file);
       this.image.file = file;
     }
+  }
+
+  submitBadge() {
+    this.submited = true;
+    if (this.badge.selectOption == 'file' && this.image.imageSrc){
+      this.interactionService.displayToast('Submitting badge Please wait !',true,'info');
+      this.imgbb.uploadImage(this.image.file)
+        .then((result:any) => {
+          this.interactionService.closeToast();
+          if (result){
+            this.interactionService.displayToaster('Image uploaded successfully','success','UPLOADED');
+            this.badge.mainImgUrl = result;
+            this.saveBadge();
+          }
+          else {
+            this.submited = false;
+            this.interactionService.displayToaster('Error While Uploading Image','error','ERROR');
+          }
+        })
+        .catch(err => {
+          this.submited = false;
+          this.interactionService.closeToast();
+          this.interactionService.displayToaster('Error While Uploading Image','error','ERROR');
+        })
+    }
+    else {
+      this.saveBadge();
+    }
+  }
+
+  saveBadge() {
+    this.interactionService.displayToast('Submitting badge Please wait !',true,'info');
+    console.log(this.badge);
+    this.productService.saveBadge(this.badge)
+      .then((result) => {
+        this.submited = false;
+        this.interactionService.closeToast();
+        if (result && result != false){
+          this.interactionService.displayToast('Badge Saved Successfully',false,'success');
+        }
+        else {
+          this.interactionService.displayToaster('Error Saving badge','error','ERROR');
+        }
+      })
+      .catch(err => {
+        this.submited = false;
+        this.interactionService.closeToast();
+        this.interactionService.displayToaster('Error Saving badge','error','ERROR');
+      })
   }
 
 }

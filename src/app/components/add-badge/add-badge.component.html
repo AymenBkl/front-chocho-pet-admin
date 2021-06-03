@@ -13,29 +13,37 @@
             <mat-option value="file">File</mat-option>
             <mat-option value="url" >Url</mat-option>
           </mat-select>
+          <mat-error *ngIf='badge.selectOption == ""'>Please select an option</mat-error>
         </mat-form-field>
         <div class="form-description-badge-input options-select field-file-review" *ngIf="badge.selectOption == 'file'">
           <mat-label>Pick file</mat-label>
           <button (click)="openUploadFile()" mat-icon-button class="input-file-button" >
             <mat-icon>image</mat-icon>
            </button>
-          <input accept="image/png, image/gif, image/jpeg, image/svg+xml" placeholder="file" type="file" style="display:none" (change)="selectedImage($event)" #files>
+          <input accept="image/png, image/gif, image/jpeg, image/svg+xml" placeholder="file" type="file" style="display:none" (change)="selectedImage($event)" #files required>
+          <mat-error *ngIf='badge.selectOption == "file" && !image || (image.imageSrc == "")'>Please pick A file</mat-error>
 
       </div>
         <mat-form-field class="form-description-badge-input options-select field-url-review" *ngIf="badge.selectOption == 'url'">
           <mat-label>Enter Url</mat-label>
-          <input matInput placeholder="url" [(ngModel)]='badge.mainImageUrl' type="url" class="input-url" >
+          <input matInput placeholder="url" [(ngModel)]='badge.mainImageUrl' type="url" class="input-url" required >
+          <mat-error *ngIf='badge.selectOption == "url" && badge.url == ""'>Please enter A url</mat-error>
         </mat-form-field>
 
 
 
         <mat-form-field class="form-description-badge-input" appearance="fill">
           <mat-label>Badge name</mat-label>
-          <input matInput placeholder="Header" [(ngModel)]='badge.name' type="text">
+          <input matInput placeholder="Header" [(ngModel)]='badge.name' type="text" required>
+          <mat-error *ngIf='badge.name == "" ' >Please enter A name</mat-error>
         </mat-form-field>
 
     </div>
-
+    <div class="col-12 text-center submit-btn"  >
+      <button mat-mini-fab color="primary" aria-label="submit Badge" (click)="submitBadge()" [disabled]='badge.mainImageUrl == "" || badge.name == "" || !image.imageSrc || submited' >
+        <mat-icon>cloud_upload</mat-icon>
+      </button>
+    </div>
   </div>
 
 </div>
