@@ -1,0 +1,291 @@
+.segment-buttons {
+  width: 95%;
+    position: absolute;
+    bottom: 2%;
+    left: 2.5%;
+    display: inline-block;
+}
+
+.segment-button {
+  width: 50%;
+  padding: 20px;
+  display: inline-block;
+  background-color: white;
+}
+
+
+
+.segment-button:focus {
+  outline: none;
+}
+
+.segment-button i {
+  font-size: 30px;
+  margin-right: 20px;
+}
+
+.code-generated {
+  margin-bottom: 30%;
+  margin-top: 20px;
+}
+
+.copy-button {
+  position: absolute;
+  bottom: 100px;
+  right: 2.5%;
+}
+
+.copy-button button:focus {
+  outline: none;
+}
+
+.copied-holder {
+  position: absolute;
+    z-index: 999;
+    padding: 50px;
+    background: #283136;
+    color: white;
+    bottom: 20%;
+    left: 45%;
+    display: none;
+    border-radius: 30px;
+}
+
+.copied-holder .mat-icon {
+  font-size: 40px;
+    vertical-align: middle;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.copied-holder span {
+  font-size: 28px;
+  vertical-align: middle;
+}
+
+.close {
+  right: 2.5%;
+    top: 3%;
+    position: absolute;
+}
+
+.close button:focus {
+  outline: none;
+}
+
+.code-html {
+  margin: 0 !important;
+  margin-top: 14% !important;
+
+}
+
+
+
+
+.slick-slider {
+  width: 88%;
+  margin: auto;
+  background: rgb(14, 13, 13);
+}
+
+body .slick-prev,
+body .slick-next {
+  height: 45px;
+  width: 40px;
+  background: grey !important;
+  z-index: 100;
+}
+
+.slick-next {
+  right: 3px !important;
+}
+
+.slick-prev {
+  left: 3px !important;
+}
+
+.text {
+  font-size: 20px;
+}
+
+.full-description {
+  display: block;
+
+}
+
+.item-image-text {
+  background-color: #fe7c2b;
+  display: flex;
+  padding: 0px;
+  margin: 0;
+  list-style: none;
+}
+
+.image-holder {
+  padding: 0px;
+  display: flex;
+  width: 100%;
+  background: white;
+}
+
+.image-holder img {
+  width: 100%;
+  padding-bottom: 15px;
+}
+
+.text-holder {
+  width: 100%;
+  padding: 100px;
+  color: white;
+  float: left;
+  background-color: #FE7C2B;
+  align-self: center;
+}
+
+.text-holder img {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 70px;
+}
+
+.text-holder h2.h3 {
+  font-size: 35px;
+  letter-spacing: -1.5px;
+}
+
+.content p {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 100;
+}
+
+@media screen and (max-width: 749px) {
+  .text-holder {
+      width:100%;
+  }
+
+  .image-holder {
+      width:100%;
+  }
+  .item-image-text{
+    display: block;
+  }
+
+}
+
+
+
+
+
+.main-products-description-lg-holder {
+  width: 100%;
+  display: flex;
+}
+.main-product-info-customized {
+  width: 46%;
+  float: right;
+  align-items: center;
+}
+.nav-product-item {
+  color:black !important;
+  font-size: 12px;
+}
+
+.nav-products-holder {
+  width: 100%;
+    border-bottom: 0px !important;
+    float: right;
+    margin-right: 0px;
+}
+
+.benifits-fields {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tab-pane {
+  padding:20px;
+  margin-top:40px;
+  width: 100%;
+  float: right;
+}
+
+.shiping_content {
+  color: #000 !important;
+  margin: 0 0 19.44444px !important;
+  font-size: 17px;
+}
+
+
+ul.benifits-fields li {
+  flex-basis: 90%;
+  font-size: 15px;
+}
+
+ul.benifits-fields img {
+  flex-basis: 6%;
+  max-width:37px !important;
+  border: 0 !important;
+
+}
+
+#tab-pane img {
+  display: block;
+  margin: 0px auto;
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+}
+
+.shipping_content p {
+  color: #000 !important;
+  margin: 0 0 19.44444px !important;
+  font-size: 16px !important;
+}
+
+.shipping_content b {
+  color: #000 !important;
+  font-size: 18px !important;
+  font-weight: bold;
+}
+
+
+
+.show_hide{
+  color:#fe7c2b;
+  cursor: pointer
+}
+
+#expandBtn{
+  background-color: #fe7c2b !important;
+}
+
+.item-holder-nav {
+  font-size: 10px;
+}
+
+.item-holder-nav  a{
+  font-size: 10px;
+}
+
+#myTabContent {
+  float:right;
+}
+
+#myTabContent .active{
+  float:right;
+  background-color:white !important;
+}
+.nav-link.active {
+  color: #495057 !important;
+  background-color: #fff !important;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.empty-div {
+  width:56% !important;
+}

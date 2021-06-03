@@ -1,5 +1,5 @@
 import { Clipboard } from '@angular/cdk/clipboard';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InteractionService } from 'app/services/interaction.service';
 import { ToolsService } from 'app/services/tools.service';
@@ -7,7 +7,9 @@ import { ToolsService } from 'app/services/tools.service';
 @Component({
   selector: 'app-generating-best-reviews',
   templateUrl: './generating-best-reviews.component.html',
-  styleUrls: ['./generating-best-reviews.component.css']
+  styleUrls: ['./generating-best-reviews.component.css'],
+  encapsulation: ViewEncapsulation.None,
+
 })
 export class GeneratingBestReviewsComponent implements OnInit {
 

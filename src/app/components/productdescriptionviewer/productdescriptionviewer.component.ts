@@ -1,23 +1,39 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Product } from 'app/interface/product';
 import { InteractionService } from 'app/services/interaction.service';
 import { ProductsService } from 'app/services/products.service';
 import { StorageService } from 'app/services/storage.service';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-productdescriptionviewer',
   templateUrl: './productdescriptionviewer.component.html',
-  styleUrls: ['./productdescriptionviewer.component.css']
+  styleUrls: ['./productdescriptionviewer.component.css'],
+  encapsulation: ViewEncapsulation.None,
+
 })
 export class ProductdescriptionviewerComponent implements OnInit {
   product: Product;
   productDescriptionTotal:string;
+  segmentToShow:string = 'code';
+  slideCarouselConfig = {
+    "infinite": true,
+    "autoplay": false,
+    "slidesToShow": 1,
+    "slidesToScroll": 1,
+    "pauseOnHover": true,
+    "arrows": true,
+    "prevArrow": '<button type="button" class="slick-prev-carousel"><img class="left_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle-1.png?v=1618817807"></button>',
+    "nextArrow": '<button type="button" class="slick-next-carousel"><img class="right_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle.png?v=1618817807"></button>',
+  };
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ProductdescriptionviewerComponent>,
     private productService: ProductsService,
     private interactionService: InteractionService,
-    private storageService: StorageService) { }
+    private storageService: StorageService,
+    private clipboard: Clipboard,
+    private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getProduct();
@@ -198,4 +214,16 @@ export class ProductdescriptionviewerComponent implements OnInit {
     }
   }
 
+  copyCode() {
+    this.clipboard.copy(this.productDescriptionTotal);
+    $('.copied-holder').css('display','flex').hide().fadeIn(1200).fadeOut(1200);
+  }
+
+  close() {
+    this.matDialog.closeAll();
+  }
+
+  switchSegments(segment:string){
+    this.segmentToShow = segment;
+  }
 }
