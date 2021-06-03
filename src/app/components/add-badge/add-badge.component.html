@@ -2,7 +2,7 @@
   <div class="card card-badge"  data-aos="fade-up-left" *ngIf="badge">
 
     <div class="img-holder">
-      <img *ngIf="badge.mainImageUrl != '' && badge.selectOption == 'url'" [src]='badge.mainImageUrl'>
+      <img *ngIf="badge.mainImgUrl != '' && badge.selectOption == 'url'" [src]='badge.mainImgUrl'>
       <img *ngIf="image.imageSrc != '' && badge.selectOption == 'file'" [src]='image.imageSrc'>
     </div>
 
@@ -26,7 +26,7 @@
       </div>
         <mat-form-field class="form-description-badge-input options-select field-url-review" *ngIf="badge.selectOption == 'url'">
           <mat-label>Enter Url</mat-label>
-          <input matInput placeholder="url" [(ngModel)]='badge.mainImageUrl' type="url" class="input-url" required >
+          <input matInput placeholder="url" [(ngModel)]='badge.mainImgUrl' type="url" class="input-url" required >
           <mat-error *ngIf='badge.selectOption == "url" && badge.url == ""'>Please enter A url</mat-error>
         </mat-form-field>
 
@@ -37,10 +37,11 @@
           <input matInput placeholder="Header" [(ngModel)]='badge.name' type="text" required>
           <mat-error *ngIf='badge.name == "" ' >Please enter A name</mat-error>
         </mat-form-field>
+        <span class="error" *ngIf='errorMessage != "" ' >{{errorMessage}}</span>
 
     </div>
     <div class="col-12 text-center submit-btn"  >
-      <button mat-mini-fab color="primary" aria-label="submit Badge" (click)="submitBadge()" [disabled]='badge.mainImageUrl == "" || badge.name == "" || !image.imageSrc || submited' >
+      <button mat-mini-fab color="primary" aria-label="submit Badge" (click)="submitBadge()" [disabled]='(badge.selectOption == "url" && badge.mainImgUrl == "") || badge.name == "" || (badge.selectOption == "file" && !image.imageSrc) || submited' >
         <mat-icon>cloud_upload</mat-icon>
       </button>
     </div>

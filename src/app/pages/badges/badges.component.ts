@@ -42,6 +42,13 @@ export class BadgesComponent implements OnInit {
       })
   }
 
+  updateBadge(badge:Badge){
+    let dialog = calladdBadge(this.matDialog,badge)
+    dialog.afterClosed().subscribe(result => {
+
+    })
+  }
+
 
   addBadge() {
     let dialog = calladdBadge(this.matDialog,null)

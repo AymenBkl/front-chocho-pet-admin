@@ -16,7 +16,8 @@ export class AddBadgeComponent implements OnInit {
   badge:any;
   @ViewChild('files') files: ElementRef;
   image: { imageSrc: any, file: any } = {imageSrc: null,file:null};
-  submited:boolean = false
+  submited:boolean = false;
+  errorMessage:string = '';
   constructor(@Inject(MAT_DIALOG_DATA) public data: Badge,
               private interactionService: InteractionService,
               private productService: ProductsService,
@@ -24,6 +25,7 @@ export class AddBadgeComponent implements OnInit {
               private imgbb: ImgbbService) { }
 
   ngOnInit(): void {
+    console.log(this.data);
     this.initBadge();
   }
 
@@ -38,6 +40,7 @@ export class AddBadgeComponent implements OnInit {
         status:this.data && this.data.status ? this.data._id : '',
         selectOption:this.data && this.data.name ? 'url' : '',
       };
+      console.log(this.badge);
   }
 
   openUploadFile() {
@@ -88,11 +91,16 @@ export class AddBadgeComponent implements OnInit {
     this.interactionService.displayToast('Submitting badge Please wait !',true,'info');
     console.log(this.badge);
     this.productService.saveBadge(this.badge)
-      .then((result) => {
+      .then((result:any) => {
         this.submited = false;
         this.interactionService.closeToast();
-        if (result && result != false){
+        if (result && result != false && result.status == 200){
           this.interactionService.displayToast('Badge Saved Successfully',false,'success');
+        }
+        else if (result && result.duplicateName == true){
+          this.interactionService.displayToaster('Badge Name Exists','warning','WARNING');
+          this.errorMessage = 'Name Already Exists';
+          console.log(this.errorMessage);
         }
         else {
           this.interactionService.displayToaster('Error Saving badge','error','ERROR');

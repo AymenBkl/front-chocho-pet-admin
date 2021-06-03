@@ -13,6 +13,12 @@
           <span class="date">{{badge.createdAt |  date:'short'}}</span>
         </div>
       </div>
+      <div class="btn-update">
+        <button mat-fab color="warn" aria-label="Update Badge"  matTooltip="Update Badge" (click)="updateBadge(badge)">
+          <mat-icon>update</mat-icon>
+        </button>
+      </div>
+
     </div>
   </div>
   <div class="col-12 no-badge" *ngIf='!badges || (badges && badges.length == 0)'>

@@ -154,10 +154,13 @@ export class ProductsService {
     return new Promise((resolve, reject) => {
       this.httpClient.post<ProductResponse>(environment.url + 'products/savebadge',{badgeBody:badgeBody})
         .subscribe((response:any) => {
+          console.log(response);
           if (response.status === 200) {
-            this.badges.push(response.badge);
-            console.log(this.badges)
+            this.addBadge(response.badge);
             resolve(response);
+          }
+          else if (response.status && response.msg == 'Name Already Exists'){
+            resolve({duplicateName:true});
           }
           else {
             resolve(false);
@@ -205,6 +208,17 @@ export class ProductsService {
     if (this.postImageSub) {
       this.postImageSub.unsubscribe();
     }
+  }
+
+  addBadge(badge: Badge){
+    let searchedBadge = this.badges.find(findBadge => findBadge._id == badge._id);
+    if (searchedBadge && searchedBadge != null){
+      searchedBadge.name = badge.name;
+    }
+    else {
+      this.badges.push(badge);
+    }
+
   }
 
   getMainBadges() {
