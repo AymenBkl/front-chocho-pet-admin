@@ -1,0 +1,34 @@
+.card-badge {
+  background-color:  #283136;
+  display:block;
+  width: 60%;
+  text-align: center;
+}
+
+.card-badge * {
+  color:white;
+}
+
+mat-form-field {
+  width: 80% !important;
+  text-align: left !important;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.img-holder {
+  width: 100%;
+  text-align: center;
+}
+
+.img-holder img {
+  border-radius: 50%;
+  margin: 0 auto !important;
+}

@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Badge } from 'app/interface/badge';
 import { InteractionService } from 'app/services/interaction.service';
 import { ProductsService } from 'app/services/products.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-badge',
@@ -16,7 +17,8 @@ export class AddBadgeComponent implements OnInit {
   image: { imageSrc: any, file: any } = {imageSrc: null,file:null};
   constructor(@Inject(MAT_DIALOG_DATA) public data: Badge,
               private interactionService: InteractionService,
-              private productService: ProductsService) { }
+              private productService: ProductsService,
+              private domSanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.initBadge();
@@ -44,6 +46,8 @@ export class AddBadgeComponent implements OnInit {
       const file = event.target.files[0];
       const reader = new FileReader();
       reader.onload = e => this.image.imageSrc = reader.result;
+      this.image.imageSrc = this.domSanitizer.bypassSecurityTrustUrl(this.image.imageSrc);
+      console.log();
       reader.readAsDataURL(file);
       this.image.file = file;
     }

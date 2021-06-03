@@ -1,40 +1,39 @@
-<div class="card"  data-aos="fade-up-left">
+<div class="main">
+  <div class="card card-badge"  data-aos="fade-up-left" *ngIf="badge">
 
-
-  <div class="badge-description-header" *ngIf="badge">
-    <div class="col-12">
-      <mat-form-field appearance="fill" class="form-description-badge-input">
-        <mat-label>Pick An Option (Image Main)</mat-label>
-        <mat-select  class="select-option" [(value)]="badge.selectOption">
-          <mat-option value="file">File</mat-option>
-          <mat-option value="url" >Url</mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div class="img-holder">
+      <img *ngIf="badge.mainImageUrl != '' && badge.selectOption == 'url'" [src]='badge.mainImageUrl'>
+      <img *ngIf="image.imageSrc != '' && badge.selectOption == 'file'" [src]='image.imageSrc'>
     </div>
-    <div class="col-12">
-      <div class="form-description-badge-input options-select field-file-review">
-        <mat-label>Pick file</mat-label>
-        <button (click)="openUploadFile()" mat-icon-button class="input-file-button" >
-          <mat-icon>image</mat-icon>
-         </button>
-        <input accept="image/png, image/gif, image/jpeg" placeholder="file" type="file" style="display:none" (change)="selectedImage($event)" #files>
+
+    <div class="badge-description-header" >
+        <mat-form-field appearance="fill" class="form-description-badge-input">
+          <mat-label>Pick An Option (Image Main)</mat-label>
+          <mat-select  class="select-option" [(value)]="badge.selectOption">
+            <mat-option value="file">File</mat-option>
+            <mat-option value="url" >Url</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="form-description-badge-input options-select field-file-review" *ngIf="badge.selectOption == 'file'">
+          <mat-label>Pick file</mat-label>
+          <button (click)="openUploadFile()" mat-icon-button class="input-file-button" >
+            <mat-icon>image</mat-icon>
+           </button>
+          <input accept="image/png, image/gif, image/jpeg, image/svg+xml" placeholder="file" type="file" style="display:none" (change)="selectedImage($event)" #files>
+
       </div>
-
-    </div>
-    <div class="col-12">
-      <mat-form-field class="form-description-badge-input options-select field-url-review">
-        <mat-label>Enter Url</mat-label>
-        <input matInput placeholder="url" [(ngModel)]='badge.mainImageUrl' type="url" class="input-url" >
-      </mat-form-field>
-    </div>
+        <mat-form-field class="form-description-badge-input options-select field-url-review" *ngIf="badge.selectOption == 'url'">
+          <mat-label>Enter Url</mat-label>
+          <input matInput placeholder="url" [(ngModel)]='badge.mainImageUrl' type="url" class="input-url" >
+        </mat-form-field>
 
 
 
-    <div class="col-12">
-      <mat-form-field class="form-description-badge-input" appearance="fill">
-        <mat-label>Badge name</mat-label>
-        <input matInput placeholder="Header" [(ngModel)]='badge.name' type="text">
-      </mat-form-field>
+        <mat-form-field class="form-description-badge-input" appearance="fill">
+          <mat-label>Badge name</mat-label>
+          <input matInput placeholder="Header" [(ngModel)]='badge.name' type="text">
+        </mat-form-field>
+
     </div>
 
   </div>
