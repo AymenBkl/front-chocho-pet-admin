@@ -11,7 +11,7 @@
             <div class="table-responsive">
               <mat-form-field *ngIf="loaded && emails && emails.length > 0"  id="filter">
                 <mat-label><i class="nc-icon nc-zoom-split"></i></mat-label>
-                <input matInput  (keyup)="applyFilter($event)" placeholder="Ex. Hello Admin" #input>
+                <input matInput  (keyup)="applyFilter($event)" placeholder="Ex. Status" #input>
               </mat-form-field>
               <table class="table" mat-table [dataSource]="dataSource" matSort multiTemplateDataRows
                 class="mat-elevation-z8"

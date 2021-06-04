@@ -28,7 +28,6 @@ export class UserComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit() {
-    this.buildUserForm();
     this.getAdmin();
   }
 
@@ -45,7 +44,8 @@ export class UserComponent implements OnInit,OnDestroy {
   }
 
   buildUserForm() {
-    if (this.currentUser) {
+    console.log(this.currentUser != null)
+    if (this.currentUser != null) {
       this.userForm = this.formBuilder.group({
         username: [{ value: this.currentUser.username, disabled: this.submitted }, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
         firstName: [{ value: this.currentUser.firstName, disabled: this.submitted }, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
@@ -55,7 +55,6 @@ export class UserComponent implements OnInit,OnDestroy {
         country: [{ value: this.currentUser.country, disabled: this.submitted }, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
         postalCode: [{ value: this.currentUser.postalCode, disabled: this.submitted }, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
         description: [{ value: this.currentUser.description, disabled: this.submitted }, [Validators.required, Validators.minLength(4)]],
-
       });
     }
     else {
@@ -74,6 +73,7 @@ export class UserComponent implements OnInit,OnDestroy {
     this.userForm.valueChanges
       .subscribe(user => {
         this.formErrors = onValueChanged(user, this.userForm);
+        console.log(this.formErrors);
       });
   }
 

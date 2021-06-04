@@ -49,10 +49,11 @@ export class SubscribersComponent implements OnInit,OnDestroy {
         console.log(emails);
         if (emails && emails != false){
           this.interactionService.displayToast('Emails Loaded Succesfully', false, 'success');
-          this.emails = emails;
-          this.dataSource = new MatTableDataSource(emails);
-          this.dataSource.sort = this.sort;
-          this.dataSource.paginator = this.paginator;
+            this.emails = emails;
+            this.dataSource = new MatTableDataSource(emails);
+            this.dataSource.sort = this.sort;
+            this.dataSource.paginator = this.paginator;
+
         }
         else {
           this.interactionService.displayToast('Something Went Wrong !', false, 'error');
@@ -69,6 +70,11 @@ export class SubscribersComponent implements OnInit,OnDestroy {
   sendCouponToEmails() {
     let unsentCouponEmails = this.emails.filter(email => email.sentCoupon == false);
     this.emailService.sendEmails(unsentCouponEmails);
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

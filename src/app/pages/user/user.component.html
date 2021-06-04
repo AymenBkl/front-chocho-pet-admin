@@ -133,7 +133,7 @@
                 <label>First Name</label>
                 <input type="text" class="form-control" placeholder="Company" formControlName="firstName"
                   *ngIf="currentUser">
-                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.firstName}}</mat-error>
+                <mat-error *ngIf="formErrors && formErrors.firstName">{{formErrors.firstName}}</mat-error>
                 <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
               </div>
             </div>
@@ -142,7 +142,7 @@
                 <label>Last Name</label>
                 <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName"
                   *ngIf="currentUser">
-                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.lastName}}</mat-error>
+                <mat-error *ngIf="formErrors && formErrors.lastName">{{formErrors.lastName}}</mat-error>
                 <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
               </div>
             </div>
@@ -153,7 +153,7 @@
                 <label>Address</label>
                 <input type="text" class="form-control" placeholder="Home Address" formControlName="address"
                   *ngIf="currentUser">
-                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.address}}</mat-error>
+                <mat-error *ngIf="formErrors && formErrors.address">{{formErrors.address}}</mat-error>
                 <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
               </div>
             </div>
@@ -163,7 +163,7 @@
               <div class="form-group" data-aos="zoom-in-right">
                 <label>City</label>
                 <input type="text" class="form-control" placeholder="City" formControlName="city" *ngIf="currentUser">
-                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.city}}</mat-error>
+                <mat-error *ngIf="formErrors && formErrors.city">{{formErrors.city}}</mat-error>
                 <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
               </div>
             </div>
@@ -172,7 +172,7 @@
                 <label>Country</label>
                 <input type="text" class="form-control" placeholder="Country" formControlName="country"
                   *ngIf="currentUser">
-                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.country}}</mat-error>
+                <mat-error *ngIf="formErrors && formErrors.country">{{formErrors.country}}</mat-error>
                 <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
               </div>
             </div>
@@ -181,7 +181,7 @@
                 <label>Postal Code</label>
                 <input type="number" class="form-control" placeholder="ZIP Code" formControlName="postalCode"
                   *ngIf="currentUser">
-                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.postalCode}}</mat-error>
+                <mat-error *ngIf="formErrors && formErrors.postalCode">{{formErrors.postalCode}}</mat-error>
                 <ngx-skeleton-loader *ngIf="!currentUser" count="1"></ngx-skeleton-loader>
               </div>
             </div>
@@ -191,7 +191,7 @@
               <div class="form-group" data-aos="zoom-in-right">
                 <label>About Me</label>
                 <textarea class="form-control textarea" formControlName="description" *ngIf="currentUser"></textarea>
-                <mat-error *ngIf="formErrors && formErrors.username">{{formErrors.description}}</mat-error>
+                <mat-error *ngIf="formErrors && formErrors.description">{{formErrors.description}}</mat-error>
                 <ngx-skeleton-loader *ngIf="!currentUser" count="3"></ngx-skeleton-loader>
               </div>
             </div>

@@ -54,7 +54,6 @@ let validationMessages = {
 };
 
 export function onValueChanged(data: any, loginForm: FormGroup) {
-  console.log(loginForm);
   if (!loginForm) { return; }
   const form = loginForm;
   for (const field in formErrors) {
