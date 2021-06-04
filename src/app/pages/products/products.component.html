@@ -24,10 +24,7 @@
 <div class="row">
   <div class="col-12 col-md-4 col-lg-4 holder-product" *ngFor="let product of searchProduct;let i = index"  data-aos="zoom-in-right">
       <div class="card profile-card-3">
-        <img src="../../../assets/svg/icons/badge-de-vente.svg" *ngIf="product.productBadge == 'Sale'" class="img-badge badge-{{product.productBadge}}">
-        <img src="../../../assets/svg/icons/new.svg" *ngIf="product.productBadge == 'New'"  class="img-badge badge-{{product.productBadge}}">
-        <img src="../../../assets/svg/icons/award.svg" *ngIf="product.productBadge == 'Best'"  class="img-badge badge-{{product.productBadge}}">
-        <img src="../../../assets/svg/icons/sticker.svg" *ngIf="product.productBadge == 'Hot'"  class="img-badge badge-{{product.productBadge}}">
+        <img [src]='product.productBadge.mainImgUrl' *ngIf="product.productBadge && product.productBadge.mainImgUrl && product.productBadge.mainImgUrl != ''" class="img-badge badge-{{product.productBadge}}" >
 
           <div class="background-block">
               <div class="background"></div>

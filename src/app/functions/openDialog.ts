@@ -79,7 +79,7 @@ export function callFilter(dialog: MatDialog,options:any): MatDialogRef<FilterOr
   return dialogToOpen;
 }
 
-export function callUpdateLink(dialog: MatDialog,product:Product): MatDialogRef<UpdateLinkComponent,any> {
+export function callUpdateLink(dialog: MatDialog,product:any): MatDialogRef<UpdateLinkComponent,any> {
 
   const dialogToOpen = dialog.open(UpdateLinkComponent, {
     width: '0',

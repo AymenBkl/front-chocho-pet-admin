@@ -37,7 +37,7 @@ export class AddBadgeComponent implements OnInit {
         createdAt:this.data && this.data.createdAt ? this.data.createdAt : '',
         mainImgUrl:this.data && this.data.mainImgUrl ? this.data.mainImgUrl : '',
         name:this.data && this.data.name ? this.data.name : '',
-        status:this.data && this.data.status ? this.data._id : '',
+        status:this.data && this.data.status && this.data.status == '' ? this.data._id : 'active',
         selectOption:this.data && this.data.name ? 'url' : '',
       };
       console.log(this.badge);

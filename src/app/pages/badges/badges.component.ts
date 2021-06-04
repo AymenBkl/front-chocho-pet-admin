@@ -57,4 +57,24 @@ export class BadgesComponent implements OnInit {
     })
   }
 
+  changeStatusBadge(badge:Badge,status:string){
+    badge.status = status;
+    this.interactionService.displayToast('Submitting badge Please wait !',true,'info');
+    console.log(badge);
+    this.productService.saveBadge(badge)
+      .then((result:any) => {
+        this.interactionService.closeToast();
+        if (result && result != false && result.status == 200){
+          this.interactionService.displayToast('Badge Saved Successfully',false,'success');
+        }
+        else {
+          this.interactionService.displayToaster('Error Saving badge','error','ERROR');
+        }
+      })
+      .catch(err => {
+        this.interactionService.closeToast();
+        this.interactionService.displayToaster('Error Saving badge','error','ERROR');
+      })
+  }
+
 }

@@ -18,13 +18,24 @@
           <mat-icon>update</mat-icon>
         </button>
       </div>
-
+      <div class="header-status-button">
+        <button *ngIf='badge.status == "blocked"' class="btn" mat-icon-button color="danger" aria-label="Delete Button" (click)="changeStatusBadge(badge,'active')">
+          <mat-icon>lock</mat-icon>
+        </button>
+      </div>
+      <div class="header-status-button">
+        <button *ngIf='badge.status == "active"' class="btn active-button" mat-icon-button  aria-label="Delete Button" (click)="changeStatusBadge(badge,'blocked')">
+          <mat-icon>lock_open</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
   <div class="col-12 no-badge" *ngIf='!badges || (badges && badges.length == 0)'>
     You have no badges
   </div>
 </div>
+
+
 
 <button mat-fab color="primary" aria-label="Add Badge" class="btn-bottom" matTooltip="Add Badge" (click)="addBadge()">
   <mat-icon>add</mat-icon>

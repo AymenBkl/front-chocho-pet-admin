@@ -2,6 +2,7 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { callFilter, callUpdateLink } from 'app/functions/openDialog';
+import { Badge } from 'app/interface/badge';
 import { Product } from 'app/interface/product';
 import { InteractionService } from 'app/services/interaction.service';
 import { ProductsService } from 'app/services/products.service';
@@ -20,6 +21,7 @@ export class ProductsComponent implements OnInit,OnDestroy {
   sortOption : string = 'datedesc';
   selectedIndex:number;
   filterOptions:{dateCreateMAx:string,dateCreateMin:string} = {dateCreateMAx:new Date().toISOString(),dateCreateMin:new Date().toISOString()};
+  badges : Badge[];
   constructor(private productService: ProductsService,
               private interactionService: InteractionService,
               private matDialog: MatDialog,
@@ -28,6 +30,7 @@ export class ProductsComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
     this.getProducts();
+    this.getBadges();
   }
 
   getProducts() {
@@ -173,11 +176,28 @@ export class ProductsComponent implements OnInit,OnDestroy {
   }
 
   updateCall(product:Product){
-    callUpdateLink(this.matDialog,product);
+    callUpdateLink(this.matDialog,{product:product,badges:this.badges});
   }
 
   ngOnDestroy(): void {
     this.productService.onDestroy();
+  }
+
+  getBadges() {
+    this.productService.getMainBadges()
+      .then((result:any) => {
+        this.interactionService.closeToast();
+        if (result && result != false && result.status != 'not found'){
+          this.badges = result;
+        }
+        else if (result && result != false && result.status == 'not found') {
+        }
+        else {
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
 

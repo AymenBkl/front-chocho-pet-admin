@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Badge } from 'app/interface/badge';
 import { Product } from 'app/interface/product';
 import { ProductsService } from 'app/services/products.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 export class UpdateLinkComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Product,
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {product:Product,badges:Badge[]},
   public dialogRef: MatDialogRef<UpdateLinkComponent>,
   private productService: ProductsService) { }
 
@@ -20,15 +21,16 @@ export class UpdateLinkComponent implements OnInit {
   }
 
   async createInputSwal() {
+    let inputOptions = {'60b92e5d8f89e532a06cd2ff':'None'};
+    this.data.badges.map((badge) => {
+      if (badge.status == 'active'){
+        inputOptions[badge._id] = badge.name
+      }
+    })
     const { value: badge } = await Swal.fire({
       title: 'Select field validation',
       input: 'select',
-      inputOptions: {
-          New: 'New',
-          Hot: 'Hot',
-          Sale: 'Sale',
-          Best: 'Best',
-      },
+      inputOptions,
       inputPlaceholder: 'Select Badge',
       showCancelButton: true,
       showLoaderOnConfirm: true,
@@ -41,14 +43,14 @@ export class UpdateLinkComponent implements OnInit {
 
   }
 
-  updateProduct(newLink:string) {
+  updateProduct(badgeId:string) {
     return new Promise((resolve,reject) => {
-      this.productService.updateProductLink(this.data.productId,newLink)
+      this.productService.updateProductLink(this.data.product.productId,badgeId)
       .then((result) => {
         console.log(result);
         if (result && result != false){
           Swal.close();
-          this.dialogRef.close({status:true,productNewLink:newLink});
+          this.dialogRef.close({status:true,badge:result});
           resolve(true);
         }
         else {
