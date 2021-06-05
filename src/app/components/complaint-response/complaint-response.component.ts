@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EmailsService } from 'app/services/emails.service';
-import { HashService } from 'app/services/hash.service';
 import { InteractionService } from 'app/services/interaction.service';
 
 @Component({

@@ -23,9 +23,7 @@ import { InteractionService } from "./services/interaction.service";
 import { HttpErrorHandlerService } from "./services/http-error-handler.service";
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { MatIconModule } from "@angular/material/icon";
-import { OrdersService } from "./services/orders.service";
 import { ProductsService } from "./services/products.service";
-import { LogsServiceService } from "./services/logs-service.service";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EmailsService } from "./services/emails.service";
 import { ImgbbService } from "./services/imgbb.service";
@@ -68,9 +66,7 @@ import { AddBadgeComponent } from './components/add-badge/add-badge.component';
     AuthGuardService,
     InteractionService,
     HttpErrorHandlerService,
-    OrdersService,
     ProductsService,
-    LogsServiceService,
     EmailsService,
     ImgbbService,
     ToolsService,

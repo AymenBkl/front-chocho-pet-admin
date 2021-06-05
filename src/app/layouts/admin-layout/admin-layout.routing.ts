@@ -1,13 +1,8 @@
 import { Routes } from '@angular/router';
 
-import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { UserComponent } from '../../pages/user/user.component';
-import { TableComponent } from '../../pages/table/table.component';
-import { NotificationsComponent } from '../../pages/notifications/notifications.component';
 import { AuthGuardService as AuthGuard } from '../../services/auth-guard.service';
 import { ProductsComponent } from 'app/pages/products/products.component';
-import { ApiLogsComponent } from 'app/pages/api-logs/api-logs.component';
-import { LogsDetailComponent } from 'app/components/logs-detail/logs-detail.component';
 import { SubscribersComponent } from 'app/pages/subscribers/subscribers.component';
 import { ContactsComponent } from 'app/pages/contacts/contacts.component';
 import { ProductInfoComponent } from 'app/pages/product-info/product-info.component';

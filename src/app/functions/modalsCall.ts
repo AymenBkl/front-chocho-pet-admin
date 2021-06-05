@@ -1,6 +1,5 @@
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { ComplaintResponseComponent } from "app/components/complaint-response/complaint-response.component";
-
+import { ComplaintResponseComponent } from "../components/complaint-response/complaint-response.component";
 export function callResponseComplaint(dialog: MatDialog,incomingdData:any): MatDialogRef<ComplaintResponseComponent,any> {
 
   const dialogToOpen = dialog.open(ComplaintResponseComponent, {

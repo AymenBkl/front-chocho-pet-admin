@@ -7,7 +7,6 @@ import { ProductdescriptionviewerComponent } from "app/components/productdescrip
 import { ResetpasswordComponent } from "app/components/resetpassword/resetpassword.component";
 import { UpdateLinkComponent } from "app/components/update-link/update-link.component";
 import { Badge } from "app/interface/badge";
-import { Product } from "app/interface/product";
 
 export function callResetPassword(dialog: MatDialog): MatDialogRef<ResetpasswordComponent,any> {
 
