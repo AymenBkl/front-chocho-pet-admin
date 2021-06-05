@@ -47,6 +47,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
         if (result && result != false) {
           this.storageService.saveProduct(result);
           this.product = result;
+          this.product.description = this.product.description.sort((a,b) => a.position - b.position);
           this.productDescriptionTotal = this.buildTabs() + this.buildDescription();
         }
         else {

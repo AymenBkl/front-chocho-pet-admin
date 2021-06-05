@@ -78,8 +78,11 @@ export class ProductInfoComponent implements OnInit {
   }
 
   initFirstForm(formNumber: number,formField = {header:'',description:'',imageURL:'',imageBadgeURL:''}) {
+    let selectOption = {mainImageOption:formField.imageURL == '' ? 'none' : 'url',badgeImageOption:formField.imageBadgeURL == '' ? 'none' : 'url'};
+
     this.formDescriptionProduct = [
       {
+        selectOption: selectOption,
         idFields: {
           cardId: formNumber,
           selectOptionImageId: formNumber,
