@@ -832,11 +832,11 @@ this.submitTable();
   }
 
   displayUrlBadge(url) {
-    return url && url.imageBadgeURL != '' ? url.imageBadgeURL : '';
+    return url && url != '' ? url : '';
   }
 
   displayUrlMain(url) {
-    return url && url.imageURL != '' ? url.imageURL : '';
+    return url && url != '' ? url : '';
   }
 
   selectedImageMain(event,id): void {
