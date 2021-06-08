@@ -73,7 +73,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
 
   buildListTabs() {
     let allElemets = { listElemets: '<ul class="nav nav-tabs nav-products-holder " id="myTab" role="tablist">', contentElements: '<div class="tab-content" id="myTabContent">' };
-    if (this.product && this.product.tableDescription && this.product.tableDescription.mainBenifts != "''" && this.product.tableDescription.imageMainBeniftsUrl != "''") {
+    if (this.product && this.product.tableDescription  && (this.product.tableDescription.imageMainBeniftsUrl && this.product.tableDescription.imageMainBeniftsUrl != "''") ) {
       allElemets.listElemets += `<li class="nav-item item-holder-nav" role="presentation">
       <a class="nav-link nav-product-item" id="mainbenifit-tab" data-toggle="tab"
           href="#mainbenifit"  aria-controls="mainbenifit"
@@ -83,7 +83,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
 
     }
 
-    if (this.product && this.product.tableDescription && this.product.tableDescription.imageSizeChartUrl != "''"){
+    if (this.product && this.product.tableDescription && (this.product.tableDescription.imageSizeChartUrl && this.product.tableDescription.imageSizeChartUrl != "''")){
       allElemets.listElemets += `<li class="nav-item item-holder-nav" role="presentation">
       <a class="nav-link nav-product-item" id="sizechart-tab" data-toggle="tab"
           href="#sizechart"  aria-controls="sizechart"
@@ -146,7 +146,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
         <p class="shiping_content"></p>
     </div>
 </div>`;
-    if (this.product && this.product.tableDescription && this.product.tableDescription.imageBuyUrl != "''") {
+    if (this.product && this.product.tableDescription && this.product.tableDescription.imageBuyUrl && this.product.tableDescription.imageBuyUrl != "''") {
       allElemets.listElemets += `<li class="nav-item item-holder-nav" role="presentation">
       <a class="nav-link nav-product-item" id="buymore-tab" data-bs-toggle="tab" href="#buymore" data-toggle="tab"
            aria-controls="buymore" aria-selected="false">Buy More. Save More. </a>
@@ -156,7 +156,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
   </div>`;
     }
 
-    if (this.product && this.product.tableDescription && this.product.tableDescription.imageColorUrl != "''") {
+    if (this.product && this.product.tableDescription && this.product.tableDescription.imageColorUrl &&  this.product.tableDescription.imageColorUrl != "''") {
       allElemets.listElemets += `<li class="nav-item item-holder-nav" role="presentation">
       <a class="nav-link nav-product-item" id="color-tab" data-bs-toggle="tab" href="#color" data-toggle="tab"
            aria-controls="color" aria-selected="false">Color Chart </a>
