@@ -13,7 +13,7 @@ import { ToolsService } from 'app/services/tools.service';
 })
 export class GeneratingBestReviewsComponent implements OnInit {
 
-  segmentToShow : string = 'code';
+  segmentToShow : string = 'html';
   bestReviewsCode: string = '';
   bestReviews: {mainImgUrl:'',descriptionReview:'',authorReview:'',status:'active',_id:'',position:number}[];
   slideCarouselConfig = {
@@ -98,6 +98,9 @@ export class GeneratingBestReviewsComponent implements OnInit {
   }
 
   switchSegments(segment:string){
+    if (segment == 'code'){
+      this.copyCode();
+    }
     this.segmentToShow = segment;
 
   }

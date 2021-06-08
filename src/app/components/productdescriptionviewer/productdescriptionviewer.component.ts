@@ -16,7 +16,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 export class ProductdescriptionviewerComponent implements OnInit {
   product: Product;
   productDescriptionTotal:string;
-  segmentToShow:string = 'code';
+  segmentToShow:string = 'html';
   slideCarouselConfig = {
     "infinite": true,
     "autoplay": false,
@@ -72,7 +72,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
   }
 
   buildListTabs() {
-    let allElemets = { listElemets: '<ul class="nav nav-tabs nav-products-holder " id="myTab" role="tablist">`', contentElements: '<div class="tab-content" id="myTabContent">' };
+    let allElemets = { listElemets: '<ul class="nav nav-tabs nav-products-holder " id="myTab" role="tablist">', contentElements: '<div class="tab-content" id="myTabContent">' };
     if (this.product && this.product.tableDescription && this.product.tableDescription.mainBenifts != '' && this.product.tableDescription.imageMainBeniftsUrl != '') {
       allElemets.listElemets += `<li class="nav-item item-holder-nav" role="presentation">
       <a class="nav-link nav-product-item" id="mainbenifit-tab" data-toggle="tab"
@@ -225,6 +225,9 @@ export class ProductdescriptionviewerComponent implements OnInit {
   }
 
   switchSegments(segment:string){
+    if (segment == 'code'){
+      this.copyCode();
+    }
     this.segmentToShow = segment;
   }
 }

@@ -14,7 +14,7 @@ import * as $ from "jquery";
 })
 export class GenerateCodeBestTipsComponent implements OnInit {
 
-  segmentToShow : string = 'code';
+  segmentToShow : string = 'html';
   bestTipsCode: string = '';
   slideCarouselConfig = {
     "infinite": true,
@@ -100,6 +100,9 @@ export class GenerateCodeBestTipsComponent implements OnInit {
   }
 
   switchSegments(segment:string){
+    if (segment == 'code'){
+      this.copyCode();
+    }
     this.segmentToShow = segment;
 
   }
