@@ -26,6 +26,8 @@ export class ProductInfoComponent implements OnInit {
   selectOptionTableProduct = {displayMainBenifts:'none',displaySizeChart:'none',displayColor:'none',displayBuy:'none',displayMainBeniftsOption:'none',displaySizeChartOption:'none',displayColorOption:'none',displayBuyOption:'none'}
   header = new FormControl('', [Validators.required]);
   urls: {imageBadgeURL:'',imageURL:''}[] = [];
+  urlsBadges = [];
+  urlsMain = [];
   constructor(private route: ActivatedRoute,
     private productService: ProductsService,
     private storageService: StorageService,
@@ -817,7 +819,16 @@ this.submitTable();
     this.productService.getURLS()
       .then((result:any) => {
         if (result && result != false){
-          this.urls = result;
+          let badgeSet = new Set();
+          let mainSet = new Set();
+
+          result.map(element => {
+            badgeSet.add(element.imageBadgeURL);
+            mainSet.add(element.imageURL)
+          })
+          this.urlsBadges = Array.from(badgeSet);
+          this.urlsMain = Array.from(mainSet);
+          console.log(this.urlsBadges)
         }
       })
   }

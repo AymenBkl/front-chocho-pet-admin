@@ -241,9 +241,9 @@
             <mat-label>Enter Url</mat-label>
             <input matInput placeholder="url" value="{{productForm.formField.imageURL}}" type="url" id="option-url-input-{{productForm.idFields['option-url-input']}}" [matAutocomplete]="autoMain">
             <mat-autocomplete #autoMain="matAutocomplete" [displayWith]="displayUrlMain">
-              <mat-option *ngFor="let url of urls" [value]="url">
-                <img [src]='url.imageURL' class="image-complete-badge">
-                {{url.imageURL}}
+              <mat-option *ngFor="let url of urlsMain" [value]="url">
+                <img [src]='url' class="image-complete-badge">
+                {{url}}
               </mat-option>
             </mat-autocomplete>
             <span class="error" id="fileImageUrlError-{{productForm.idFields.fileImageUrlError}}">Please Enter  A Url</span>
@@ -278,9 +278,9 @@
             <mat-label>Enter Url Badge</mat-label>
             <input matInput placeholder="url" value="{{productForm.formField.imageBadgeURL}}" type="url" id="option-url-input-badge-{{productForm.idFields['option-url-input-badge']}}" [matAutocomplete]="autoBadge">
             <mat-autocomplete #autoBadge="matAutocomplete" [displayWith]="displayUrlBadge">
-              <mat-option *ngFor="let url of urls" [value]="url">
-                <img [src]='url.imageBadgeURL' class="image-complete-badge">
-                {{url.imageBadgeURL}}
+              <mat-option *ngFor="let url of urlsBadges" [value]="url">
+                <img [src]='url' class="image-complete-badge">
+                {{url}}
               </mat-option>
             </mat-autocomplete>
             <span class="error" id="fileImageUrlErrorBadge-{{productForm.idFields.fileImageUrlErrorBadge}}">Please Enter  A Url</span>
