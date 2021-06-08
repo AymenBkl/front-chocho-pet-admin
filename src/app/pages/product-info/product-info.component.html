@@ -261,9 +261,10 @@
           <div class="form-description-product-input options-select" id="option-file-badge-{{productForm.idFields['option-file-badge']}}">
             <mat-label>Pick file Badge</mat-label>
             <button (click)="openUploadFile(productForm.idFields['option-file-input-badge'],'badge')" mat-icon-button class="input-file-button" >
-              <mat-icon>image</mat-icon>
+              <mat-icon id="icon-image-badge-{{productForm.idFields.cardId}}" >image</mat-icon>
+              <img id="img-image-badge-{{productForm.idFields.cardId}}" src='' class="image-preview">
              </button>
-            <input  accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" id="option-file-input-badge-{{productForm.idFields['option-file-input-badge']}}" style="display:none">
+            <input  accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" id="option-file-input-badge-{{productForm.idFields['option-file-input-badge']}}" style="display:none" (change)="selectedImageBadge($event,productForm.idFields.cardId)">
             <span class="error" id="fileImageErrorBadge-{{productForm.idFields.fileImageErrorBadge}}">Please Put A File</span>
           </div>
 

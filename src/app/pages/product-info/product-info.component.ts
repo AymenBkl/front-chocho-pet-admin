@@ -830,16 +830,17 @@ this.submitTable();
   }
 
   selectedImageMain(event,id): void {
-    console.log("here main")
     if (event.target.files && event.target.files[0]) {
-      let image: any = {}
-      const reader = new FileReader();
-      reader.onload = e => image.imageSrc = reader.result;
-      image.imageSrc = this.domSanitizer.bypassSecurityTrustUrl(image.imageSrc);
         $(`#icon-image-main-${id}`).hide();
         $(`#img-image-main-${id}`).attr('src',URL.createObjectURL(event.target.files[0]))
         $(`#img-image-main-${id}`).show();
-
+    }
+  }
+  selectedImageBadge(event,id): void {
+    if (event.target.files && event.target.files[0]) {
+        $(`#icon-image-badge-${id}`).hide();
+        $(`#img-image-badge-${id}`).attr('src',URL.createObjectURL(event.target.files[0]))
+        $(`#img-image-badge-${id}`).show();
     }
   }
 
