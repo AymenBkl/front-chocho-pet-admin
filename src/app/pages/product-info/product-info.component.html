@@ -206,14 +206,14 @@
 
 <div class="row card row-card" *ngIf="formDescriptionProduct && formDescriptionProduct.length > 0" data-aos="zoom-in-down" cdkDropList (cdkDropListDropped)="drop($event)">
   <h1 class="header-product-description-title" data-aos="fade-down-left">Product Description Optimization</h1>
-  <div class="col-12 product-info-holder" *ngFor="let productForm of formDescriptionProduct" cdkDrag>
+  <div class="col-12 product-info-holder" *ngFor="let productForm of formDescriptionProduct" cdkDrag [cdkDragDisabled]="productForm.enabled">
     <div class="card"  id="cardId-{{productForm.idFields.cardId}}" data-aos="fade-up-left">
       <div class="header-delete-button" *ngIf="productForm.status == 'active'">
         <button mat-icon-button color="danger" aria-label="Delete Button" (click)="deleteFormProduct(productForm.idFields.cardId)">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
-      <div class="product-description-header" *ngIf="productForm.status == 'active'">
+      <div class="product-description-header" *ngIf="productForm.status == 'active'" (click)='disableDrag(productForm.idFields.cardId)' (focusout)='enableDrag(productForm.idFields.cardId)'>
         <div class="col-12">
           <mat-form-field appearance="fill" class="form-description-product-input">
             <mat-label>Pick An Option (Image Main)</mat-label>

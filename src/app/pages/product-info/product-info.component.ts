@@ -125,6 +125,7 @@ export class ProductInfoComponent implements OnInit {
 
 
     this.formDescriptionProduct.push({
+      enabled:false,
       selectOption: selectOption,
       idFields: {
         cardId: lenghtFormDescriptionProduct,
@@ -850,6 +851,14 @@ this.submitTable();
       $(`#${imageId}`).attr('src',URL.createObjectURL(event.target.files[0]))
       $(`#${imageId}`).show();
   }
+  }
+
+  disableDrag(id){
+    this.formDescriptionProduct.find(formDescription => formDescription.idFields.cardId == id).enabled = true;
+  }
+
+  enableDrag(id){
+    this.formDescriptionProduct.find(formDescription => formDescription.idFields.cardId == id).enabled = false;
   }
 
 
