@@ -25,7 +25,6 @@ export class ProductInfoComponent implements OnInit {
   selectedValue = 'url';
   selectOptionTableProduct = {displayMainBenifts:'none',displaySizeChart:'none',displayColor:'none',displayBuy:'none',displayMainBeniftsOption:'none',displaySizeChartOption:'none',displayColorOption:'none',displayBuyOption:'none'}
   header = new FormControl('', [Validators.required]);
-  urls: {imageBadgeURL:'',imageURL:''}[] = [];
   urlsBadges = [];
   urlsMain = [];
   constructor(private route: ActivatedRoute,
@@ -828,7 +827,6 @@ this.submitTable();
           })
           this.urlsBadges = Array.from(badgeSet);
           this.urlsMain = Array.from(mainSet);
-          console.log(this.urlsBadges)
         }
       })
   }
