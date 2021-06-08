@@ -10,6 +10,7 @@ import { InteractionService } from 'app/services/interaction.service';
 import { ProductsService } from 'app/services/products.service';
 import { StorageService } from 'app/services/storage.service';
 import * as $ from "jquery";
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-info',
@@ -30,7 +31,8 @@ export class ProductInfoComponent implements OnInit {
     private storageService: StorageService,
     private imgbbService: ImgbbService,
     private interactionService: InteractionService,
-    private matDialog: MatDialog) { }
+    private matDialog: MatDialog,
+    private domSanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.getURLS();
@@ -825,6 +827,20 @@ this.submitTable();
 
   displayUrlMain(url) {
     return url && url.imageURL != '' ? url.imageURL : '';
+  }
+
+  selectedImageMain(event,id): void {
+    console.log("here main")
+    if (event.target.files && event.target.files[0]) {
+      let image: any = {}
+      const reader = new FileReader();
+      reader.onload = e => image.imageSrc = reader.result;
+      image.imageSrc = this.domSanitizer.bypassSecurityTrustUrl(image.imageSrc);
+        $(`#icon-image-main-${id}`).hide();
+        $(`#img-image-main-${id}`).attr('src',URL.createObjectURL(event.target.files[0]))
+        $(`#img-image-main-${id}`).show();
+
+    }
   }
 
 

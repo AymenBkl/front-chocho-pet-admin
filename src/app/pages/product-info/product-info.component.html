@@ -223,10 +223,11 @@
         <div class="col-12">
           <div class="form-description-product-input options-select" id="option-file-{{productForm.idFields['option-file-input']}}">
             <mat-label>Pick file</mat-label>
-            <button (click)="openUploadFile(productForm.idFields['option-file-input'],'main')" mat-icon-button class="input-file-button" >
-              <mat-icon>image</mat-icon>
+            <button (click)="openUploadFile(productForm.idFields['option-file-input'],'main')" mat-icon-button class="input-file-button"  >
+              <mat-icon id="icon-image-main-{{productForm.idFields.cardId}}">image</mat-icon>
+              <img id="img-image-main-{{productForm.idFields.cardId}}" src='' class="image-preview">
              </button>
-            <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" id="option-file-input-{{productForm.idFields['option-file-input']}}" style="display:none">
+            <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" id="option-file-input-{{productForm.idFields['option-file-input']}}" style="display:none" (change)="selectedImageMain($event,productForm.idFields.cardId)">
             <span class="error" id="fileImageError-{{productForm.idFields.fileImageError}}">Please Put A File</span>
           </div>
 

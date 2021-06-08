@@ -53,7 +53,6 @@ export class AddBadgeComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = e => this.image.imageSrc = reader.result;
       this.image.imageSrc = this.domSanitizer.bypassSecurityTrustUrl(this.image.imageSrc);
-      console.log();
       reader.readAsDataURL(file);
       this.image.file = file;
     }

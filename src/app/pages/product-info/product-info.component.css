@@ -198,4 +198,13 @@ textarea.mat-input-element {
   margin-right: 30px;
 }
 
+.image-preview {
+  display: none;
+  width: 58px;
+  height: 46px;
+  margin: 0 auto;
+  vertical-align: middle !important;
+  margin-top: -16px;
+}
+
 
