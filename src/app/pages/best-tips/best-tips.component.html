@@ -27,9 +27,10 @@
           <div class="form-description-product-input options-select field-file-tips">
             <mat-label>Pick file</mat-label>
             <button (click)="openUploadFile(formField.formId)" mat-icon-button class="input-file-button" >
-              <mat-icon>image</mat-icon>
+              <mat-icon id="icon-image-{{formField.formId}}">image</mat-icon>
+              <img id="img-image-{{formField.formId}}" src='' class="image-preview">
              </button>
-            <input accept="image/png, image/gif, image/jpeg" placeholder="file"  type="file" class="file-input" style="display:none">
+            <input accept="image/png, image/gif, image/jpeg" placeholder="file"  type="file" class="file-input" style="display:none" (change)="selectedPreviewImage($event,formField.formId)">
             <span class="error input-file-error" >Please Put A File</span>
           </div>
 

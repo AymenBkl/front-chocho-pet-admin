@@ -243,6 +243,14 @@ export class BestTipsComponent implements OnInit {
     moveItemInArray(this.formTips, event.previousIndex, event.currentIndex);
   }
 
+  selectedPreviewImage(event,id): void {
+    if (event.target.files && event.target.files[0]) {
+        $(`#icon-image-${id}`).hide();
+        $(`#img-image-${id}`).attr('src',URL.createObjectURL(event.target.files[0]))
+        $(`#img-image-${id}`).show();
+    }
+  }
+
 
 
 
