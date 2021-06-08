@@ -47,6 +47,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BadgesComponent } from 'app/pages/badges/badges.component';
 import { AddBadgeComponent } from 'app/components/add-badge/add-badge.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ShipingTagsComponent } from 'app/pages/shiping-tags/shiping-tags.component';
+import { ShipingBadgeComponent } from 'app/components/shiping-badge/shiping-badge.component';
 
 @NgModule({
   imports: [
@@ -98,7 +100,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     GenerateCodeBestTipsComponent,
     BadgesComponent,
     AddBadgeComponent,
-    ComplaintResponseComponent
+    ComplaintResponseComponent,
+    ShipingTagsComponent,
+    ShipingBadgeComponent
   ]
 })
 

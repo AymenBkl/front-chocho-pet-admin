@@ -1,0 +1,115 @@
+.card-img-holder {
+  text-align: center;
+    display: inline-block;
+    width: 20%;
+}
+
+.header-badge-description-title {
+  font-size: 20px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-top: 50px;
+    color:white;
+}
+
+.card-title-badge {
+  text-align: center;
+    width: 70%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    text-align: left;
+    color:white;
+}
+
+.no-badge {
+  color:white;
+  font-size: 15px;
+  text-align: center;
+  width: 100%;
+  padding: 50px;
+}
+
+h3 {
+  color:black !important;
+}
+
+.badge-holder {
+  width: 100%;
+  display: inline-block;
+  padding-top: 0px;
+}
+
+.header-status-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.btn-update {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.date {
+  font-size: 15px;
+  color:gray;
+}
+
+.active-button {
+  background-color: #5cb85c;
+  color:white;
+}
+
+.btn:focus {
+  outline:none;
+}
+
+.row-card {
+  background-color:  #283136;
+}
+
+.row-card:last-of-type{
+  margin-bottom: 20%;
+}
+
+
+@media screen and (max-width: 749px) {
+  .card-img-holder {
+    width: 100% !important;
+  }
+
+  .card-title-badge {
+    width: 100% !important;
+    margin-left: 15px !important;
+  }
+
+
+}
+
+
+
+.btn-bottom {
+  position: fixed;
+    bottom: 49px;
+    right: 30px;
+    width: 100px;
+    height: 100px;
+}
+
+.btn-update button{
+  font-size: 15px;
+  width:50px;
+  height: 50px;
+}
+
+.btn-update .mat-icon{
+  font-size: 20px;
+}
+
+.btn-bottom:focus {
+  outline:none;
+}

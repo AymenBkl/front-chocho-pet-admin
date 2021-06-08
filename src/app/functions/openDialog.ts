@@ -5,6 +5,7 @@ import { GenerateCodeBestTipsComponent } from "app/components/generate-code-best
 import { GeneratingBestReviewsComponent } from "app/components/generating-best-reviews/generating-best-reviews.component";
 import { ProductdescriptionviewerComponent } from "app/components/productdescriptionviewer/productdescriptionviewer.component";
 import { ResetpasswordComponent } from "app/components/resetpassword/resetpassword.component";
+import { ShipingBadgeComponent } from "app/components/shiping-badge/shiping-badge.component";
 import { UpdateLinkComponent } from "app/components/update-link/update-link.component";
 import { Badge } from "app/interface/badge";
 
@@ -22,6 +23,18 @@ export function callResetPassword(dialog: MatDialog): MatDialogRef<Resetpassword
 export function calladdBadge(dialog: MatDialog,badge:Badge): MatDialogRef<AddBadgeComponent,any> {
 
   const dialogToOpen = dialog.open(AddBadgeComponent, {
+    width: '50%',
+    height: '50%',
+    panelClass: 'mat-dialog-container-reset-password',
+    data:badge
+  });
+
+  return dialogToOpen;
+}
+
+export function calladdShipingBadge(dialog: MatDialog,badge:Badge): MatDialogRef<ShipingBadgeComponent,any> {
+
+  const dialogToOpen = dialog.open(ShipingBadgeComponent, {
     width: '50%',
     height: '50%',
     panelClass: 'mat-dialog-container-reset-password',

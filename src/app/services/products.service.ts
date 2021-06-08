@@ -78,6 +78,27 @@ export class ProductsService {
     })
   }
 
+  getBadgesShiping() {
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<any>(environment.url + 'products/getbadgesshiping')
+        .subscribe(badgesResponse => {
+          if (badgesResponse.status == 200 && badgesResponse.success) {
+            this.badges = badgesResponse.badges;
+            console.log(badgesResponse)
+            resolve(badgesResponse.badges);
+          }
+          else if (badgesResponse.status == 404 && !badgesResponse.success) {
+            resolve({status:'not found'});
+          }
+          else {
+            resolve(false);
+          }
+        }, err => {
+          reject(err);
+        })
+    })
+  }
+
   getProduct(productId) {
     return new Promise((resolve, reject) => {
       this.httpClient.get<ProductResponse>(environment.url + 'products/getproduct/' + productId)
@@ -172,6 +193,28 @@ export class ProductsService {
   saveBadge(badgeBody:Badge) {
     return new Promise((resolve, reject) => {
       this.httpClient.post<ProductResponse>(environment.url + 'products/savebadge',{badgeBody:badgeBody})
+        .subscribe((response:any) => {
+          console.log(response);
+          if (response.status === 200) {
+            this.addBadge(response.badge);
+            resolve(response);
+          }
+          else if (response.status && response.msg == 'Name Already Exists'){
+            resolve({duplicateName:true});
+          }
+          else {
+            resolve(false);
+          }
+        }, err => {
+          console.log(err);
+          reject(this.httpErrorHandlerService.handleError(err));
+        });
+    });
+  }
+
+  saveBadgeShiping(badgeBody:Badge) {
+    return new Promise((resolve, reject) => {
+      this.httpClient.post<ProductResponse>(environment.url + 'products/savebadgeshiping',{badgeBody:badgeBody})
         .subscribe((response:any) => {
           console.log(response);
           if (response.status === 200) {
