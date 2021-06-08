@@ -844,6 +844,14 @@ this.submitTable();
     }
   }
 
+  selectedImageTable(event,iconId,imageId){
+    if (event.target.files && event.target.files[0]) {
+      $(`#${iconId}`).hide();
+      $(`#${imageId}`).attr('src',URL.createObjectURL(event.target.files[0]))
+      $(`#${imageId}`).show();
+  }
+  }
+
 
 
 }

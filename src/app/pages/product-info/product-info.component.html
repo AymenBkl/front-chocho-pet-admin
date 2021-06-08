@@ -44,9 +44,10 @@
             <div class="form-description-product-input options-select" id="option-file-main-benifts">
               <mat-label>Pick file</mat-label>
               <button (click)="openUploadFile('option-file-main-benifts-input','table-file')" mat-icon-button class="input-file-button" >
-                <mat-icon>image</mat-icon>
+                <mat-icon id="icon-image-main-benifts">image</mat-icon>
+                <img id="img-image-main-benifts" src='' class="image-preview">
                </button>
-              <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" id="option-file-main-benifts-input" style="display:none">
+              <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" id="option-file-main-benifts-input" style="display:none" (change)="selectedImageTable($event,'icon-image-main-benifts','img-image-main-benifts')">
               <span class="error" id="option-file-main-benifts-error">Please Put A File</span>
               <span class="error" id="option-file-main-benifts-error-upload">Error While Uploading Image</span>
               <span class="success" id="option-file-main-benifts-success-upload">Image Uploaded Successfully</span>
@@ -93,9 +94,10 @@
           <div class="form-description-product-input options-select" id="option-file-size-chart">
             <mat-label>Pick file</mat-label>
             <button (click)="openUploadFile('option-file-size-chart-input','table-file')" mat-icon-button class="input-file-button" >
-              <mat-icon>image</mat-icon>
+              <mat-icon id="icon-image-size-chart">image</mat-icon>
+              <img id="img-image-size-chart" src='' class="image-preview">
              </button>
-            <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" id="option-file-size-chart-input" style="display:none">
+            <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" id="option-file-size-chart-input" style="display:none" (change)="selectedImageTable($event,'icon-image-size-chart','img-image-size-chart')">
             <span class="error" id="option-file-size-chart-error">Please Put A File</span>
             <span class="error" id="option-file-size-chart-error-upload">Error While Uploading Image</span>
             <span class="success" id="option-file-size-chart-success-upload">Image Uploaded Successfully</span>
@@ -134,9 +136,10 @@
         <div class="form-description-product-input options-select" id="option-file-buy">
           <mat-label>Pick file</mat-label>
           <button (click)="openUploadFile('option-file-buy-input','table-file')" mat-icon-button class="input-file-button" >
-            <mat-icon>image</mat-icon>
+            <mat-icon id="icon-image-buy">image</mat-icon>
+            <img id="img-image-buy" src='' class="image-preview">
            </button>
-          <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" id="option-file-buy-input" style="display:none">
+          <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" id="option-file-buy-input" style="display:none" (change)="selectedImageTable($event,'icon-image-buy','img-image-buy')">
           <span class="error" id="option-file-buy-error">Please Put A File</span>
           <span class="error" id="option-file-buy-error-upload">Error While Uploading Image</span>
           <span class="success" id="option-file-buy-success-upload">Image Uploaded Successfully</span>
@@ -175,9 +178,10 @@
       <div class="form-description-product-input options-select" id="option-file-color">
         <mat-label>Pick file</mat-label>
         <button (click)="openUploadFile('option-file-color-input','table-file')" mat-icon-button class="input-file-button" >
-          <mat-icon>image</mat-icon>
+          <mat-icon id="icon-image-color">image</mat-icon>
+          <img id="img-image-color" src='' class="image-preview">
          </button>
-        <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" id="option-file-color-input" style="display:none">
+        <input accept="image/png, image/gif, image/jpeg" placeholder="file" value="" type="file" id="option-file-color-input" style="display:none" (change)="selectedImageTable($event,'icon-image-color','img-image-color')">
         <span class="error" id="option-file-color-error">Please Put A File</span>
         <span class="error" id="option-file-color-error-upload">Error While Uploading Image</span>
         <span class="success" id="option-file-color-success-upload">Image Uploaded Successfully</span>
