@@ -72,7 +72,6 @@ export class ProductdescriptionviewerComponent implements OnInit {
   }
 
   buildListTabs() {
-    console.log(this.product.tableDescription.imageSizeChartUrl == "''")
     let allElemets = { listElemets: '<ul class="nav nav-tabs nav-products-holder " id="myTab" role="tablist">', contentElements: '<div class="tab-content" id="myTabContent">' };
     if (this.product && this.product.tableDescription && this.product.tableDescription.mainBenifts != "''" && this.product.tableDescription.imageMainBeniftsUrl != "''") {
       allElemets.listElemets += `<li class="nav-item item-holder-nav" role="presentation">
