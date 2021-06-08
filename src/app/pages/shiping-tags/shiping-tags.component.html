@@ -10,6 +10,7 @@
         </div>
         <div class="card-title-badge">
           <h3>{{badge.name}}</h3>
+          <h4 [ngStyle]="{ 'color': badge.color }">{{badge.color}}</h4>
           <span class="date">{{badge.createdAt |  date:'short'}}</span>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Badge } from 'app/interface/badge';
 import { Product } from 'app/interface/product';
+import { ShipingBadge } from 'app/interface/shipingBadge';
 import { environment } from 'environments/environment';
 import { Subscription } from 'rxjs';
 import { ProductResponse } from '../interface/productResponse'
@@ -16,6 +17,7 @@ export class ProductsService {
   postImageSub: Subscription;
   products: Product[];
   badges: Badge[] = [];
+  shipingBadges: ShipingBadge[] = [];
   constructor(private httpClient: HttpClient,
     private httpErrorHandlerService: HttpErrorHandlerService) {
   }
@@ -83,7 +85,7 @@ export class ProductsService {
       this.httpClient.get<any>(environment.url + 'products/getbadgesshiping')
         .subscribe(badgesResponse => {
           if (badgesResponse.status == 200 && badgesResponse.success) {
-            this.badges = badgesResponse.badges;
+            this.shipingBadges = badgesResponse.badges;
             console.log(badgesResponse)
             resolve(badgesResponse.badges);
           }
@@ -218,7 +220,7 @@ export class ProductsService {
         .subscribe((response:any) => {
           console.log(response);
           if (response.status === 200) {
-            this.addBadge(response.badge);
+            this.addShipingBadge(response.badge);
             resolve(response);
           }
           else if (response.status && response.msg == 'Name Already Exists'){
@@ -283,6 +285,17 @@ export class ProductsService {
 
   }
 
+  addShipingBadge(shipingBadge: ShipingBadge){
+    let searchedBadge = this.shipingBadges.find(findBadge => findBadge._id == shipingBadge._id);
+    if (searchedBadge && searchedBadge != null){
+      searchedBadge.name = shipingBadge.name;
+    }
+    else {
+      this.shipingBadges.push(shipingBadge);
+    }
+
+  }
+
   getMainBadges() {
     return new Promise(resolve => {
       if (this.badges && this.badges.length > 0){
@@ -290,6 +303,18 @@ export class ProductsService {
       }
       else {
         resolve(this.getBadges());
+      }
+
+    })
+  }
+
+  getMainShipingBadges() {
+    return new Promise(resolve => {
+      if (this.shipingBadges && this.shipingBadges.length > 0){
+        resolve(this.shipingBadges);
+      }
+      else {
+        resolve(this.getBadgesShiping());
       }
 
     })

@@ -23,7 +23,7 @@ export class ShipingTagsComponent implements OnInit {
 
   getBadges() {
     this.interactionService.createLoading("Loading badges Please Wait");
-    this.productService.getBadgesShiping()
+    this.productService.getMainShipingBadges()
       .then((result:any) => {
         this.interactionService.closeToast();
         if (result && result != false && result.status != 'not found'){
@@ -61,7 +61,7 @@ export class ShipingTagsComponent implements OnInit {
     badge.status = status;
     this.interactionService.displayToast('Submitting shiping badge Please wait !',true,'info');
     console.log(badge);
-    this.productService.saveBadge(badge)
+    this.productService.saveBadgeShiping(badge)
       .then((result:any) => {
         this.interactionService.closeToast();
         if (result && result != false && result.status == 200){
