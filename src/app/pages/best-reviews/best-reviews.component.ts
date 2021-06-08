@@ -71,7 +71,8 @@ export class BestReviewsComponent implements OnInit {
     this.formFields.push({
       value:fields,
       formId:lenghtFormField,
-      selectOption: fields.mainImgUrl == '' ? 'none' : 'url'
+      selectOption: fields.mainImgUrl == '' ? 'none' : 'url',
+      enabled:false
     })
   }
 
@@ -246,5 +247,13 @@ export class BestReviewsComponent implements OnInit {
         $(`#img-image-${id}`).attr('src',URL.createObjectURL(event.target.files[0]))
         $(`#img-image-${id}`).show();
     }
+  }
+
+  disableDrag(id){
+    this.formFields.find(formReview => formReview.formId == id).enabled = true;
+  }
+
+  enableDrag(id){
+    this.formFields.find(formReview => formReview.formId == id).enabled = false;
   }
 }

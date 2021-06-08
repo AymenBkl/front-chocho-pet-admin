@@ -75,7 +75,8 @@ export class BestTipsComponent implements OnInit {
       value:fields,
       formId:formTipsLength,
       selectOption:fields.mainImageUrl != '' ? 'url' : 'none',
-      errors:{}
+      errors:{},
+      enabled:false
     })
   }
 
@@ -249,6 +250,14 @@ export class BestTipsComponent implements OnInit {
         $(`#img-image-${id}`).attr('src',URL.createObjectURL(event.target.files[0]))
         $(`#img-image-${id}`).show();
     }
+  }
+
+  disableDrag(id){
+    this.formTips.find(formTip => formTip.formId == id).enabled = true;
+  }
+
+  enableDrag(id){
+    this.formTips.find(formTip => formTip.formId == id).enabled = false;
   }
 
 
