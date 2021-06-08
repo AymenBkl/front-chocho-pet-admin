@@ -24,6 +24,7 @@ export class ProductInfoComponent implements OnInit {
   selectedValue = 'url';
   selectOptionTableProduct = {displayMainBenifts:'none',displaySizeChart:'none',displayColor:'none',displayBuy:'none',displayMainBeniftsOption:'none',displaySizeChartOption:'none',displayColorOption:'none',displayBuyOption:'none'}
   header = new FormControl('', [Validators.required]);
+  urls: {imageBadgeURL:'',imageURL:''}[] = [];
   constructor(private route: ActivatedRoute,
     private productService: ProductsService,
     private storageService: StorageService,
@@ -32,6 +33,7 @@ export class ProductInfoComponent implements OnInit {
     private matDialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.getURLS();
     this.getCurrentProduct();
     this.getSelectOption();
   }
@@ -806,6 +808,23 @@ this.submitTable();
           this.interactionService.closeToast();
           this.interactionService.displayToast('Something Went Wrong', false, 'Error');
         })
+  }
+
+  getURLS() {
+    this.productService.getURLS()
+      .then((result:any) => {
+        if (result && result != false){
+          this.urls = result;
+        }
+      })
+  }
+
+  displayUrlBadge(url) {
+    return url && url.imageBadgeURL != '' ? url.imageBadgeURL : '';
+  }
+
+  displayUrlMain(url) {
+    return url && url.imageURL != '' ? url.imageURL : '';
   }
 
 

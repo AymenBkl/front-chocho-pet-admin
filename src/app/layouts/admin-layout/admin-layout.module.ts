@@ -46,6 +46,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BadgesComponent } from 'app/pages/badges/badges.component';
 import { AddBadgeComponent } from 'app/components/add-badge/add-badge.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   imports: [
@@ -78,7 +79,8 @@ import { AddBadgeComponent } from 'app/components/add-badge/add-badge.component'
     MatFileUploadModule,
     DragDropModule,
     ClipboardModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatAutocompleteModule
   ],
   declarations: [
     UserComponent,

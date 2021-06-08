@@ -234,7 +234,13 @@
         <div class="col-12">
           <mat-form-field class="form-description-product-input options-select" id="option-url-{{productForm.idFields['option-url']}}">
             <mat-label>Enter Url</mat-label>
-            <input matInput placeholder="url" value="{{productForm.formField.imageURL}}" type="url" id="option-url-input-{{productForm.idFields['option-url-input']}}">
+            <input matInput placeholder="url" value="{{productForm.formField.imageURL}}" type="url" id="option-url-input-{{productForm.idFields['option-url-input']}}" [matAutocomplete]="autoMain">
+            <mat-autocomplete #autoMain="matAutocomplete" [displayWith]="displayUrlMain">
+              <mat-option *ngFor="let url of urls" [value]="url">
+                <img [src]='url.imageURL' class="image-complete-badge">
+                {{url.imageURL}}
+              </mat-option>
+            </mat-autocomplete>
             <span class="error" id="fileImageUrlError-{{productForm.idFields.fileImageUrlError}}">Please Enter  A Url</span>
           </mat-form-field>
         </div>
@@ -264,7 +270,13 @@
         <div class="col-12">
           <mat-form-field class="form-description-product-input options-select" id="option-url-badge-{{productForm.idFields['option-url-badge']}}">
             <mat-label>Enter Url Badge</mat-label>
-            <input matInput placeholder="url" value="{{productForm.formField.imageBadgeURL}}" type="url" id="option-url-input-badge-{{productForm.idFields['option-url-input-badge']}}">
+            <input matInput placeholder="url" value="{{productForm.formField.imageBadgeURL}}" type="url" id="option-url-input-badge-{{productForm.idFields['option-url-input-badge']}}" [matAutocomplete]="autoBadge">
+            <mat-autocomplete #autoBadge="matAutocomplete" [displayWith]="displayUrlBadge">
+              <mat-option *ngFor="let url of urls" [value]="url">
+                <img [src]='url.imageBadgeURL' class="image-complete-badge">
+                {{url.imageBadgeURL}}
+              </mat-option>
+            </mat-autocomplete>
             <span class="error" id="fileImageUrlErrorBadge-{{productForm.idFields.fileImageUrlErrorBadge}}">Please Enter  A Url</span>
           </mat-form-field>
         </div>

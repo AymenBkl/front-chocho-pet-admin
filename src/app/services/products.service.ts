@@ -38,6 +38,25 @@ export class ProductsService {
     })
   }
 
+  getURLS() {
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<any>(environment.url + 'products/producturls')
+        .subscribe(productResponse => {
+          if (productResponse.status == 200 && productResponse.success) {
+            resolve(productResponse.products);
+          }
+          else if (productResponse.status == 404 && !productResponse.success) {
+            resolve({status:'not found'});
+          }
+          else {
+            resolve(false);
+          }
+        }, err => {
+          reject(err);
+        })
+    })
+  }
+
   getBadges() {
     return new Promise((resolve, reject) => {
       this.httpClient.get<any>(environment.url + 'products/getbadges')

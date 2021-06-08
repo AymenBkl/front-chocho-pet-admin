@@ -191,8 +191,11 @@ textarea.mat-input-element {
   .card-title-product {
     width: 100% !important;
   }
+}
 
-
+.image-complete-badge {
+  width: 30px;
+  margin-right: 30px;
 }
 
 
