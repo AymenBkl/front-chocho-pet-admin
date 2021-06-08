@@ -16,7 +16,6 @@ import { StorageService } from 'app/services/storage.service';
 export class ProductsComponent implements OnInit,OnDestroy {
   products: Product[];
   searchProduct: Product[];
-  image: { imageSrc: any, file: any }[];
   @ViewChild('files') files: ElementRef;
   sortOption : string = 'datedesc';
   selectedIndex:number;
@@ -40,9 +39,8 @@ export class ProductsComponent implements OnInit,OnDestroy {
         console.log(result);
         this.interactionService.closeToast();
         if (result && result != false) {
-          this.products = result;
-          this.searchProduct = result;
-          this.image =   await Array.from({ length: this.products.length }, () => Object.assign({imageSrc:null,file:null}));
+          this.products = result.filter(product => product.status == 'active');
+          this.searchProduct = this.products;
           this.interactionService.displayToast('Products Loadded',false,'success');
         }
         else {
@@ -65,48 +63,9 @@ export class ProductsComponent implements OnInit,OnDestroy {
     window.open(`/#/product-info/${product.productId}`, '_blank')
   }
 
-  selectedImage(event): void {
-    if (event.target.files && event.target.files[0]) {
-      const file = event.target.files[0];
-      const reader = new FileReader();
-      reader.onload = e => this.image[this.selectedIndex].imageSrc = reader.result;
-      reader.readAsDataURL(file);
-      this.image[this.selectedIndex].file = file;
-    }
-  }
 
-  /**uploadImage(index:number,product:Product){
-    if (this.image[index].imageSrc && this.image[index].file) {
-      this.interactionService.confirmBox('ALERT', 'Do you want to update product image', 'warning', 'UPDATE', 'CANCEL', '')
-        .then((result:any) => {
-          if (result && result.status == true) {
-            const formData = new FormData();
-            console.log(this.image[index].file);
-            formData.append('file', this.image[index].file);
-            formData.append('ean', product.productEan);
-            this.interactionService.displayToast('Uploading Image', true, 'info');
-              //this.submitted = true;
-              this.productService.postImage(formData)
-                .then((result: any) => {
-                  //this.submitted = false;
-                  this.interactionService.closeToast();
-                  if (result && result) {
-                    this.interactionService.alertMsg('SUCCESS', 'Image Updated Successfully', 'success');
-                  }
-                })
-                .catch((err) => {
-                  //this.submitted = false;
-                  this.interactionService.closeToast();
-                  this.interactionService.alertMsg('ERROR', err.errmsg, 'error');
-                })
-          }
-          else if (result && result.status == false) {
-            this.interactionService.alertMsg('CANCELED', 'OPERATION CANCELED', 'warning');
-          }
-        })
 
-    }
-  }**/
+
 
   search(event: Event) {
     if (this.products && this.searchProduct) {
