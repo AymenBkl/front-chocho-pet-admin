@@ -178,23 +178,24 @@ export class ProductInfoComponent implements OnInit {
         let initData :any = {};
         initData._id = productForm.formField._id;
         initData.position = index;
-        let productHeaderValue = $(`#header-input-${productForm.idFields['header-input']}`).val();
-        if (!productHeaderValue) {
+        let productHeaderValue: string = $(`#header-input-${productForm.idFields['header-input']}`).val().toLocaleString();
+        if (!productHeaderValue || (productHeaderValue && productHeaderValue == '')) {
           $(`#headerProductError-${productForm.idFields['headerProductError']}`).show();
           delete initData.header;
         }
         else {
           $(`#headerProductError-${productForm.idFields['headerProductError']}`).hide();
-          initData.header = productHeaderValue;
+          initData.header = productHeaderValue.toUpperCase();
         }
-        let descriptionProduct = $(`#header-description-input-${productForm.idFields['header-description-input']}`).val();
-        if (!descriptionProduct) {
+        let descriptionProduct = $(`#header-description-input-${productForm.idFields['header-description-input']}`).val().toLocaleString();
+        if (!descriptionProduct || (descriptionProduct && descriptionProduct == '')) {
           $(`#descriptionProductError-${productForm.idFields['descriptionProductError']}`).show();
           delete initData.description;
         }
         else {
           $(`#descriptionProductError-${productForm.idFields['descriptionProductError']}`).hide();
-          initData.description = descriptionProduct;
+
+          initData.description = descriptionProduct.trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())))
         }
 
         let selecOption = $(`#selectOptionImageId-${productForm.idFields['selectOptionImageId']}`).text();
