@@ -16,12 +16,11 @@ export class InterceptorService implements HttpInterceptor {
     const authToken = this.storageService.getToken();
     let authReq;
     if (!req.url.includes('https://api.imgbb.com')){
-      authReq = req.clone({ headers: req.headers.set('Authorization', 'bearer ' + authToken) });
+      authReq = req.clone({ headers: req.headers.append('Authorization', 'bearer ' + authToken) });
     }
     else {
       authReq = req;
     }
-    console.log(authReq)
       return next.handle(authReq);
   }
 }
