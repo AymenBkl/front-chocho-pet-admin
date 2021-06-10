@@ -43,11 +43,14 @@
           </div>
           <div class="card-footer" data-aos="fade-left" >
             <div class="update-button">
-              <button mat-mini-fab color="warn" aria-label="Expand Button" (click)='updateCall(product)'>
+              <button mat-mini-fab color="warn" class="badge-update-btn" aria-label="Expand Button" (click)='updateCall(product)'>
                 <mat-icon>update</mat-icon>
               </button>
-              <button mat-mini-fab color="warn" class="badge-update-btn" aria-label="Expand Button" (click)='updateBadge(product)'>
+              <button mat-mini-fab color="success" class="shiping-badge-update-btn" aria-label="Expand Button" (click)='updateBadge(product)'>
                 <mat-icon>circle</mat-icon>
+              </button>
+              <button mat-mini-fab color="primary" class="recomend-product-btn" aria-label="Expand Button" (click)='recomendProduct(product)'>
+                <mat-icon>assistant</mat-icon>
               </button>
             </div>
 

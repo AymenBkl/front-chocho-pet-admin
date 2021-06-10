@@ -215,6 +215,11 @@ mat-form-field {
   z-index: 99999999;
 }
 
+.recomend-product-btn {
+  margin-left:10px;
+  float: right;
+}
+
 .badge-New {
   filter: invert(50%) sepia(75%) saturate(3127%) hue-rotate(87deg) brightness(131%) contrast(114%);
 }
@@ -247,6 +252,12 @@ mat-form-field {
 
 .badge-update-btn {
   margin-left:10px;
+  float:left;
+}
+
+.shiping-badge-update-btn {
+  margin-left:10px;
+  float:left;
 }
 .btn-sent-all .mat-icon {
   height: 50px !important;

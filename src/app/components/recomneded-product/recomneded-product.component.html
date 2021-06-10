@@ -1,0 +1,19 @@
+<div class="main">
+  <div class="card card-product"  data-aos="fade-up-left">
+
+    <div class="product-description-header" >
+        <mat-form-field appearance="fill" class="form-description-product-input">
+          <mat-label>Pick An Option (Image Main)</mat-label>
+          <mat-select  class="select-option">
+            <mat-option  *ngFor='let product of products' [value]='product._id'>{{product.title}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-12 text-center submit-btn"  >
+      <button mat-mini-fab color="primary" aria-label="submit product" (click)="submitProducts()" >
+        <mat-icon>cloud_upload</mat-icon>
+      </button>
+    </div>
+  </div>
+
+</div>

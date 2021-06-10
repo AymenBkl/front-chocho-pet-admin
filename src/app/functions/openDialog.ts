@@ -4,6 +4,7 @@ import { FilterOrderComponent } from "app/components/filter-order/filter-order.c
 import { GenerateCodeBestTipsComponent } from "app/components/generate-code-best-tips/generate-code-best-tips.component";
 import { GeneratingBestReviewsComponent } from "app/components/generating-best-reviews/generating-best-reviews.component";
 import { ProductdescriptionviewerComponent } from "app/components/productdescriptionviewer/productdescriptionviewer.component";
+import { RecomnededProductComponent } from "app/components/recomneded-product/recomneded-product.component";
 import { ResetpasswordComponent } from "app/components/resetpassword/resetpassword.component";
 import { ShipingBadgeComponent } from "app/components/shiping-badge/shiping-badge.component";
 import { UpdateLinkComponent } from "app/components/update-link/update-link.component";
@@ -73,6 +74,18 @@ export function generateCodeBestTips(dialog: MatDialog): MatDialogRef<GenerateCo
     width: '80%',
     height: '80%',
     panelClass: 'mat-dialog-generate-code',
+  });
+
+  return dialogToOpen;
+}
+
+export function productRecomended(dialog: MatDialog,data:any): MatDialogRef<RecomnededProductComponent,any> {
+
+  const dialogToOpen = dialog.open(RecomnededProductComponent, {
+    width: '70%',
+    height: '70%',
+    panelClass: 'mat-dialog-generate-code',
+    data:data
   });
 
   return dialogToOpen;

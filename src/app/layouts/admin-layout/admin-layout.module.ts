@@ -49,6 +49,7 @@ import { AddBadgeComponent } from 'app/components/add-badge/add-badge.component'
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ShipingTagsComponent } from 'app/pages/shiping-tags/shiping-tags.component';
 import { ShipingBadgeComponent } from 'app/components/shiping-badge/shiping-badge.component';
+import { RecomnededProductComponent } from 'app/components/recomneded-product/recomneded-product.component';
 
 @NgModule({
   imports: [
@@ -102,7 +103,8 @@ import { ShipingBadgeComponent } from 'app/components/shiping-badge/shiping-badg
     AddBadgeComponent,
     ComplaintResponseComponent,
     ShipingTagsComponent,
-    ShipingBadgeComponent
+    ShipingBadgeComponent,
+    RecomnededProductComponent
   ]
 })
 

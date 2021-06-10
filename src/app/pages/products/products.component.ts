@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { callFilter, callUpdateLink } from 'app/functions/openDialog';
+import { callFilter, callUpdateLink, productRecomended } from 'app/functions/openDialog';
 import { Badge } from 'app/interface/badge';
 import { Product } from 'app/interface/product';
 import { InteractionService } from 'app/services/interaction.service';
@@ -143,6 +143,10 @@ export class ProductsComponent implements OnInit,OnDestroy {
 
   updateBadge(product:Product){
     callUpdateLink(this.matDialog,{product:product,badges:this.shipingBadges,type:'badge-shiping'});
+  }
+
+  recomendProduct(product:Product){
+    productRecomended(this.matDialog,{product:product,products:this.products});
   }
 
   ngOnDestroy(): void {
