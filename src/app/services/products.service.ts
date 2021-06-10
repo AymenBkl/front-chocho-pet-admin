@@ -118,7 +118,7 @@ export class ProductsService {
     })
   }
 
-  updateProductLink(productId: string, badgeId: string,type:string) {
+  updateProductLink(productId: string, badgeId: any,type:string) {
     return new Promise((resolve, reject) => {
       this.onDestroyUpdate()
       this.updateProductSub = this.httpClient.put<ProductResponse>(environment.url + 'products/updateproduct?type=' + type, { badgeId: badgeId, id: productId })
