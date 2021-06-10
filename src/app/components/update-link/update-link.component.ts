@@ -21,6 +21,7 @@ export class UpdateLinkComponent implements OnInit {
   }
 
   async createInputSwal() {
+    console.log(this.data);
     let inputOptions = {'60b92e5d8f89e532a06cd2ff':'None'};
     this.data.badges.map((badge) => {
       if (badge.status == 'active'){

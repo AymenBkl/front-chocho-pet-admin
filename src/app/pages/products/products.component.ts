@@ -7,7 +7,7 @@ import { Product } from 'app/interface/product';
 import { InteractionService } from 'app/services/interaction.service';
 import { ProductsService } from 'app/services/products.service';
 import { StorageService } from 'app/services/storage.service';
-
+import { ShipingBadge } from 'app/interface/shipingBadge'
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -21,6 +21,7 @@ export class ProductsComponent implements OnInit,OnDestroy {
   selectedIndex:number;
   filterOptions:{dateCreateMAx:string,dateCreateMin:string} = {dateCreateMAx:new Date().toISOString(),dateCreateMin:new Date().toISOString()};
   badges : Badge[];
+  shipingBadges : ShipingBadge[];
   constructor(private productService: ProductsService,
               private interactionService: InteractionService,
               private matDialog: MatDialog,
@@ -30,6 +31,7 @@ export class ProductsComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     this.getProducts();
     this.getBadges();
+    this.getShipingBadges();
   }
 
   getProducts() {
@@ -62,6 +64,7 @@ export class ProductsComponent implements OnInit,OnDestroy {
     this.storageService.saveProduct(product);
     window.open(`/#/product-info/${product.productId}`, '_blank')
   }
+
 
 
 
@@ -135,7 +138,11 @@ export class ProductsComponent implements OnInit,OnDestroy {
   }
 
   updateCall(product:Product){
-    callUpdateLink(this.matDialog,{product:product,badges:this.badges});
+    callUpdateLink(this.matDialog,{product:product,badges:this.badges,type:'badge'});
+  }
+
+  updateBadge(product:Product){
+    callUpdateLink(this.matDialog,{product:product,badges:this.badges,type:'badge-shiping'});
   }
 
   ngOnDestroy(): void {
@@ -148,6 +155,24 @@ export class ProductsComponent implements OnInit,OnDestroy {
         this.interactionService.closeToast();
         if (result && result != false && result.status != 'not found'){
           this.badges = result;
+        }
+        else if (result && result != false && result.status == 'not found') {
+        }
+        else {
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  getShipingBadges() {
+    this.productService.getMainShipingBadges()
+      .then((result:any) => {
+        this.interactionService.closeToast();
+        if (result && result != false && result.status != 'not found'){
+          console.log(result);
+          this.shipingBadges = result;
         }
         else if (result && result != false && result.status == 'not found') {
         }
