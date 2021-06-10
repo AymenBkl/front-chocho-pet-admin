@@ -1,8 +1,9 @@
 .card-product {
   background-color:  #283136;
   display:block;
-  width: 60%;
+  width: 100%;
   text-align: center;
+  padding: 10px 5px 10px 5px;
 }
 
 .card-product * {
@@ -15,7 +16,7 @@ mat-form-field {
 }
 
 .main {
-  display: flex;
+  display: block;
   align-items: center;
   align-content: center;
   justify-content: center;
@@ -45,7 +46,41 @@ mat-form-field {
   margin-left: 41px;
 }
 
-.submit-btn {
+.add-btn {
   margin-bottom: 15px;
   margin-top: 15px;
+}
+
+.submit-btn {
+  position: absolute;
+  bottom: 60px;
+  width: 100px;
+  height: 100px;
+  right: 20px;
+}
+
+.img-select {
+  width:50px !important;
+  margin-right: 10px !important;
+}
+.product-description-header {
+  margin-top: 10px !important;
+}
+
+.header-delete-button {
+  width: 100%;
+  text-align: right;
+}
+
+.header-delete-button button {
+  background:#d9534f;
+}
+
+.header-return-button {
+  width: 100%;
+  text-align: center;
+}
+
+.header-return-button button {
+  background:#0275d8;
 }

@@ -1,19 +1,33 @@
 <div class="main">
-  <div class="card card-product"  data-aos="fade-up-left">
-
-    <div class="product-description-header" >
+  <div class="card card-product" id="{{selectForm.formId}}"  data-aos="fade-up-left" *ngFor='let selectForm of selectForms'>
+    <div class="header-delete-button" *ngIf="selectForm.status == 'active'">
+      <button mat-icon-button color="danger" aria-label="Delete Button" (click)="deleteRecomendedProduct(selectForm.formId)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div class="product-description-header" *ngIf='selectForm.status == "active"'>
         <mat-form-field appearance="fill" class="form-description-product-input">
-          <mat-label>Pick An Option (Image Main)</mat-label>
-          <mat-select  class="select-option">
-            <mat-option  *ngFor='let product of products' [value]='product._id'>{{product.title}}</mat-option>
+          <mat-label style="color: black !important;">Pick Product</mat-label>
+          <mat-select  class="select-option" [(value)]='selectForm.selectOption'>
+            <mat-option *ngFor='let product of products' [value]='product._id'>
+              <img class="img-select" [src]='product.images[0].src'>
+              {{product.title}}</mat-option>
           </mat-select>
         </mat-form-field>
     </div>
-    <div class="col-12 text-center submit-btn"  >
-      <button mat-mini-fab color="primary" aria-label="submit product" (click)="submitProducts()" >
-        <mat-icon>cloud_upload</mat-icon>
+    <div class="header-return-button" *ngIf="selectForm.status == 'deleted'">
+      <button mat-icon-button  color="primary" aria-label="Active Button" (click)="activeRecomendedProduct(selectForm.formId)">
+        <mat-icon>reply</mat-icon>
       </button>
     </div>
   </div>
 
+  <div class="col-12 text-center add-btn"  >
+    <button mat-mini-fab color="primary" aria-label="add form" (click)="addForm()" >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+    <button mat-mini-fab color="success" aria-label="submit product" class="submit-btn" (click)="submitProducts()" >
+      <mat-icon>cloud_upload</mat-icon>
+    </button>
 </div>
