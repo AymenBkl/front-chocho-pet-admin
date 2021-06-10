@@ -135,7 +135,11 @@ body{
 
 .ean-product {
   color:black;
+}
 
+.title-product:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .price-product {
