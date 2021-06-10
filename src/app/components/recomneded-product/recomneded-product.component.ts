@@ -18,10 +18,21 @@ export class RecomnededProductComponent implements OnInit {
               private productService: ProductsService) { }
 
   ngOnInit(): void {
-    this.products = this.data.products;
-    this.addForm();
+    this.getProducts();
   }
 
+  getProducts() {
+    this.products = this.data.products;
+    this.products = this.products.filter(product => product.status == 'active');
+    if (this.data.product && this.data.product.recomendedProduct.length > 0){
+      this.data.product.recomendedProduct.map(recomndedProduct => {
+        this.addForm(recomndedProduct)
+      })
+    }
+    else {
+      this.addForm();
+    }
+  }
 
   submitProducts(){
     let validSelectForms = [];
@@ -41,12 +52,13 @@ export class RecomnededProductComponent implements OnInit {
   }
 
 
-  addForm(){
+  addForm(remondedProduct = null){
+    console.log(remondedProduct);
     let selectFormLength = this.selectForms.length;
     this.selectForms.push({
-      selectOption:'None',
+      selectOption:remondedProduct && remondedProduct.product && remondedProduct.product._id ? remondedProduct.product._id:'None',
       formId:selectFormLength,
-      status:'active',
+      status:remondedProduct && remondedProduct.status ? remondedProduct.status :'active',
       error:''
     })
   }

@@ -8,4 +8,6 @@ export interface Product {
   createdAt:string;
   tableDescription:{imageSizeChartUrl:string,imageBuyUrl:string,imageColorUrl:string,mainBenifts:string,imageMainBeniftsUrl:string};
   description:any[];
+  recomendedProduct: {product: Product,status:string}[];
+  status:string;
 }
