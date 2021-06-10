@@ -20,7 +20,18 @@ export class RecomnededProductComponent implements OnInit {
 
 
   submitProducts(){
-
+    let validSelectForms = [];
+    this.selectForms.map((selectForm,indx) => {
+      console.log(selectForm.selectOption && selectForm.selectOption != 'None')
+      if (selectForm.selectOption && selectForm.selectOption != 'None'){
+        validSelectForms.push({productId:selectForm.selectOption,status:selectForm.status});
+        selectForm.error = '';
+      }
+      else {
+        selectForm.error = 'Please Pick Product';
+      }
+      console.log(selectForm,indx);
+    })
   }
 
 
@@ -29,14 +40,13 @@ export class RecomnededProductComponent implements OnInit {
     this.selectForms.push({
       selectOption:'None',
       formId:selectFormLength,
-      status:'active'
+      status:'active',
+      error:''
     })
   }
 
   deleteRecomendedProduct(id){
-    console.log(id);
     this.selectForms[id].status = 'deleted';
-    console.log(this.selectForms[id])
   }
 
   activeRecomendedProduct(id){

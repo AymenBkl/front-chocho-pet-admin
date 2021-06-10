@@ -8,11 +8,12 @@
     <div class="product-description-header" *ngIf='selectForm.status == "active"'>
         <mat-form-field appearance="fill" class="form-description-product-input">
           <mat-label style="color: black !important;">Pick Product</mat-label>
-          <mat-select  class="select-option" [(value)]='selectForm.selectOption'>
+          <mat-select  class="select-option" [(value)]='selectForm.selectOption' required>
             <mat-option *ngFor='let product of products' [value]='product._id'>
               <img class="img-select" [src]='product.images[0].src'>
               {{product.title}}</mat-option>
           </mat-select>
+          <span class="error" *ngIf="selectForm.error && selectForm.error != ''">{{selectForm.error}}</span>
         </mat-form-field>
     </div>
     <div class="header-return-button" *ngIf="selectForm.status == 'deleted'">

@@ -57,6 +57,11 @@ mat-form-field {
   width: 100px;
   height: 100px;
   right: 20px;
+  background: #5cb85c;
+}
+
+.submit-btn:focus {
+  outline: none;
 }
 
 .img-select {
@@ -75,6 +80,9 @@ mat-form-field {
 .header-delete-button button {
   background:#d9534f;
 }
+.header-delete-button button:focus {
+  outline: none;
+}
 
 .header-return-button {
   width: 100%;
@@ -83,4 +91,13 @@ mat-form-field {
 
 .header-return-button button {
   background:#0275d8;
+}
+
+.header-return-button button:focus {
+  outline: none;
+}
+
+.error {
+  color:#d9534f;
+  margin-left: 10px;
 }
