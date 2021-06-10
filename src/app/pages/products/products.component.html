@@ -25,6 +25,7 @@
   <div class="col-12 col-md-4 col-lg-4 holder-product" *ngFor="let product of searchProduct;let i = index"  data-aos="zoom-in-right">
       <div class="card profile-card-3">
         <img [src]='product.productBadge.mainImgUrl' *ngIf="product.productBadge && product.productBadge.mainImgUrl && product.productBadge.mainImgUrl != ''" class="img-badge badge-{{product.productBadge}}" >
+        <img [src]='product.productShipingBadge.mainImgUrl' *ngIf="product.productShipingBadge && product.productShipingBadge.mainImgUrl && product.productShipingBadge.mainImgUrl != ''" class="img-shiping-badge badge-{{product.productBadge}}" >
 
           <div class="background-block">
               <div class="background"></div>

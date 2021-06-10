@@ -12,7 +12,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 export class UpdateLinkComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {product:Product,badges:Badge[]},
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {product:Product,badges:Badge[],type:string},
   public dialogRef: MatDialogRef<UpdateLinkComponent>,
   private productService: ProductsService) { }
 
@@ -21,7 +21,7 @@ export class UpdateLinkComponent implements OnInit {
   }
 
   async createInputSwal() {
-    console.log(this.data);
+    let inputHolder = this.data.type.toUpperCase();
     let inputOptions = {'60b92e5d8f89e532a06cd2ff':'None'};
     this.data.badges.map((badge) => {
       if (badge.status == 'active'){
@@ -32,21 +32,19 @@ export class UpdateLinkComponent implements OnInit {
       title: 'Select field validation',
       input: 'select',
       inputOptions,
-      inputPlaceholder: 'Select Badge',
+      inputPlaceholder: inputHolder,
       showCancelButton: true,
       showLoaderOnConfirm: true,
       preConfirm: (value) => {
         return new Promise(async (resolve) => {
-          return this.updateProduct(value);
+          return this.updateProduct(value,this.data.type);
         })
       }
     })
-
   }
-
-  updateProduct(badgeId:string) {
+  updateProduct(badgeId:string,type:string) {
     return new Promise((resolve,reject) => {
-      this.productService.updateProductLink(this.data.product.productId,badgeId)
+      this.productService.updateProductLink(this.data.product.productId,badgeId,type)
       .then((result) => {
         console.log(result);
         if (result && result != false){

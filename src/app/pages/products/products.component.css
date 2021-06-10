@@ -205,6 +205,15 @@ mat-form-field {
   top: -21px;
   z-index: 99999999;
 }
+.img-shiping-badge {
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  left: 0px;
+  text-align: -20px;
+  top: -21px;
+  z-index: 99999999;
+}
 
 .badge-New {
   filter: invert(50%) sepia(75%) saturate(3127%) hue-rotate(87deg) brightness(131%) contrast(114%);

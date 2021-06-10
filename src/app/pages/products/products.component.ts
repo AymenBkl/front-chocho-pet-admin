@@ -20,8 +20,8 @@ export class ProductsComponent implements OnInit,OnDestroy {
   sortOption : string = 'datedesc';
   selectedIndex:number;
   filterOptions:{dateCreateMAx:string,dateCreateMin:string} = {dateCreateMAx:new Date().toISOString(),dateCreateMin:new Date().toISOString()};
-  badges : Badge[];
-  shipingBadges : ShipingBadge[];
+  badges : Badge[] = [];
+  shipingBadges : ShipingBadge[] = [];
   constructor(private productService: ProductsService,
               private interactionService: InteractionService,
               private matDialog: MatDialog,
@@ -142,7 +142,7 @@ export class ProductsComponent implements OnInit,OnDestroy {
   }
 
   updateBadge(product:Product){
-    callUpdateLink(this.matDialog,{product:product,badges:this.badges,type:'badge-shiping'});
+    callUpdateLink(this.matDialog,{product:product,badges:this.shipingBadges,type:'badge-shiping'});
   }
 
   ngOnDestroy(): void {
@@ -171,7 +171,6 @@ export class ProductsComponent implements OnInit,OnDestroy {
       .then((result:any) => {
         this.interactionService.closeToast();
         if (result && result != false && result.status != 'not found'){
-          console.log(result);
           this.shipingBadges = result;
         }
         else if (result && result != false && result.status == 'not found') {
