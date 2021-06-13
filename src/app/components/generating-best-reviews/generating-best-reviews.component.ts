@@ -3,7 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InteractionService } from 'app/services/interaction.service';
 import { ToolsService } from 'app/services/tools.service';
-
+import lozad from 'lozad'
 @Component({
   selector: 'app-generating-best-reviews',
   templateUrl: './generating-best-reviews.component.html',
@@ -23,8 +23,8 @@ export class GeneratingBestReviewsComponent implements OnInit {
     "slidesToScroll": 1,
     "pauseOnHover": true,
     "arrows": true,
-    "prevArrow": '<button type="button" class="slick-prev-carousel"><img class="left_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle-1.png?v=1618817807"></button>',
-    "nextArrow": '<button type="button" class="slick-next-carousel"><img class="right_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle.png?v=1618817807"></button>',
+    "prevArrow": '<button type="button" name="slick-next" class="slick-prev-carousel"><img class="left_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle-1.png?v=1618817807"></button>',
+    "nextArrow": '<button type="button" name="slick-next" class="slick-next-carousel"><img class="right_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle.png?v=1618817807"></button>',
   };
   constructor(private interactionService: InteractionService,
                       private toolsService: ToolsService,
@@ -32,6 +32,8 @@ export class GeneratingBestReviewsComponent implements OnInit {
                       private matDialog: MatDialog) { }
 
   ngOnInit(): void {
+    const observer = lozad();
+    observer.observe();
     this.getBestReviews();
   }
 
@@ -67,11 +69,11 @@ export class GeneratingBestReviewsComponent implements OnInit {
     this.bestReviews.map((bestReview) => {
         bestReviewCode += `<div class="best-reviews-item-container">
         <div class="best-reviews-image-container">
-            <img src="${bestReview.mainImgUrl}">
+            <img class="lozad" src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data-src="${bestReview.mainImgUrl}">
         </div>
         <div class="best-reviews-text-container">
             <div class="icon-images">
-                <img src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/5-stars.png?v=1618404898">
+                <img class="lozad" data-src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/5-stars.png?v=1618404898">
             </div>
             <div class="rating-section">
                 ${bestReview.descriptionReview}

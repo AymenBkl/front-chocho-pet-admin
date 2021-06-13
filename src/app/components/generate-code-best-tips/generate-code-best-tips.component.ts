@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { InteractionService } from 'app/services/interaction.service';
 import { ToolsService } from 'app/services/tools.service';
 import * as $ from "jquery";
-
+import lozad from 'lozad'
 @Component({
   selector: 'app-generate-code-best-tips',
   templateUrl: './generate-code-best-tips.component.html',
@@ -23,8 +23,8 @@ export class GenerateCodeBestTipsComponent implements OnInit {
     "slidesToScroll": 1,
     "pauseOnHover": true,
     "arrows": true,
-    "prevArrow": '<button type="button" class="slick-prev-carousel"><img class="left_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle-1.png?v=1618817807"></button>',
-    "nextArrow": '<button type="button" class="slick-next-carousel"><img class="right_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle.png?v=1618817807"></button>',
+    "prevArrow": '<button type="button" name="slide-next" class="slick-prev-carousel"><img class="left_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle-1.png?v=1618817807"></button>',
+    "nextArrow": '<button type="button" name="slide-next" class="slick-next-carousel"><img class="right_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle.png?v=1618817807"></button>',
   };
   bestTips : {title:'',mainImageUrl:'',description:'',status:'active',_id:'',position:number}[];
   constructor(private interactionService: InteractionService,
@@ -33,6 +33,8 @@ export class GenerateCodeBestTipsComponent implements OnInit {
                       private matDialog: MatDialog) { }
 
   ngOnInit(): void {
+    const observer = lozad();
+    observer.observe();
     this.getBestTips();
   }
 
@@ -71,7 +73,7 @@ export class GenerateCodeBestTipsComponent implements OnInit {
         bestTipsCode += `<div class="best-tips-item-container">
 
         <div class="best-tips-image-container">
-            <img src="${bestTip.mainImageUrl}">
+            <img class="lozad" src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data- src="${bestTip.mainImageUrl}">
         </div>
         <div class="best-tips-text-container">
             <h1 class="header-tips-container">TIPS</h1>

@@ -5,6 +5,7 @@ import { InteractionService } from 'app/services/interaction.service';
 import { ProductsService } from 'app/services/products.service';
 import { StorageService } from 'app/services/storage.service';
 import { Clipboard } from '@angular/cdk/clipboard';
+import lozad from 'lozad'
 
 @Component({
   selector: 'app-productdescriptionviewer',
@@ -24,8 +25,8 @@ export class ProductdescriptionviewerComponent implements OnInit {
     "slidesToScroll": 1,
     "pauseOnHover": true,
     "arrows": true,
-    "prevArrow": '<button type="button" class="slick-prev-carousel"><img class="left_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle-1.png?v=1618817807"></button>',
-    "nextArrow": '<button type="button" class="slick-next-carousel"><img class="right_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle.png?v=1618817807"></button>',
+    "prevArrow": '<button type="button" name="next"class="slick-prev-carousel"><img class="left_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle-1.png?v=1618817807"></button>',
+    "nextArrow": '<button type="button" name="prev" class="slick-next-carousel"><img class="right_arrow" src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/Icon_feather-arrow-left-circle.png?v=1618817807"></button>',
   };
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ProductdescriptionviewerComponent>,
@@ -36,6 +37,8 @@ export class ProductdescriptionviewerComponent implements OnInit {
     private matDialog: MatDialog) { }
 
   ngOnInit(): void {
+    const observer = lozad();
+    observer.observe();
     this.getProduct();
   }
 
@@ -90,7 +93,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
           aria-selected="false">Size Chart</a>
   </li>`
       allElemets.contentElements += `<div class="tab-pane fade  " id="sizechart" role="tabpanel" aria-labelledby="sizechart-tab">
-      <img src="${this.product.tableDescription.imageSizeChartUrl}">
+      <img class="lozad"  src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data-src="${this.product.tableDescription.imageSizeChartUrl}">
   </div>`;
     }
 
@@ -110,7 +113,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
         warehouses and they
         will do everything they can to get you your order as fast as they can! Please allow 1-3 Business Days
         for your order to be shipped (with up to 6 business days at peak times). Due to the popularity of our
-        offers&nbsp;the average Standard Delivery Time is<span>&nbsp;</span><strong>10&nbsp;- 23 business
+        offers&nbsp;the average Standard Delivery Time is<span>&nbsp;</span><strong>7&nbsp;- 14 business
             days</strong><span>&nbsp;</span>(for most Europe). Christmas season is the busiest time of the year,
         therefore, delivery time frames may increase up to 30 calendar days. Other countries can take an
         estimated 1-6 weeks (varies from product to product) due to distance traveling and customs. Please note,
@@ -152,7 +155,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
            aria-controls="buymore" aria-selected="false">Buy More. Save More. </a>
   </li>`;
       allElemets.contentElements += `<div class="tab-pane fade  " id="buymore" role="tabpanel" aria-labelledby="color">
-      <img class=" " src="${this.product.tableDescription.imageBuyUrl}">
+      <img class="lozad" src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data-src="${this.product.tableDescription.imageBuyUrl}">
   </div>`;
     }
 
@@ -162,7 +165,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
            aria-controls="color" aria-selected="false">Color Chart </a>
   </li>`;
       allElemets.contentElements += `<div class="tab-pane fade " id="color" role="tabpanel" aria-labelledby="color">
-      <img src="${this.product.tableDescription.imageColorUrl}">
+      <img class="lozad" src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data-src="${this.product.tableDescription.imageColorUrl}">
 
   </div>`;
     }
@@ -177,7 +180,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
     <ul class="benifits-fields">`
     mainBenifts.split('#/').map(mainBeniftsElement => {
       constructedMainBeniftsList += `<li class="benifts-field">
-                    <img src="${mainBeniftsUrl}">
+                    <img src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' class="lozad" data-src="${mainBeniftsUrl}">
 
                     ${mainBeniftsElement}
                 </li>`
@@ -194,10 +197,10 @@ export class ProductdescriptionviewerComponent implements OnInit {
         if (productDescription.status == 'active'){
           description += `<div class="item-image-text">
           <div class="image-holder">
-              <img src="${productDescription.imageURL}" />
+              <img src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' class="lozad" data-src="${productDescription.imageURL}" />
           </div>
           <div class="text-holder">
-              <img src="${productDescription.imageBadgeURL}">
+              <img class="lozad" data-src="${productDescription.imageBadgeURL}">
               <h2 class="h3">${productDescription.header}</h2>
               <div class="content">
                   <p>${productDescription.description}</p>
