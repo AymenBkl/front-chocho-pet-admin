@@ -51,6 +51,7 @@ import { ShipingTagsComponent } from 'app/pages/shiping-tags/shiping-tags.compon
 import { ShipingBadgeComponent } from 'app/components/shiping-badge/shiping-badge.component';
 import { RecomnededProductComponent } from 'app/components/recomneded-product/recomneded-product.component';
 import { LoggerComponent } from 'app/pages/logger/logger.component';
+import { LoggerLogComponent } from 'app/pages/logger-log/logger-log.component';
 
 @NgModule({
   imports: [
@@ -106,7 +107,8 @@ import { LoggerComponent } from 'app/pages/logger/logger.component';
     ShipingTagsComponent,
     ShipingBadgeComponent,
     RecomnededProductComponent,
-    LoggerComponent
+    LoggerComponent,
+    LoggerLogComponent
   ]
 })
 

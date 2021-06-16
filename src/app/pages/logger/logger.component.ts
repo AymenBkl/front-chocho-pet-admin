@@ -12,8 +12,8 @@ export class LoggerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goTo(link:string) {
-    window.open(`/#/logs/${link}`, '_blank')
+  goTo(link:string,level:string) {
+    window.open(`/#/logs/${link}?level=${level}`, '_blank')
   }
 
 }
