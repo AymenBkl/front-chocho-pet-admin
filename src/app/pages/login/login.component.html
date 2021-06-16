@@ -19,6 +19,7 @@
           <mat-error *ngIf="formErrors && formErrors.password">{{formErrors.password}}</mat-error>
         </mat-form-field>
         <mat-error *ngIf="validationErrors && validationErrors.errcode == 2">{{validationErrors.errmsg}}</mat-error>
+        <mat-error *ngIf="validationErrors && validationErrors.errcode == 429">{{validationErrors.errmsg}}</mat-error>
       </mat-card-content>
 
       <button mat-stroked-button color="accent" class="btn-block" (click)="login()"

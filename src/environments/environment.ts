@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  url: 'https://www.chochopet.ovh/api/adminchochopet/',
+  url: 'https://localhost:3444/api/adminchochopet/',
 };

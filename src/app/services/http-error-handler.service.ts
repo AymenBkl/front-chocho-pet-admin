@@ -26,6 +26,10 @@ export class HttpErrorHandlerService {
       errMsg = `Password or username is incorrect`;
       errCode = 2;
     }
+    else if (error && error.error == 'Too Many Requests'){
+      errMsg = `To Many Request Try Again in 15 Mn`;
+      errCode = 429;
+    }
     else if (error.error && error.error.err === 'USER NOT FOUND'){
       errCode = 3;
       errMsg = 'USER NOT FOUND';
