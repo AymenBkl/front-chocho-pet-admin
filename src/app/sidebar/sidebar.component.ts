@@ -28,6 +28,8 @@ export const ROUTES: RouteInfo[] = [
 export const ROUTESTOOLS: RouteInfo[] = [
   { path: '/best-reviews',          title: 'Best Reviews',      icon:'fas fa-star',  class: '' },
   { path: '/best-tips',          title: 'Best Tips',      icon:'fab fa-gratipay',  class: '' },
+  { path: '/logs',       title: 'Logs',    icon:'fa fa-history',  class: 'active-pro' },
+
 ];
 
 @Component({

@@ -28,6 +28,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EmailsService } from "./services/emails.service";
 import { ImgbbService } from "./services/imgbb.service";
 import { ToolsService } from "./services/tools.service";
+import { LoggerComponent } from './pages/logger/logger.component';
 
 
 @NgModule({
