@@ -17,6 +17,7 @@ import lozad from 'lozad'
 export class ProductdescriptionviewerComponent implements OnInit {
   product: Product;
   productDescriptionTotal:string;
+  productDescriptionTotalToShow:string;
   segmentToShow:string = 'html';
   slideCarouselConfig = {
     "infinite": true,
@@ -35,7 +36,6 @@ export class ProductdescriptionviewerComponent implements OnInit {
     private storageService: StorageService,
     private clipboard: Clipboard,
     private matDialog: MatDialog) { }
-
   ngOnInit(): void {
     const observer = lozad();
     observer.observe();
@@ -52,6 +52,9 @@ export class ProductdescriptionviewerComponent implements OnInit {
           this.product = result;
           this.product.description = this.product.description.sort((a,b) => a.position - b.position);
           this.productDescriptionTotal = this.buildTabs() + this.buildDescription();
+          this.productDescriptionTotalToShow = this.productDescriptionTotal.split('data-src').join('src');
+          this.productDescriptionTotalToShow = this.productDescriptionTotalToShow.split("src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569'").join('')
+          console.log(this.productDescriptionTotalToShow);
         }
         else {
           this.interactionService.closeToast();
@@ -106,47 +109,20 @@ export class ProductdescriptionviewerComponent implements OnInit {
     <p class="shiping_content">
 
     </p>
-    <p class="shiping_content"><b>IS SHIPPING FREE?</b></p>
-    <p class="shiping_content">Shipping is free For Europ on ALL PRODUCTS!</p>
-    <p class="shiping_content"><b>WHEN WILL I RECEIVE MY ORDER?</b></p>
-    <p class="shiping_content">Orders are shipped out directly from any of our many domestic &amp; international
-        warehouses and they
-        will do everything they can to get you your order as fast as they can! Please allow 1-3 Business Days
-        for your order to be shipped (with up to 6 business days at peak times). Due to the popularity of our
-        offers&nbsp;the average Standard Delivery Time is<span>&nbsp;</span><strong>7&nbsp;- 14 business
-            days</strong><span>&nbsp;</span>(for most Europe). Christmas season is the busiest time of the year,
-        therefore, delivery time frames may increase up to 30 calendar days. Other countries can take an
-        estimated 1-6 weeks (varies from product to product) due to distance traveling and customs. Please note,
-        that due to the extreme popularity of our offers, these are only estimates.</p>
-    <p class="shiping_content"></p>
+    <p><meta charset="utf-8"><span data-mce-fragment="1">Please be aware that your items will be delivered within <meta charset="utf-8">7-14 business days in&nbsp;<meta charset="utf-8">Europe, and up to 30-60 days outside Europe, after we process your order as all of our products are in high demand.</span><br></p>
+<p><meta charset="utf-8"><span data-mce-fragment="1">If your item is in stock, please allow 2-4 business days to process your order once payment is received and cleared.</span><br></p>
+<p>Once shipped, you will be emailed with a tracking number to follow your order to its destination. Please note there is no dispatch on weekends or public holidays.<br></p>
     <button class="btn btn-light" type="button" id="expandBtn" data-toggle="collapse" data-target="#moreInfo"
         aria-expanded="false" aria-controls="moreInfo" onclick="expand()">Show More</button>
 
     <div class="shipping_content content collapse multi-collapse" id="moreInfo">
-        <p class="shiping_content">
-        </p>
-        <p class="shiping_content"><b>WHY IS MY ORDER BEING SHIPPED IN DIFFERENT PACKAGES?</b></p>
-        <p class="shiping_content">If you have a multi-item order, each item may be shipped from a different
-            international warehouse,
-            depending on which one has them available the fastest. Alternatively, if an item is popular and on a
-            bit of a back order, we might ship your items at different times, in different packages, to prevent
-            holding up your order and to get it to you as fast as possible!</p>
-        <p class="shiping_content"><b>WHAT HAPPENS IF MY ORDER GETS STUCK OR LOST IN THE MAIL?</b></p>
-        <p class="shiping_content">All of our orders are sent with insured shipping and handling. If an order
-            gets stuck at customs,
-            sent back or even lost during the delivery process, we apologize! The postal service is out of our
-            control. However, in cases like this, because the packages are insured, we will send you a new
-            package with quicker shipping and full tracking, if possible. Please see our refund and return
-            policy for when these might be applicable to shipping situations.</p>
-        <p class="shiping_content"><b>WILL I BE CHARGED FOR CUSTOMS AND TAXES?</b></p>
-        <p class="shiping_content">The prices displayed on our site are tax-free. Import taxes, duties and
-            related customs fees may be
-            charged once your order arrives to its final destination, which are determined by your local customs
-            office. Payment of these charges and taxes are your responsibility and will not be covered by us. We
-            are not responsible for delays caused by the customs department in your country. For further details
-            of charges, please contact your local customs office.<span>&nbsp;</span><b>Usually, there are no
-                custom or tax charges, however, there are always rare exceptions.</b></p>
-        <p class="shiping_content"></p>
+    <p>We have a 30-day return policy, which means you have 30 days after receiving your item to request a return. <br><br>To be eligible for a return, your item must be in the same condition that you received it, unworn or unused, with tags, and in its original packaging. You’ll also need the receipt or proof of purchase. <br><br>To start a return, you can contact us at . If your return is accepted, we’ll send you a return shipping label, as well as instructions on how and where to send your package. Items sent back to us without first requesting a return will not be accepted. <br><br>You can always contact us for any return question at <a href="mailto:support@chochopet.com"><span data-mce-fragment="1">support@chochopet.com</span></a>.</p>
+    <br>
+    <p><strong>Damages and issues</strong> <br>Please inspect your order upon reception and contact us immediately if the item is defective, damaged or if you receive the wrong item, so that we can evaluate the issue and make it right.</p>
+    <br>
+    <p><strong>Exchanges</strong> <br>The fastest way to ensure you get what you want is to return the item you have, and once the return is accepted, make a separate purchase for the new item.</p>
+    <br>
+    <p><strong>Refunds</strong> <br>We will notify you once we’ve received and inspected your return, and let you know if the refund was approved or not. If approved, you’ll be automatically refunded on your original payment method. Please remember it can take some time for your bank or credit card company to process and post the refund too.</p>
     </div>
 </div>`;
     if (this.product && this.product.tableDescription && this.product.tableDescription.imageBuyUrl && this.product.tableDescription.imageBuyUrl != "''") {

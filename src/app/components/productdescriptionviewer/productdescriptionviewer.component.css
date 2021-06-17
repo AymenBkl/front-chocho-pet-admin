@@ -289,3 +289,9 @@ img {
 .empty-div {
   width:56% !important;
 }
+
+
+.add-link {
+  color:white !important;
+  text-decoration: underline !important;
+}

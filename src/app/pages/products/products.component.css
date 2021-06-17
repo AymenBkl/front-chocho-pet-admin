@@ -201,22 +201,18 @@ mat-form-field {
 }
 
 .img-badge {
-  height: 80px;
-  width: 80px;
   position: absolute;
   right: 0px;
   text-align: -20px;
-  top: -21px;
   z-index: 99999999;
 }
 .img-shiping-badge {
-  height: 80px;
-  width: 80px;
   position: absolute;
   left: 0px;
   text-align: -20px;
-  top: -21px;
   z-index: 99999999;
+  width: 50%;
+  top: 162px;
 }
 
 .recomend-product-btn {

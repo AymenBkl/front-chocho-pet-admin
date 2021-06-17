@@ -12,7 +12,7 @@
   <span *ngIf="productDescriptionTotal != ''">{{productDescriptionTotal}}</span>
 </div>
 
-<div class="code-html" [innerHTML]='productDescriptionTotal' *ngIf="segmentToShow == 'html'">
+<div class="code-html" [innerHTML]='productDescriptionTotalToShow' *ngIf="segmentToShow == 'html' && productDescriptionTotalToShow && productDescriptionTotalToShow != ''">
 </div>
 
 
