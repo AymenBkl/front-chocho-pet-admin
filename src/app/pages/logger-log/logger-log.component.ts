@@ -5,21 +5,30 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { InteractionService } from 'app/services/interaction.service';
 import { LoggerServiceService } from 'app/services/logger-service.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-logger-log',
   templateUrl: './logger-log.component.html',
-  styleUrls: ['./logger-log.component.css']
+  styleUrls: ['./logger-log.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class LoggerLogComponent implements OnInit {
   logs: any;
-  displayedColumns: string[] = ['endPoint', 'msg', 'level', 'service', 'timestamp','status'];
+  displayedColumns: string[] = ['level','type', 'createdAt'];
   dataSource;
   expandedElement: any;
   currentLink:string;
   isError:boolean;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  loaded:boolean = false;
   constructor(private route: ActivatedRoute,
     private logService:LoggerServiceService,
     private interactionService: InteractionService) { }
@@ -32,12 +41,6 @@ export class LoggerLogComponent implements OnInit {
       this.route.params.subscribe(params => {
         this.currentLink = params['link'];
         const level = this.route.snapshot.queryParamMap.get('level');
-        console.log(level);
-        console.log(this.currentLink);
-        if (this.currentLink.includes('error')) {
-          this.isError = true;
-          this.displayedColumns = ['endPoint', 'msg','error','level', 'service', 'timestamp','status'];
-        }
         if (level && this.currentLink && level != '' && this.currentLink != ''){
           this.getLogs(params['link'],level);
         }
@@ -51,16 +54,18 @@ export class LoggerLogComponent implements OnInit {
       this.interactionService.createLoading("Getting Your Logs");
       this.logService.getLogs(path,level)
         .then((result:any) => {
+          this.loaded = true;
           this.interactionService.closeToast();
           this.logs = [];
-          if (result && result != false){
+          console.log(result,result  && result.status == 200 && result.object.length > 0);
+          if (result  && result.status == 200 && result.object.length > 0){
             this.interactionService.displayToast('Logs Loadded Succesfully',false,'success');
-            this.logs = result;
+            this.logs = result.object;
             this.dataSource = new MatTableDataSource(this.logs);
             this.dataSource.sort = this.sort;
             this.dataSource.paginator = this.paginator;
           }
-          else if (result && result.length == 0 ) {
+          else if (result && result.status == 404 && result.object.length == 0 ) {
             this.interactionService.displayToast('No Logs',false,'warning');
 
           }
@@ -69,6 +74,7 @@ export class LoggerLogComponent implements OnInit {
           }
         })
         .catch(err => {
+          this.loaded = true;
           this.logs = [];
           this.interactionService.closeToast();
           if (err && err.errmsg){
