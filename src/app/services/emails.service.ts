@@ -63,6 +63,7 @@ export class EmailsService {
       this.onDestroyContactsResponse();
       this.responseContact = this.httpClient.post<ContactResponse>(environment.url + 'emails/replycontact', { email: email, contactId: contactId, subject: subject, message: message })
         .subscribe(contactResponse => {
+          console.log(contactResponse)
           if (contactResponse.status == 200 && contactResponse.success) {
             resolve(true);
           }
