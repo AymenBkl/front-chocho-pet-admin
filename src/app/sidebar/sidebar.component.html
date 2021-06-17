@@ -36,4 +36,17 @@
   </ul>
   </div>
 
+  <div class="menuItem settings">
+    <p class="header-info-side-bar">Settings</p>
+
+    <ul class="nav">
+      <li *ngFor="let settingItem of settingsItems" routerLinkActive="active" class="{{settingItem.class}}">
+          <a [routerLink]="[settingItem .path]">
+              <i class="{{settingItem .icon}}"></i>
+              <p>{{settingItem .title}}</p>
+          </a>
+      </li>
+  </ul>
+  </div>
+
 </div>

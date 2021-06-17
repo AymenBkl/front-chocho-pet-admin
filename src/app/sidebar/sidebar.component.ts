@@ -28,8 +28,11 @@ export const ROUTES: RouteInfo[] = [
 export const ROUTESTOOLS: RouteInfo[] = [
   { path: '/best-reviews',          title: 'Best Reviews',      icon:'fas fa-star',  class: '' },
   { path: '/best-tips',          title: 'Best Tips',      icon:'fab fa-gratipay',  class: '' },
-  { path: '/logs',       title: 'Logs',    icon:'fa fa-history',  class: 'active-pro' },
 
+];
+
+export const ROUTESSETTING: RouteInfo[] = [
+  { path: '/logs',       title: 'Logs',    icon:'fa fa-history',  class: '' },
 ];
 
 @Component({
@@ -42,8 +45,11 @@ export const ROUTESTOOLS: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
     public menuItems: any[];
     public bestReviewsItems : any[];
+    public settingsItems : any[];
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
         this.bestReviewsItems = ROUTESTOOLS.filter(bestReviewItem => bestReviewItem);
+        this.settingsItems = ROUTESSETTING.filter(settingItem => settingItem);
+
     }
 }
