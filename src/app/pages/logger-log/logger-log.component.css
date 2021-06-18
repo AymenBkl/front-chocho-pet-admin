@@ -142,3 +142,8 @@ tr.element-row:not(.expanded-row):active {
 
 
 }
+
+.response-text {
+   white-space: normal !important;
+
+}

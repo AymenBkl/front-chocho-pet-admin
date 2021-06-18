@@ -29,6 +29,8 @@ import { EmailsService } from "./services/emails.service";
 import { ImgbbService } from "./services/imgbb.service";
 import { ToolsService } from "./services/tools.service";
 import { LoggerServiceService } from "./services/logger-service.service";
+import { BackupandrestoreComponent } from './pages/backupandrestore/backupandrestore.component';
+import { BackupandrestoreService } from "./services/backupandrestore.service";
 
 
 @NgModule({
@@ -71,6 +73,7 @@ import { LoggerServiceService } from "./services/logger-service.service";
     ImgbbService,
     LoggerServiceService,
     ToolsService,
+    BackupandrestoreService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,

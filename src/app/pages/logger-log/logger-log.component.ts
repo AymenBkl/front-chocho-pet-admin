@@ -57,10 +57,10 @@ export class LoggerLogComponent implements OnInit {
           this.loaded = true;
           this.interactionService.closeToast();
           this.logs = [];
-          console.log(result,result  && result.status == 200 && result.object.length > 0);
           if (result  && result.status == 200 && result.object.length > 0){
             this.interactionService.displayToast('Logs Loadded Succesfully',false,'success');
             this.logs = result.object;
+            console.log(this.logs);
             this.dataSource = new MatTableDataSource(this.logs);
             this.dataSource.sort = this.sort;
             this.dataSource.paginator = this.paginator;

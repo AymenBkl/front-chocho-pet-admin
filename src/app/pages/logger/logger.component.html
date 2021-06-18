@@ -1,4 +1,30 @@
-
+<div class="card" data-aos="fade-down">
+  <div class="card-header" data-aos="fade-up">
+    <h1>Server Api</h1>
+  </div>
+  <div class="card-body" data-aos="fade-down">
+    <div class="list-group" data-aos="fade-down">
+      <a class="list-group-item list-group-item-action flex-column align-items-start bg-success" (click)='goTo("serverlogger","SUCCESS")' data-aos="fade-up">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1 ">Success Logs Server</h5>
+        </div>
+        <p class="mb-1">Success Logs from server api calls which allow to check all the success request and endpoints.
+      </a>
+      <a  class="list-group-item list-group-item-action flex-column align-items-start bg-warning" (click)='goTo("serverlogger","WARNING")' data-aos="fade-up">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Warning Logs Server</h5>
+        </div>
+        <p class="mb-1">Warning Logs Will show you the request you make into Server Api.
+      </a>
+      <a  class="list-group-item list-group-item-action flex-column align-items-start bg-danger" (click)='goTo("serverlogger","ERROR")' data-aos="fade-up">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Error Logs Server</h5>
+        </div>
+        <p class="mb-1">Error Logs Will Help you improve your website by fixing those errors.
+      </a>
+    </div>
+  </div>
+</div>
 
 <div class="card" data-aos="fade-down">
   <div class="card-header" data-aos="fade-up">
