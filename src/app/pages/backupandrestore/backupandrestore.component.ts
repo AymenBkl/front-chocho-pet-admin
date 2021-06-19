@@ -83,7 +83,20 @@ export class BackupandrestoreComponent implements OnInit {
   }
 
   makeBackUp(){
-
+    let id = this.interactionService.displayToaster('BackUp Data Please Wait !','loading','RESTORE' );
+    this.backService.makeBackUp()
+      .then((result:any) => {
+        this.interactionService.closeToaster(id);
+        if (result && result.status == 200 && result.success){
+          this.interactionService.displayToaster(result.msg,'success','BACKUP');
+        }
+        else {
+          this.interactionService.displayToaster(result.err,'error','ERROR');
+        }
+      })
+      .catch(err => {
+        this.interactionService.displayToaster(err.err,'error','ERROR');
+      })
   }
 
 }

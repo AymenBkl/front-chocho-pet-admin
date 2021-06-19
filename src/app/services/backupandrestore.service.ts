@@ -22,6 +22,18 @@ export class BackupandrestoreService {
     })
   }
 
+  makeBackUp() {
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<any>(environment.url + 'drive/backupdatabase')
+        .subscribe(driveResponse => {
+          console.log(driveResponse)
+          resolve(driveResponse);
+        }, err => {
+          reject(err);
+        })
+    })
+  }
+
   restoreDataBase(fileId:string,fileName:string) {
     return new Promise((resolve, reject) => {
       this.httpClient.post<any>(environment.url + 'drive/restoredatabase',{fileId:fileId,fileName:fileName})
