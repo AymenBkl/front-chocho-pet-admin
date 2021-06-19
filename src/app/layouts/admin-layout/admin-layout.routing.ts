@@ -12,6 +12,7 @@ import { BadgesComponent } from 'app/pages/badges/badges.component';
 import { ShipingTagsComponent } from 'app/pages/shiping-tags/shiping-tags.component';
 import { LoggerComponent } from 'app/pages/logger/logger.component';
 import { LoggerLogComponent } from 'app/pages/logger-log/logger-log.component';
+import { BackupandrestoreComponent } from 'app/pages/backupandrestore/backupandrestore.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -26,6 +27,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'shiping-badges', component: ShipingTagsComponent, canActivate: [AuthGuard] },
   { path: 'product-info/:id', component: ProductInfoComponent, canActivate: [AuthGuard] },
   { path: 'logs', component: LoggerComponent, canActivate: [AuthGuard] },
+  { path: 'backup-restore', component: BackupandrestoreComponent, canActivate: [AuthGuard] },
   { path: 'logs/:link', component: LoggerLogComponent, canActivate: [AuthGuard] },
   //{ path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
   //{ path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },

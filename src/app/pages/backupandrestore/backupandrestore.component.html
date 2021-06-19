@@ -1,1 +1,23 @@
-<p>backupandrestore works!</p>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">BackUp Files From Drive</h4>
+      </div>
+      <div class="holder">
+        <div class="card card-file" *ngFor='let file of files' (click)='submitRestore(file.id,file.name)'>
+          <div class="card-body">
+            <i class="fas fa-file-alt big-file"></i>
+          </div>
+          <div class="card-footer">
+            <div class="content-file">
+              <i class="fas fa-file-alt"></i>
+              <span>{{file.name}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+

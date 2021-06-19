@@ -52,6 +52,7 @@ import { ShipingBadgeComponent } from 'app/components/shiping-badge/shiping-badg
 import { RecomnededProductComponent } from 'app/components/recomneded-product/recomneded-product.component';
 import { LoggerComponent } from 'app/pages/logger/logger.component';
 import { LoggerLogComponent } from 'app/pages/logger-log/logger-log.component';
+import { BackupandrestoreComponent } from 'app/pages/backupandrestore/backupandrestore.component';
 
 @NgModule({
   imports: [
@@ -108,7 +109,8 @@ import { LoggerLogComponent } from 'app/pages/logger-log/logger-log.component';
     ShipingBadgeComponent,
     RecomnededProductComponent,
     LoggerComponent,
-    LoggerLogComponent
+    LoggerLogComponent,
+    BackupandrestoreComponent
   ]
 })
 

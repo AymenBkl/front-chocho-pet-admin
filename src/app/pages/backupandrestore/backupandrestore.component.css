@@ -1,0 +1,59 @@
+.row {
+  background-color: #283136;
+}
+
+.card {
+  background-color: #283136;
+}
+
+.card-title {
+  color:white;
+}
+
+.card-file {
+  background-color: white !important;
+  width: 30% !important;
+  display: inline-block;
+  margin-right: 30px;
+  text-align: center;
+}
+
+
+
+
+.big-file {
+  font-size: 96px !important;
+  color: #1A73E8 !important;
+}
+
+.holder {
+  display: inline-block;
+  width: 100%;
+}
+
+.content-file {
+  display: inline-block;
+}
+
+.card-body {
+  padding: 19px;
+
+}
+
+.content-file i {
+  color: #1A73E8 !important;
+  display: inline-block;
+}
+
+.content-file span {
+  display: inline-block;
+  width: 192px;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+

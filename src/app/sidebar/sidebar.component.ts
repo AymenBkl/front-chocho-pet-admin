@@ -32,6 +32,7 @@ export const ROUTESTOOLS: RouteInfo[] = [
 ];
 
 export const ROUTESSETTING: RouteInfo[] = [
+  { path: '/backup-restore',       title: 'Backup And Restore',    icon:'fas fa-hdd',  class: '' },
   { path: '/logs',       title: 'Logs',    icon:'fa fa-history',  class: '' },
 ];
 
