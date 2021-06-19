@@ -62,8 +62,10 @@ export class LoggerLogComponent implements OnInit {
             this.logs = result.object;
             console.log(this.logs);
             this.dataSource = new MatTableDataSource(this.logs);
-            this.dataSource.sort = this.sort;
-            this.dataSource.paginator = this.paginator;
+            setTimeout(() => {
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+            },1000)
           }
           else if (result && result.status == 404 && result.object.length == 0 ) {
             this.interactionService.displayToast('No Logs',false,'warning');

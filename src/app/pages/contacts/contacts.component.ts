@@ -56,8 +56,10 @@ export class ContactsComponent implements OnInit,OnDestroy {
           this.interactionService.displayToast('Emails Contacts Succesfully', false, 'success');
           this.contacts = contacts;
           this.dataSource = new MatTableDataSource(contacts);
-          this.dataSource.sort = this.sort;
-          this.dataSource.paginator = this.paginator;
+          setTimeout(() => {
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+          },1000)
         }
         else {
           this.interactionService.displayToast('Something Went Wrong !', false, 'error');

@@ -51,8 +51,10 @@ export class SubscribersComponent implements OnInit,OnDestroy {
           this.interactionService.displayToast('Emails Loaded Succesfully', false, 'success');
             this.emails = emails;
             this.dataSource = new MatTableDataSource(emails);
-            this.dataSource.sort = this.sort;
-            this.dataSource.paginator = this.paginator;
+            setTimeout(() => {
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+            },1000)
 
         }
         else {
