@@ -1,5 +1,6 @@
 .row {
   background-color: #283136;
+  margin-bottom: 100px !important;
 }
 
 .card {
@@ -54,6 +55,24 @@
     white-space: nowrap;
     vertical-align: middle;
     margin-left: 10px;
+}
+
+.btn-backup {
+  position: fixed;
+    bottom: 49px;
+    right: 30px;
+    width: 100px;
+    height: 100px;
+}
+
+.btn-backup:focus {
+  outline:none;
+}
+
+.btn-backup .mat-icon {
+  height: 50px !important;
+    width: 50px !important;
+    font-size: 50px !important;
 }
 
 

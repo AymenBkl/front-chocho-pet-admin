@@ -36,10 +36,10 @@ export class BackupandrestoreComponent implements OnInit {
   }
 
   submitRestore(fileId:string,fileName:string){
-    this.interactionService.confirmBox('ALERT','Do You Want To Restore Database','warning','Restore','cancel','')
+    this.interactionService.confirmBox('ALERT','Do You Want To Restore Database','warning','RESTORE','CANCEL','')
        .then((result:any) => {
           if (result && result.status == true){
-            console.log('restore')
+            this.submitRestoreFinal(fileId,fileName);
           }
           else {
             console.log('nothing')
@@ -65,6 +65,25 @@ export class BackupandrestoreComponent implements OnInit {
       .catch(err => {
         this.interactionService.displayToaster(err.err,'error','ERROR');
       })
+  }
+
+  makeBackUpBox(){
+    this.interactionService.confirmBox('ALERT','Do You Want To Back Up Your Database ','warning','BACKUP','CANCEL','')
+    .then((result:any) => {
+       if (result && result.status == true){
+         this.makeBackUp();
+       }
+       else {
+         console.log('nothing')
+       }
+    })
+    .catch((err) => {
+
+    })
+  }
+
+  makeBackUp(){
+
   }
 
 }
