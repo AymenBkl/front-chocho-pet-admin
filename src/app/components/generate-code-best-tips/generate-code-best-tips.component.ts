@@ -73,13 +73,13 @@ export class GenerateCodeBestTipsComponent implements OnInit {
         bestTipsCode += `<div class="best-tips-item-container">
 
         <div class="best-tips-image-container">
-            <img class="lozad" src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data- src="${bestTip.mainImageUrl}">
+            <img class="lozad" src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data-src="${bestTip.mainImageUrl}" alt="${bestTip.description + '. ' + bestTip.title}">
         </div>
         <div class="best-tips-text-container">
             <h1 class="header-tips-container">TIPS</h1>
 
             <div class="header-text-tips">
-                <h3>${bestTip.title}</h3>
+                <h1 class="h3">${bestTip.title}</h1>
             </div>
             <div class="rating-section">
                 ${bestTip.description}

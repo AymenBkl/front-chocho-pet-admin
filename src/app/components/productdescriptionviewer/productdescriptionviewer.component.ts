@@ -96,7 +96,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
           aria-selected="false">Size Chart</a>
   </li>`
       allElemets.contentElements += `<div class="tab-pane fade  " id="sizechart" role="tabpanel" aria-labelledby="sizechart-tab">
-      <img class="lozad"  src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data-src="${this.product.tableDescription.imageSizeChartUrl}">
+      <img class="lozad"  src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data-src="${this.product.tableDescription.imageSizeChartUrl}" alt="Size chart table is a table where you can find all the size of the product and dimesion well explained">
   </div>`;
     }
 
@@ -131,7 +131,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
            aria-controls="buymore" aria-selected="false">Buy More. Save More. </a>
   </li>`;
       allElemets.contentElements += `<div class="tab-pane fade  " id="buymore" role="tabpanel" aria-labelledby="color">
-      <img class="lozad" src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data-src="${this.product.tableDescription.imageBuyUrl}">
+      <img class="lozad" src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data-src="${this.product.tableDescription.imageBuyUrl}" alt="Buy more and save table,which shows how you can save more money buying with us. Coupons and discount are included">
   </div>`;
     }
 
@@ -141,7 +141,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
            aria-controls="color" aria-selected="false">Color Chart </a>
   </li>`;
       allElemets.contentElements += `<div class="tab-pane fade " id="color" role="tabpanel" aria-labelledby="color">
-      <img class="lozad" src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data-src="${this.product.tableDescription.imageColorUrl}">
+      <img class="lozad" src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data-src="${this.product.tableDescription.imageColorUrl}" alt="Table colors to demostrates further what the product colors">
 
   </div>`;
     }
@@ -156,7 +156,7 @@ export class ProductdescriptionviewerComponent implements OnInit {
     <ul class="benifits-fields">`
     mainBenifts.split('#/').map(mainBeniftsElement => {
       constructedMainBeniftsList += `<li class="benifts-field">
-                    <img src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' class="lozad" data-src="${mainBeniftsUrl}">
+                    <img src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' class="lozad" data-src="${mainBeniftsUrl}" alt='${mainBeniftsElement}'>
 
                     ${mainBeniftsElement}
                 </li>`
@@ -173,10 +173,10 @@ export class ProductdescriptionviewerComponent implements OnInit {
         if (productDescription.status == 'active'){
           description += `<div class="item-image-text">
           <div class="image-holder">
-              <img src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' class="lozad" data-src="${productDescription.imageURL}" />
+              <img src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' class="lozad" data-src="${productDescription.imageURL}" alt="${productDescription.header + ' .' + productDescription.description }"/>
           </div>
           <div class="text-holder">
-              <img class="lozad" data-src="${productDescription.imageBadgeURL}">
+              <img class="lozad" data-src="${productDescription.imageBadgeURL}" alt="${productDescription.header}">
               <h2 class="h3">${productDescription.header}</h2>
               <div class="content">
                   <p>${productDescription.description}</p>

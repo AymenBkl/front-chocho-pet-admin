@@ -69,11 +69,11 @@ export class GeneratingBestReviewsComponent implements OnInit {
     this.bestReviews.map((bestReview) => {
         bestReviewCode += `<div class="best-reviews-item-container">
         <div class="best-reviews-image-container">
-            <img class="lozad" src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data-src="${bestReview.mainImgUrl}">
+            <img class="lozad" src='https://cdn.shopify.com/s/files/1/0569/1175/7491/files/white-blurred-background_1034-249.jpg?v=1623593569' data-src="${bestReview.mainImgUrl}" alt="${bestReview.descriptionReview + '. ' + bestReview.authorReview}">
         </div>
         <div class="best-reviews-text-container">
             <div class="icon-images">
-                <img class="lozad" data-src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/5-stars.png?v=1618404898">
+                <img class="lozad" data-src="https://cdn.shopify.com/s/files/1/0254/2937/7112/files/5-stars.png?v=1618404898" alt="5 Stars reviews">
             </div>
             <div class="rating-section">
                 ${bestReview.descriptionReview}
